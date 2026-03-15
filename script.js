@@ -1,199 +1,81 @@
 /**
- * DormChef v4 – Cinematic Glassmorphism Edition
- * Live search · YouTube links · Food photos · Random recipe
+ * DormChef – Cinematic Glassmorphism Edition
  */
 'use strict';
 
-/* ============================================================
-   LANGUAGE SYSTEM  (EN / FIL)
-   ============================================================ */
+/* LANGUAGE */
 let currentLang = localStorage.getItem('dormchef_lang') || 'en';
 
 const LANG = {
   en: {
-    tagline:          'Cook with what you have.',
-    searchPlaceholder:'Search recipe or ingredient...',
-    ingPlaceholder:   '🔍 Search ingredient...',
-    ingToggle:        '🥘 Filter by Ingredients',
-    ingSelected:      (n) => `🥘 ${n} ingredient${n!==1?'s':''} selected`,
-    allCategories:    'All Categories',
-    results:          (n) => `<strong>${n}</strong> recipe${n!==1?'s':''} found`,
-    noRecipes:        'No recipes found.',
-    noRecipesSub:     'Try a different name or remove some filters.',
-    noRecipesBtn:     '🎲 Try a Random Recipe',
-    hint:             'Type a recipe name, choose a category, or select your ingredients to find what you can cook right now!',
-    backBtn:          '← Back',
-    saveBtn:          '♡ Save',
-    savedBtn:         '♥ Saved',
-    savedRecipes:     '❤️ Saved Recipes',
-    noSaved:          'No saved recipes yet.',
-    noSavedSub:       'Save your favorite recipes to find them here!',
-    randomTag:        'RANDOM RECIPE',
-    viewRecipe:       'View Recipe',
-    rollAgain:        '🎲 Roll Again!',
-    randomBtn:        '🎲 Random Recipe',
-    watchYT:          'Watch on YouTube',
-    ingredients:      'Ingredients',
-    tools:            'Cooking Tools',
-    instructions:     'Instructions',
-    pantry:           '🛒 Pantry Staples',
-    proteins:         '🥩 Proteins',
-    vegetables:       '🥬 Vegetables',
-    instant:          '🥫 Instant & Canned',
-    condiments:       '🧂 Condiments & Seasonings',
-    cookingTools:     '🔧 Cooking Tools (optional)',
-    matchSuffix:      'ingredients',
-    catLabel:         (cat) => cat,
-    timeLabel:        (t) => t,
-    costLabel:        (c) => c.replace('₱','₱ '),
+    tagline:'Cook with what you have.',searchPh:'Search recipe or ingredient...',
+    ingSearchPh:'Search ingredient...',ingToggle:'Filter by Ingredients',
+    ingSelected:(n)=>`${n} ingredient${n!==1?'s':''} selected`,
+    allCats:'All Categories',results:(n)=>`<strong>${n}</strong> recipe${n!==1?'s':''} found`,
+    noRecipes:'No recipes found.',noRecipesSub:'Try a different name or remove some filters.',
+    noRecipesBtn:'Try a Random Recipe',hint:'Type a recipe name, choose a category, or select ingredients to find what you can cook!',
+    back:'Back',saveBtn:'Save',savedBtn:'Saved',favTitle:'Saved Recipes',
+    noSaved:'No saved recipes yet.',noSavedSub:'Save your favorite recipes!',
+    randomTag:'RANDOM RECIPE',viewRecipe:'View Recipe',rollAgain:'Roll Again!',
+    randomBtn:'Random Recipe',watchYT:'Watch on YouTube',
+    ingSection:'Ingredients',toolsSection:'Cooking Tools',stepsSection:'Instructions',
+    pantry:'Pantry Staples',proteins:'Proteins',vegetables:'Vegetables',
+    instant:'Instant & Canned',condiments:'Condiments & Seasonings',
+    tools:'Cooking Tools (optional)',ingCount:(m,t)=>`${m}/${t} ingredients`,
   },
   fil: {
-    tagline:          'Lutuin ang mayroon mo.',
-    searchPlaceholder:'Maghanap ng recipe o sangkap...',
-    ingPlaceholder:   '🔍 Hanapin ang sangkap...',
-    ingToggle:        '🥘 Pumili ng Sangkap',
-    ingSelected:      (n) => `🥘 ${n} sangkap ang napili`,
-    allCategories:    'Lahat ng Category',
-    results:          (n) => `<strong>${n}</strong> recipe ang nahanap`,
-    noRecipes:        'Walang nahanap na recipe.',
-    noRecipesSub:     'Subukan ng ibang pangalan o alisin ang mga filter.',
-    noRecipesBtn:     '🎲 Subukan ang Random Recipe',
-    hint:             'Mag-type ng recipe name, pumili ng category, o mag-tick ng mga sangkap para malaman kung ano ang puwede mong lutuin ngayon!',
-    backBtn:          '← Bumalik',
-    saveBtn:          '♡ I-save',
-    savedBtn:         '♥ Na-save',
-    savedRecipes:     '❤️ Mga Na-save na Recipe',
-    noSaved:          'Wala pang na-save na recipe.',
-    noSavedSub:       'I-save ang iyong paboritong recipe para makita dito!',
-    randomTag:        'RANDOM NA RECIPE',
-    viewRecipe:       'Tingnan ang Recipe',
-    rollAgain:        '🎲 Isa pa!',
-    randomBtn:        '🎲 Random na Recipe',
-    watchYT:          'Panoorin sa YouTube',
-    ingredients:      'Mga Sangkap',
-    tools:            'Mga Gamit',
-    instructions:     'Paraan ng Pagluluto',
-    pantry:           '🛒 Mga Pangunahing Sangkap',
-    proteins:         '🥩 Mga Protina',
-    vegetables:       '🥬 Mga Gulay',
-    instant:          '🥫 Instant at Canned',
-    condiments:       '🧂 Mga Pampalasa',
-    cookingTools:     '🔧 Mga Gamit sa Pagluluto (opsyonal)',
-    matchSuffix:      'sangkap',
-    catLabel:         (cat) => cat,
-    timeLabel:        (t) => t,
-    costLabel:        (c) => c.replace('₱','₱ '),
+    tagline:'Lutuin ang mayroon mo.',searchPh:'Maghanap ng recipe o sangkap...',
+    ingSearchPh:'Hanapin ang sangkap...',ingToggle:'Pumili ng Sangkap',
+    ingSelected:(n)=>`${n} sangkap ang napili`,
+    allCats:'Lahat ng Category',results:(n)=>`<strong>${n}</strong> recipe ang nahanap`,
+    noRecipes:'Walang nahanap na recipe.',noRecipesSub:'Subukan ng ibang salita o alisin ang filter.',
+    noRecipesBtn:'Subukan ang Random Recipe',hint:'Mag-type ng recipe, pumili ng category, o mag-tick ng sangkap para malaman kung ano ang puwede mong lutuin!',
+    back:'Bumalik',saveBtn:'I-save',savedBtn:'Na-save',favTitle:'Mga Na-save na Recipe',
+    noSaved:'Wala pang na-save na recipe.',noSavedSub:'I-save ang iyong paboritong recipe!',
+    randomTag:'RANDOM NA RECIPE',viewRecipe:'Tingnan ang Recipe',rollAgain:'Isa pa!',
+    randomBtn:'Random na Recipe',watchYT:'Panoorin sa YouTube',
+    ingSection:'Mga Sangkap',toolsSection:'Mga Gamit',stepsSection:'Paraan ng Pagluluto',
+    pantry:'Mga Pangunahing Sangkap',proteins:'Mga Protina',vegetables:'Mga Gulay',
+    instant:'Instant at Canned',condiments:'Mga Pampalasa',
+    tools:'Mga Gamit sa Pagluluto (opsyonal)',ingCount:(m,t)=>`${m}/${t} sangkap`,
   }
 };
 
-function t() { return LANG[currentLang]; }
+function L(){return LANG[currentLang];}
 
-function toggleLang() {
-  currentLang = currentLang === 'en' ? 'fil' : 'en';
-  localStorage.setItem('dormchef_lang', currentLang);
-  applyLang();
-  triggerSearch(); // re-render cards with new language
+function toggleLang(){
+  currentLang=currentLang==='en'?'fil':'en';
+  localStorage.setItem('dormchef_lang',currentLang);
+  applyLang();triggerSearch();
 }
 
-function applyLang() {
-  const lang = t();
-
-  // Toggle button active state
-  document.getElementById('lang-en')?.classList.toggle('active', currentLang === 'en');
-  document.getElementById('lang-fil')?.classList.toggle('active', currentLang === 'fil');
-
-  // Tagline
-  document.querySelector('.site-tagline')?.setAttribute('data-text', lang.tagline);
-  if (document.querySelector('.site-tagline')) document.querySelector('.site-tagline').textContent = lang.tagline;
-
-  // Search placeholder
-  const sf = document.getElementById('global-search');
-  if (sf) sf.placeholder = lang.searchPlaceholder;
-
-  // Ingredient search placeholder
-  const ingsf = document.getElementById('ingredient-search');
-  if (ingsf) ingsf.placeholder = lang.ingPlaceholder;
-
-  // Ingredient toggle label (respects selection count)
+function applyLang(){
+  const l=L();
+  document.getElementById('lang-en')?.classList.toggle('active',currentLang==='en');
+  document.getElementById('lang-fil')?.classList.toggle('active',currentLang==='fil');
+  const tg=document.querySelector('.site-tagline');if(tg)tg.textContent=l.tagline;
+  const sf=document.getElementById('global-search');if(sf)sf.placeholder=l.searchPh;
+  const is=document.getElementById('ingredient-search');if(is)is.placeholder=l.ingSearchPh;
+  const cs=document.getElementById('cat-select');if(cs&&cs.options[0])cs.options[0].text=l.allCats;
+  const rb=document.getElementById('btn-random');if(rb)rb.textContent='\uD83C\uDFB2 '+l.randomBtn;
   updateIngBadge();
-
-  // Category select first option
-  const catSel = document.getElementById('cat-select');
-  if (catSel && catSel.options[0]) catSel.options[0].text = lang.allCategories;
-
-  // Random button
-  const randBtn = document.getElementById('btn-random');
-  if (randBtn) randBtn.textContent = lang.randomBtn;
-
-  // Section labels
-  const sectionMap = {
-    'pantry': lang.pantry,
-    'proteins': lang.proteins,
-    'vegetables': lang.vegetables,
-    'instant': lang.instant,
-    'condiments': lang.condiments,
-    'cookingTools': lang.cookingTools,
-  };
-  document.querySelectorAll('.ing-section-label').forEach(el => {
-    const key = el.dataset.langKey;
-    if (key && sectionMap[key]) el.textContent = sectionMap[key];
-  });
-
-  // Static data-en / data-fil elements
-  document.querySelectorAll('[data-en]').forEach(el => {
-    if (!el.classList.contains('lang-opt')) {
-      el.textContent = currentLang === 'en' ? el.dataset.en : el.dataset.fil;
-    }
-  });
-
-  // Back buttons in overlays
-  document.querySelectorAll('.detail-close-btn').forEach(btn => {
-    btn.textContent = lang.backBtn;
-  });
-
-  // Fav toggle btn (if showing)
-  const favBtn = document.getElementById('fav-toggle-btn');
-  if (favBtn) {
-    const isSaved = favBtn.classList.contains('saved');
-    favBtn.textContent = isSaved ? lang.savedBtn : lang.saveBtn;
-  }
-
-  // Overlay title
-  const overlayTitle = document.querySelector('#fav-overlay .overlay-title');
-  if (overlayTitle) overlayTitle.textContent = lang.savedRecipes;
-
-  // No-fav text
-  const noFavP = document.querySelector('#no-fav p');
-  const noFavSm = document.querySelector('#no-fav small');
-  if (noFavP) noFavP.textContent = lang.noSaved;
-  if (noFavSm) noFavSm.textContent = lang.noSavedSub;
-
-  // Empty state
-  const noRecP = document.querySelector('#empty-state p');
-  const noRecSm = document.querySelector('#empty-state small');
-  const noRecBtn = document.querySelector('#empty-state .random-btn');
-  if (noRecP) noRecP.textContent = lang.noRecipes;
-  if (noRecSm) noRecSm.textContent = lang.noRecipesSub;
-  if (noRecBtn) noRecBtn.textContent = lang.noRecipesBtn;
-
-  // Hint text
-  const hintP = document.querySelector('#start-hint p');
-  if (hintP) hintP.textContent = lang.hint;
-
-  // Modal tag
-  const modalTag = document.querySelector('.modal-tag');
-  if (modalTag) modalTag.textContent = lang.randomTag;
-
-  const viewBtn = document.querySelector('.modal-btns .random-btn');
-  if (viewBtn) viewBtn.textContent = lang.viewRecipe;
-  const rollBtn = document.querySelector('.modal-btns .glass-btn');
-  if (rollBtn) rollBtn.textContent = lang.rollAgain;
+  const km={pantry:l.pantry,proteins:l.proteins,vegetables:l.vegetables,instant:l.instant,condiments:l.condiments,tools:l.tools};
+  document.querySelectorAll('.ing-section-label[data-key]').forEach(el=>{if(km[el.dataset.key])el.textContent=km[el.dataset.key];});
+  const ep=document.querySelector('#empty-state p');if(ep)ep.textContent=l.noRecipes;
+  const es=document.querySelector('#empty-state small');if(es)es.textContent=l.noRecipesSub;
+  const eb=document.querySelector('#empty-state .random-btn');if(eb)eb.textContent=l.noRecipesBtn;
+  const hp=document.querySelector('#start-hint p');if(hp)hp.textContent=l.hint;
+  const db=document.getElementById('detail-back-btn');if(db)db.textContent=l.back;
+  const fb=document.getElementById('fav-toggle-btn');if(fb)fb.textContent=fb.classList.contains('saved')?l.savedBtn:l.saveBtn;
+  const ft=document.getElementById('fav-overlay-title');if(ft)ft.textContent=l.favTitle;
+  const nfp=document.getElementById('no-fav-p');if(nfp)nfp.textContent=l.noSaved;
+  const nfs=document.getElementById('no-fav-s');if(nfs)nfs.textContent=l.noSavedSub;
+  const mt=document.getElementById('modal-tag');if(mt)mt.textContent=l.randomTag;
+  const mv=document.getElementById('modal-view-btn');if(mv)mv.textContent=l.viewRecipe;
+  const mr=document.getElementById('modal-roll-btn');if(mr)mr.textContent=l.rollAgain;
 }
 
-
-/* ============================================================
-   DATA: INGREDIENTS & TOOLS
-   ============================================================ */
+/* DATA */
 const INGREDIENT_CATEGORIES = {
   staples: {
     label: 'Pantry Staples',
@@ -221,20 +103,16 @@ const INGREDIENT_CATEGORIES = {
    DATA: COOKING TOOLS
    ============================================================ */
 const TOOLS = [
-  { id: 'rice-cooker',   name: 'Rice Cooker',    icon: '🍚' },
-  { id: 'frying-pan',   name: 'Frying Pan',     icon: '🍳' },
-  { id: 'microwave',    name: 'Microwave',       icon: '📦' },
-  { id: 'electric-stove', name: 'Electric Stove', icon: '🔥' },
-  { id: 'pot',          name: 'Pot / Casserole', icon: '🥘' },
-  { id: 'oven-toaster', name: 'Oven Toaster',    icon: '🟫' },
+  { id: 'rice-cooker',   name: 'Rice Cooker',    icon: '??' },
+  { id: 'frying-pan',   name: 'Frying Pan',     icon: '??' },
+  { id: 'microwave',    name: 'Microwave',       icon: '??' },
+  { id: 'electric-stove', name: 'Electric Stove', icon: '??' },
+  { id: 'pot',          name: 'Pot / Casserole', icon: '??' },
+  { id: 'oven-toaster', name: 'Oven Toaster',    icon: '??' },
   { id: 'kettle',       name: 'Electric Kettle', icon: '☕' },
-  { id: 'knife',        name: 'Knife & Board',   icon: '🔪' }
+  { id: 'knife',        name: 'Knife & Board',   icon: '??' }
 ];
 
-
-/* ============================================================
-   CATEGORY IMAGES (Unsplash)
-   ============================================================ */
 const CATEGORY_IMAGES = {
   'Rice':       'https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=700&q=80',
   'Eggs':       'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=700&q=80',
@@ -255,15 +133,12 @@ const CATEGORY_IMAGES = {
 };
 
 const CATEGORY_EMOJI = {
-  'Rice':'🍚','Eggs':'🍳','Canned':'🥫','Instant':'🍜','Vegetables':'🥬',
-  'Silog':'🍳','Soup':'🥣','Ulam':'🍖','Fish':'🐟','Bread':'🍞',
-  'Dessert':'🍮','Salad':'🥗','Snacks':'🍢','Microwave':'📦',
-  'Rice Cooker':'🍚','Breakfast':'🥣'
+  'Rice':'??','Eggs':'??','Canned':'??','Instant':'??','Vegetables':'??',
+  'Silog':'??','Soup':'??','Ulam':'??','Fish':'??','Bread':'??',
+  'Dessert':'??','Salad':'??','Snacks':'??','Microwave':'??',
+  'Rice Cooker':'??','Breakfast':'??'
 };
 
-/* ============================================================
-   SHORT DESCRIPTIONS per recipe (for card preview)
-   ============================================================ */
 const RECIPE_DESC = {
   'Sinangag na Kanin': 'Garlicky Filipino fried rice – the dorm staple.',
   'Egg Fried Rice': 'Fluffy egg and rice stir-fried in soy sauce.',
@@ -278,13 +153,6 @@ const RECIPE_DESC = {
   'default': 'A delicious Filipino recipe you can make in your dorm.'
 };
 
-function getDesc(name) {
-  return RECIPE_DESC[name] || RECIPE_DESC['default'];
-}
-
-/* ============================================================
-   YOUTUBE LINKS
-   ============================================================ */
 function getYouTubeLink(name) {
   const links = {
     'Sinangag na Kanin': 'sinangag+na+kanin+recipe',
@@ -390,16 +258,16 @@ function getYouTubeLink(name) {
   return 'https://www.youtube.com/results?search_query=' + q;
 }
 
-function getImg(recipe) {
-  return CATEGORY_IMAGES[recipe.category] || CATEGORY_IMAGES['Ulam'];
-}
-function getEmoji(cat) {
-  return CATEGORY_EMOJI[cat] || '🍽️';
-}
 
-/* ============================================================
-   100 FILIPINO RECIPES
-   ============================================================ */
+function getImg(r) {
+  const custom = getCustomPhoto(r.id);
+  if (custom) return custom;
+  if (r.image && r.image.trim()) return r.image.trim();
+  return CATEGORY_IMAGES[r.category] || CATEGORY_IMAGES['Ulam'];
+}
+function getEmoji(cat){return CATEGORY_EMOJI[cat]||'\uD83C\uDF7D\uFE0F';}
+function getDesc(name){return RECIPE_DESC[name]||'A delicious Filipino recipe you can make in your dorm.';}
+
 const RECIPES = [
   // ── 1 ──
   {
@@ -414,7 +282,7 @@ const RECIPES = [
       'Push rice to side, scramble egg in the space, then mix together.',
       'Serve hot with your protein of choice.'
     ],
-    cookingTime: '10 mins', estimatedCost: '₱15–₱25', category: 'Rice'
+    cookingTime: '10 mins', estimatedCost: '₱15–₱25', category: 'Rice', image: 'fied rice.jpg'
   },
   // ── 2 ──
   {
@@ -428,7 +296,7 @@ const RECIPES = [
       'Drizzle soy sauce around the edges of the pan.',
       'Toss everything together and serve.'
     ],
-    cookingTime: '12 mins', estimatedCost: '₱20–₱35', category: 'Rice'
+    cookingTime: '12 mins', estimatedCost: '₱20–₱35', category: 'Rice', image: 'egg fried rice.jpg'
   },
   // ── 3 ──
   {
@@ -443,7 +311,7 @@ const RECIPES = [
       'Flip carefully and cook the other side until golden.',
       'Serve with rice and ketchup.'
     ],
-    cookingTime: '8 mins', estimatedCost: '₱12–₱20', category: 'Eggs'
+    cookingTime: '8 mins', estimatedCost: '₱12–₱20', category: 'Eggs', image: 'tortang itlog.jpg'
   },
   // ── 4 ──
   {
@@ -457,7 +325,7 @@ const RECIPES = [
       'Mash lightly and cook 3–4 minutes, stirring.',
       'Serve generous spoonful over hot rice.'
     ],
-    cookingTime: '15 mins', estimatedCost: '₱25–₱40', category: 'Canned'
+    cookingTime: '15 mins', estimatedCost: '₱25–₱40', category: 'Canned', image: 'sardines rice bowl.jpg'
   },
   // ── 5 ──
   {
@@ -472,7 +340,7 @@ const RECIPES = [
       'Push to side, scramble an egg in, then combine.',
       'Season with salt and serve.'
     ],
-    cookingTime: '12 mins', estimatedCost: '₱40–₱55', category: 'Rice'
+    cookingTime: '12 mins', estimatedCost: '₱40–₱55', category: 'Rice', image: 'corned beef rice.jpg'
   },
   // ── 6 ──
   {
@@ -487,7 +355,7 @@ const RECIPES = [
       'Cook until set, flip gently, cook other side.',
       'Serve hot.'
     ],
-    cookingTime: '10 mins', estimatedCost: '₱30–₱45', category: 'Eggs'
+    cookingTime: '10 mins', estimatedCost: '₱30–₱45', category: 'Eggs', image: 'tuna omellete.jpg'
   },
   // ── 7 ──
   {
@@ -502,7 +370,7 @@ const RECIPES = [
       'Cook until cabbage is tender but still crisp.',
       'Serve as side dish with rice.'
     ],
-    cookingTime: '10 mins', estimatedCost: '₱20–₱30', category: 'Vegetables'
+    cookingTime: '10 mins', estimatedCost: '₱20–₱30', category: 'Vegetables', image: 'ginisang repolyo.jpg'
   },
   // ── 8 ──
   {
@@ -517,7 +385,7 @@ const RECIPES = [
       'Drizzle soy sauce and mix well.',
       'Serve hot.'
     ],
-    cookingTime: '10 mins', estimatedCost: '₱30–₱45', category: 'Rice'
+    cookingTime: '10 mins', estimatedCost: '₱30–₱45', category: 'Rice', image: 'hotdog sinangag.jpg'
   },
   // ── 9 ──
   {
@@ -532,7 +400,7 @@ const RECIPES = [
       'Top with chopped green onion.',
       'Serve immediately.'
     ],
-    cookingTime: '7 mins', estimatedCost: '₱12–₱18', category: 'Instant'
+    cookingTime: '7 mins', estimatedCost: '₱12–₱18', category: 'Instant', image: 'instany mami.jpg'
   },
   // ── 10 ──
   {
@@ -548,7 +416,7 @@ const RECIPES = [
       'Push aside, scramble egg, combine.',
       'Serve hot.'
     ],
-    cookingTime: '12 mins', estimatedCost: '₱18–₱30', category: 'Instant'
+    cookingTime: '12 mins', estimatedCost: '₱18–₱30', category: 'Instant', image: 'pancit canton.jpg'
   },
   // ── 11 ──
   {
@@ -562,7 +430,7 @@ const RECIPES = [
       'Pour sauce over and serve.',
       'Best paired with congee or rice.'
     ],
-    cookingTime: '15 mins', estimatedCost: '₱18–₱25', category: 'Eggs'
+    cookingTime: '15 mins', estimatedCost: '₱18–₱25', category: 'Eggs', image: 'tokwa baboy.jpg'
   },
   // ── 12 ──
   {
@@ -578,7 +446,7 @@ const RECIPES = [
       'Add back Spam, drizzle soy sauce, and toss.',
       'Serve hot.'
     ],
-    cookingTime: '13 mins', estimatedCost: '₱55–₱70', category: 'Rice'
+    cookingTime: '13 mins', estimatedCost: '₱55–₱70', category: 'Rice', image: 'spam rice.webp'
   },
   // ── 13 ──
   {
@@ -592,7 +460,7 @@ const RECIPES = [
       'Plate rice, tocino, and egg together.',
       'Serve with garlic vinegar on the side.'
     ],
-    cookingTime: '15 mins', estimatedCost: '₱40–₱60', category: 'Silog'
+    cookingTime: '15 mins', estimatedCost: '₱40–₱60', category: 'Silog', image: 'tocilog.png'
   },
   // ── 14 ──
   {
@@ -607,7 +475,7 @@ const RECIPES = [
       'Serve with sinangag (garlic rice) and egg.',
       'Dip longganisa in vinegar.'
     ],
-    cookingTime: '18 mins', estimatedCost: '₱35–₱55', category: 'Silog'
+    cookingTime: '18 mins', estimatedCost: '₱35–₱55', category: 'Silog', image: 'longsilog.png'
   },
   // ── 15 ──
   {
@@ -622,7 +490,7 @@ const RECIPES = [
       'Add noodles and toss to coat.',
       'Season with salt and serve.'
     ],
-    cookingTime: '15 mins', estimatedCost: '₱30–₱45', category: 'Instant'
+    cookingTime: '15 mins', estimatedCost: '₱30–₱45', category: 'Instant', image: 'https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=600&q=80'
   },
   // ── 16 ──
   {
@@ -636,7 +504,7 @@ const RECIPES = [
       'Cover and steam 2 minutes.',
       'Serve with rice.'
     ],
-    cookingTime: '8 mins', estimatedCost: '₱15–₱25', category: 'Vegetables'
+    cookingTime: '8 mins', estimatedCost: '₱15–₱25', category: 'Vegetables', image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&q=80'
   },
   // ── 17 ──
   {
@@ -651,7 +519,7 @@ const RECIPES = [
       'Continue cooking until sugar caramelizes.',
       'Serve as snack or merienda.'
     ],
-    cookingTime: '20 mins', estimatedCost: '₱15–₱25', category: 'Snacks'
+    cookingTime: '20 mins', estimatedCost: '₱15–₱25', category: 'Snacks', image: 'https://images.unsplash.com/photo-1585032226651-759b368d7246?w=600&q=80'
   },
   // ── 18 ──
   {
@@ -666,7 +534,7 @@ const RECIPES = [
       'Simmer 5 minutes.',
       'Serve over rice.'
     ],
-    cookingTime: '20 mins', estimatedCost: '₱55–₱75', category: 'Rice'
+    cookingTime: '20 mins', estimatedCost: '₱55–₱75', category: 'Rice', image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&q=80'
   },
   // ── 19 ──
   {
@@ -680,7 +548,7 @@ const RECIPES = [
       'Place egg on bread, season with salt and pepper.',
       'Close sandwich and enjoy.'
     ],
-    cookingTime: '8 mins', estimatedCost: '₱15–₱25', category: 'Bread'
+    cookingTime: '8 mins', estimatedCost: '₱15–₱25', category: 'Bread', image: 'https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&q=80'
   },
   // ── 20 ──
   {
@@ -696,7 +564,7 @@ const RECIPES = [
       'Season with patis.',
       'Garnish with green onion.'
     ],
-    cookingTime: '35 mins', estimatedCost: '₱60–₱85', category: 'Soup'
+    cookingTime: '35 mins', estimatedCost: '₱60–₱85', category: 'Soup', image: 'https://images.unsplash.com/photo-1547592180-85f173990554?w=600&q=80'
   },
   // ── 21 ──
   {
@@ -711,7 +579,7 @@ const RECIPES = [
       'Add oyster sauce and mix.',
       'Serve immediately.'
     ],
-    cookingTime: '7 mins', estimatedCost: '₱15–₱22', category: 'Vegetables'
+    cookingTime: '7 mins', estimatedCost: '₱15–₱22', category: 'Vegetables', image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&q=80'
   },
   // ── 22 ──
   {
@@ -726,7 +594,7 @@ const RECIPES = [
       'Cook until set, flip, cook other side.',
       'Repeat and serve with rice and ketchup.'
     ],
-    cookingTime: '18 mins', estimatedCost: '₱45–₱60', category: 'Eggs'
+    cookingTime: '18 mins', estimatedCost: '₱45–₱60', category: 'Eggs', image: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&q=80'
   },
   // ── 23 ──
   {
@@ -740,7 +608,7 @@ const RECIPES = [
       'Fry bangus until golden brown on both sides.',
       'Serve with tomato, onion salsa and rice.'
     ],
-    cookingTime: '30 mins', estimatedCost: '₱55–₱80', category: 'Fish'
+    cookingTime: '30 mins', estimatedCost: '₱55–₱80', category: 'Fish', image: 'https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=600&q=80'
   },
   // ── 24 ──
   {
@@ -756,7 +624,7 @@ const RECIPES = [
       'Add kangkong, turn off heat.',
       'Serve hot.'
     ],
-    cookingTime: '35 mins', estimatedCost: '₱80–₱110', category: 'Soup'
+    cookingTime: '35 mins', estimatedCost: '₱80–₱110', category: 'Soup', image: 'https://images.unsplash.com/photo-1547592180-85f173990554?w=600&q=80'
   },
   // ── 25 ──
   {
@@ -771,7 +639,7 @@ const RECIPES = [
       'Uncover and cook until sauce reduces.',
       'Serve over rice.'
     ],
-    cookingTime: '35 mins', estimatedCost: '₱75–₱100', category: 'Ulam'
+    cookingTime: '35 mins', estimatedCost: '₱75–₱100', category: 'Ulam', image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&q=80'
   },
   // ── 26 ──
   {
@@ -784,7 +652,7 @@ const RECIPES = [
       'Uncover and fry in own fat until browned.',
       'Serve with rice.'
     ],
-    cookingTime: '35 mins', estimatedCost: '₱80–₱110', category: 'Ulam'
+    cookingTime: '35 mins', estimatedCost: '₱80–₱110', category: 'Ulam', image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&q=80'
   },
   // ── 27 ──
   {
@@ -798,7 +666,7 @@ const RECIPES = [
       'Cook 5 minutes, mashing lightly.',
       'Serve hot with rice.'
     ],
-    cookingTime: '12 mins', estimatedCost: '₱25–₱35', category: 'Canned'
+    cookingTime: '12 mins', estimatedCost: '₱25–₱35', category: 'Canned', image: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&q=80'
   },
   // ── 28 ──
   {
@@ -813,7 +681,7 @@ const RECIPES = [
       'Fry tilapia until golden and crispy on both sides.',
       'Serve with spiced vinegar.'
     ],
-    cookingTime: '25 mins', estimatedCost: '₱55–₱75', category: 'Fish'
+    cookingTime: '25 mins', estimatedCost: '₱55–₱75', category: 'Fish', image: 'https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=600&q=80'
   },
   // ── 29 ──
   {
@@ -829,7 +697,7 @@ const RECIPES = [
       'Season and simmer 3 mins.',
       'Serve hot.'
     ],
-    cookingTime: '30 mins', estimatedCost: '₱70–₱95', category: 'Soup'
+    cookingTime: '30 mins', estimatedCost: '₱70–₱95', category: 'Soup', image: 'https://images.unsplash.com/photo-1547592180-85f173990554?w=600&q=80'
   },
   // ── 30 ──
   {
@@ -844,7 +712,7 @@ const RECIPES = [
       'Cook 8 minutes until tender.',
       'Season with patis and serve.'
     ],
-    cookingTime: '15 mins', estimatedCost: '₱20–₱35', category: 'Vegetables'
+    cookingTime: '15 mins', estimatedCost: '₱20–₱35', category: 'Vegetables', image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&q=80'
   },
   // ── 31 ──
   {
@@ -859,7 +727,7 @@ const RECIPES = [
       'Season with patis.',
       'Top with poached or fried egg and green onion.'
     ],
-    cookingTime: '30 mins', estimatedCost: '₱15–₱25', category: 'Soup'
+    cookingTime: '30 mins', estimatedCost: '₱15–₱25', category: 'Soup', image: 'https://images.unsplash.com/photo-1547592180-85f173990554?w=600&q=80'
   },
   // ── 32 ──
   {
@@ -873,7 +741,7 @@ const RECIPES = [
       'Fry egg separately.',
       'Serve rice with fried egg (substitute for tuyo with whatever salted fish is available).'
     ],
-    cookingTime: '10 mins', estimatedCost: '₱10–₱20', category: 'Rice'
+    cookingTime: '10 mins', estimatedCost: '₱10–₱20', category: 'Rice', image: 'https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=600&q=80'
   },
   // ── 33 ──
   {
@@ -889,7 +757,7 @@ const RECIPES = [
       'Heat in additional 15-second intervals until just set.',
       'Serve on bread or rice.'
     ],
-    cookingTime: '3 mins', estimatedCost: '₱10–₱18', category: 'Microwave'
+    cookingTime: '3 mins', estimatedCost: '₱10–₱18', category: 'Microwave', image: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&q=80'
   },
   // ── 34 ──
   {
@@ -904,7 +772,7 @@ const RECIPES = [
       'Microwave 2 minutes.',
       'Mix into rice and eat.'
     ],
-    cookingTime: '5 mins', estimatedCost: '₱20–₱30', category: 'Microwave'
+    cookingTime: '5 mins', estimatedCost: '₱20–₱30', category: 'Microwave', image: 'https://images.unsplash.com/photo-1484723091739-30a097e8f929?w=600&q=80'
   },
   // ── 35 ──
   {
@@ -920,7 +788,7 @@ const RECIPES = [
       'Fry in oil until golden on both sides.',
       'Serve with banana catsup.'
     ],
-    cookingTime: '20 mins', estimatedCost: '₱20–₱35', category: 'Eggs'
+    cookingTime: '20 mins', estimatedCost: '₱20–₱35', category: 'Eggs', image: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&q=80'
   },
   // ── 36 ──
   {
@@ -935,7 +803,7 @@ const RECIPES = [
       'Add sayote, cook 5 more minutes.',
       'Serve hot.'
     ],
-    cookingTime: '30 mins', estimatedCost: '₱75–₱100', category: 'Soup'
+    cookingTime: '30 mins', estimatedCost: '₱75–₱100', category: 'Soup', image: 'https://images.unsplash.com/photo-1547592180-85f173990554?w=600&q=80'
   },
   // ── 37 ──
   {
@@ -950,7 +818,7 @@ const RECIPES = [
       'Squeeze calamansi for sourness (substitute for sampaloc).',
       'Serve hot with rice.'
     ],
-    cookingTime: '35 mins', estimatedCost: '₱90–₱120', category: 'Soup'
+    cookingTime: '35 mins', estimatedCost: '₱90–₱120', category: 'Soup', image: 'https://images.unsplash.com/photo-1547592180-85f173990554?w=600&q=80'
   },
   // ── 38 ──
   {
@@ -965,7 +833,7 @@ const RECIPES = [
       'Season with patis.',
       'Serve over rice (substitute for mung beans when not available).'
     ],
-    cookingTime: '12 mins', estimatedCost: '₱25–₱40', category: 'Soup'
+    cookingTime: '12 mins', estimatedCost: '₱25–₱40', category: 'Soup', image: 'https://images.unsplash.com/photo-1547592180-85f173990554?w=600&q=80'
   },
   // ── 39 ──
   {
@@ -979,7 +847,7 @@ const RECIPES = [
       'Plate together, season with salt.',
       'Drizzle ketchup and serve with rice.'
     ],
-    cookingTime: '8 mins', estimatedCost: '₱22–₱35', category: 'Ulam'
+    cookingTime: '8 mins', estimatedCost: '₱22–₱35', category: 'Ulam', image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&q=80'
   },
   // ── 40 ──
   {
@@ -994,7 +862,7 @@ const RECIPES = [
       'Toss in noodles and coat well.',
       'Serve hot.'
     ],
-    cookingTime: '15 mins', estimatedCost: '₱28–₱40', category: 'Instant'
+    cookingTime: '15 mins', estimatedCost: '₱28–₱40', category: 'Instant', image: 'https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=600&q=80'
   },
   // ── 41 ──
   {
@@ -1009,7 +877,7 @@ const RECIPES = [
       'Stir until egg sets.',
       'Serve with rice.'
     ],
-    cookingTime: '12 mins', estimatedCost: '₱20–₱30', category: 'Vegetables'
+    cookingTime: '12 mins', estimatedCost: '₱20–₱30', category: 'Vegetables', image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&q=80'
   },
   // ── 42 ──
   {
@@ -1024,7 +892,7 @@ const RECIPES = [
       'Cook until set, flip, cook other side.',
       'Serve with rice.'
     ],
-    cookingTime: '12 mins', estimatedCost: '₱35–₱50', category: 'Eggs'
+    cookingTime: '12 mins', estimatedCost: '₱35–₱50', category: 'Eggs', image: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&q=80'
   },
   // ── 43 ──
   {
@@ -1038,7 +906,7 @@ const RECIPES = [
       'Add melted butter, salt, and pepper.',
       'Mix gently and serve.'
     ],
-    cookingTime: '20 mins', estimatedCost: '₱30–₱45', category: 'Salad'
+    cookingTime: '20 mins', estimatedCost: '₱30–₱45', category: 'Salad', image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&q=80'
   },
   // ── 44 ──
   {
@@ -1053,7 +921,7 @@ const RECIPES = [
       'Once done, stir, season with patis.',
       'Serve topped with green onion.'
     ],
-    cookingTime: '25 mins', estimatedCost: '₱10–₱20', category: 'Rice Cooker'
+    cookingTime: '25 mins', estimatedCost: '₱10–₱20', category: 'Rice Cooker', image: 'https://images.unsplash.com/photo-1512058564366-18510be2db19?w=600&q=80'
   },
   // ── 45 ──
   {
@@ -1068,7 +936,7 @@ const RECIPES = [
       'Season with salt.',
       'Serve hot with rice.'
     ],
-    cookingTime: '15 mins', estimatedCost: '₱22–₱32', category: 'Vegetables'
+    cookingTime: '15 mins', estimatedCost: '₱22–₱32', category: 'Vegetables', image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&q=80'
   },
   // ── 46 ──
   {
@@ -1082,7 +950,7 @@ const RECIPES = [
       'Mix with remaining sauce.',
       'Serve as topping over garlic rice.'
     ],
-    cookingTime: '45 mins', estimatedCost: '₱80–₱110', category: 'Ulam'
+    cookingTime: '45 mins', estimatedCost: '₱80–₱110', category: 'Ulam', image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&q=80'
   },
   // ── 47 ──
   {
@@ -1096,7 +964,7 @@ const RECIPES = [
       'Bring to simmer, cook 15 minutes until kamote is tender.',
       'Serve as dessert or snack.'
     ],
-    cookingTime: '20 mins', estimatedCost: '₱30–₱45', category: 'Dessert'
+    cookingTime: '20 mins', estimatedCost: '₱30–₱45', category: 'Dessert', image: 'https://images.unsplash.com/photo-1551024601-bec78aea704b?w=600&q=80'
   },
   // ── 48 ──
   {
@@ -1111,7 +979,7 @@ const RECIPES = [
       'Return squid balls, toss.',
       'Squeeze calamansi and serve.'
     ],
-    cookingTime: '10 mins', estimatedCost: '₱20–₱35', category: 'Snacks'
+    cookingTime: '10 mins', estimatedCost: '₱20–₱35', category: 'Snacks', image: 'https://images.unsplash.com/photo-1585032226651-759b368d7246?w=600&q=80'
   },
   // ── 49 ──
   {
@@ -1125,7 +993,7 @@ const RECIPES = [
       'Microwave 2–3 minutes until egg is set.',
       'Mix and serve over rice.'
     ],
-    cookingTime: '8 mins', estimatedCost: '₱35–₱50', category: 'Microwave'
+    cookingTime: '8 mins', estimatedCost: '₱35–₱50', category: 'Microwave', image: 'https://images.unsplash.com/photo-1484723091739-30a097e8f929?w=600&q=80'
   },
   // ── 50 ──
   {
@@ -1140,7 +1008,7 @@ const RECIPES = [
       'Toss gently and serve.',
       'Best eaten with fried fish.'
     ],
-    cookingTime: '5 mins', estimatedCost: '₱12–₱20', category: 'Salad'
+    cookingTime: '5 mins', estimatedCost: '₱12–₱20', category: 'Salad', image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&q=80'
   },
   // ── 51 ──
   {
@@ -1155,7 +1023,7 @@ const RECIPES = [
       'Top with pork and green onion.',
       'Drizzle patis and serve.'
     ],
-    cookingTime: '35 mins', estimatedCost: '₱50–₱75', category: 'Soup'
+    cookingTime: '35 mins', estimatedCost: '₱50–₱75', category: 'Soup', image: 'https://images.unsplash.com/photo-1547592180-85f173990554?w=600&q=80'
   },
   // ── 52 ──
   {
@@ -1170,7 +1038,7 @@ const RECIPES = [
       'Pour sauce over rice.',
       'Serve as an affordable and filling meal.'
     ],
-    cookingTime: '15 mins', estimatedCost: '₱18–₱28', category: 'Rice'
+    cookingTime: '15 mins', estimatedCost: '₱18–₱28', category: 'Rice', image: 'https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=600&q=80'
   },
   // ── 53 ──
   {
@@ -1185,7 +1053,7 @@ const RECIPES = [
       'Pour egg-milk mixture and toss quickly so egg doesn\'t curdle.',
       'Serve immediately.'
     ],
-    cookingTime: '10 mins', estimatedCost: '₱18–₱28', category: 'Instant'
+    cookingTime: '10 mins', estimatedCost: '₱18–₱28', category: 'Instant', image: 'https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=600&q=80'
   },
   // ── 54 ──
   {
@@ -1200,7 +1068,7 @@ const RECIPES = [
       'Season with patis.',
       'Serve hot over rice.'
     ],
-    cookingTime: '18 mins', estimatedCost: '₱28–₱40', category: 'Soup'
+    cookingTime: '18 mins', estimatedCost: '₱28–₱40', category: 'Soup', image: 'https://images.unsplash.com/photo-1547592180-85f173990554?w=600&q=80'
   },
   // ── 55 ──
   {
@@ -1215,7 +1083,7 @@ const RECIPES = [
       'Let it cycle twice for thorough cooking.',
       'Serve with steamed rice.'
     ],
-    cookingTime: '30 mins', estimatedCost: '₱75–₱100', category: 'Rice Cooker'
+    cookingTime: '30 mins', estimatedCost: '₱75–₱100', category: 'Rice Cooker', image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&q=80'
   },
   // ── 56 ──
   {
@@ -1230,7 +1098,7 @@ const RECIPES = [
       'Drizzle condensed milk on top.',
       'Eat as breakfast or snack.'
     ],
-    cookingTime: '20 mins', estimatedCost: '₱15–₱25', category: 'Dessert'
+    cookingTime: '20 mins', estimatedCost: '₱15–₱25', category: 'Dessert', image: 'https://images.unsplash.com/photo-1551024601-bec78aea704b?w=600&q=80'
   },
   // ── 57 ──
   {
@@ -1245,7 +1113,7 @@ const RECIPES = [
       'Squeeze calamansi generously.',
       'Season with salt and serve.'
     ],
-    cookingTime: '15 mins', estimatedCost: '₱25–₱40', category: 'Soup'
+    cookingTime: '15 mins', estimatedCost: '₱25–₱40', category: 'Soup', image: 'https://images.unsplash.com/photo-1547592180-85f173990554?w=600&q=80'
   },
   // ── 58 ──
   {
@@ -1260,7 +1128,7 @@ const RECIPES = [
       'Simmer 5 minutes.',
       'Serve with rice.'
     ],
-    cookingTime: '18 mins', estimatedCost: '₱60–₱80', category: 'Ulam'
+    cookingTime: '18 mins', estimatedCost: '₱60–₱80', category: 'Ulam', image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&q=80'
   },
   // ── 59 ──
   {
@@ -1275,7 +1143,7 @@ const RECIPES = [
       'Drain on paper towel.',
       'Serve with rice and ketchup.'
     ],
-    cookingTime: '20 mins', estimatedCost: '₱60–₱85', category: 'Ulam'
+    cookingTime: '20 mins', estimatedCost: '₱60–₱85', category: 'Ulam', image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&q=80'
   },
   // ── 60 ──
   {
@@ -1290,7 +1158,7 @@ const RECIPES = [
       'Season with patis.',
       'Serve hot.'
     ],
-    cookingTime: '35 mins', estimatedCost: '₱65–₱90', category: 'Soup'
+    cookingTime: '35 mins', estimatedCost: '₱65–₱90', category: 'Soup', image: 'https://images.unsplash.com/photo-1547592180-85f173990554?w=600&q=80'
   },
   // ── 61 ──
   {
@@ -1305,7 +1173,7 @@ const RECIPES = [
       'Cook 2 more minutes.',
       'Serve with rice.'
     ],
-    cookingTime: '10 mins', estimatedCost: '₱15–₱25', category: 'Vegetables'
+    cookingTime: '10 mins', estimatedCost: '₱15–₱25', category: 'Vegetables', image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&q=80'
   },
   // ── 62 ──
   {
@@ -1320,7 +1188,7 @@ const RECIPES = [
       'When done, mix tuna into rice.',
       'Top with green onion.'
     ],
-    cookingTime: '20 mins', estimatedCost: '₱28–₱40', category: 'Rice Cooker'
+    cookingTime: '20 mins', estimatedCost: '₱28–₱40', category: 'Rice Cooker', image: 'https://images.unsplash.com/photo-1512058564366-18510be2db19?w=600&q=80'
   },
   // ── 63 ──
   {
@@ -1334,7 +1202,7 @@ const RECIPES = [
       'Cook on low heat until thick and creamy.',
       'Serve warm or chilled.'
     ],
-    cookingTime: '25 mins', estimatedCost: '₱30–₱45', category: 'Dessert'
+    cookingTime: '25 mins', estimatedCost: '₱30–₱45', category: 'Dessert', image: 'https://images.unsplash.com/photo-1551024601-bec78aea704b?w=600&q=80'
   },
   // ── 64 ──
   {
@@ -1349,7 +1217,7 @@ const RECIPES = [
       'Bake in oven toaster at 200°C for 20–25 minutes.',
       'Serve with rice and spiced vinegar.'
     ],
-    cookingTime: '30 mins', estimatedCost: '₱60–₱85', category: 'Fish'
+    cookingTime: '30 mins', estimatedCost: '₱60–₱85', category: 'Fish', image: 'https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=600&q=80'
   },
   // ── 65 ──
   {
@@ -1364,7 +1232,7 @@ const RECIPES = [
       'Add banana catsup and season.',
       'Simmer until sauce thickens.'
     ],
-    cookingTime: '40 mins', estimatedCost: '₱85–₱110', category: 'Ulam'
+    cookingTime: '40 mins', estimatedCost: '₱85–₱110', category: 'Ulam', image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&q=80'
   },
   // ── 66 ──
   {
@@ -1379,7 +1247,7 @@ const RECIPES = [
       'Pour over rice and mix.',
       'Serve as simple lunch.'
     ],
-    cookingTime: '15 mins', estimatedCost: '₱28–₱40', category: 'Rice'
+    cookingTime: '15 mins', estimatedCost: '₱28–₱40', category: 'Rice', image: 'https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=600&q=80'
   },
   // ── 67 ──
   {
@@ -1394,7 +1262,7 @@ const RECIPES = [
       'Season with patis.',
       'Serve with rice.'
     ],
-    cookingTime: '15 mins', estimatedCost: '₱45–₱65', category: 'Ulam'
+    cookingTime: '15 mins', estimatedCost: '₱45–₱65', category: 'Ulam', image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&q=80'
   },
   // ── 68 ──
   {
@@ -1409,7 +1277,7 @@ const RECIPES = [
       'Layer Spam, egg, and ketchup.',
       'Close sandwich and serve.'
     ],
-    cookingTime: '10 mins', estimatedCost: '₱45–₱65', category: 'Bread'
+    cookingTime: '10 mins', estimatedCost: '₱45–₱65', category: 'Bread', image: 'https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&q=80'
   },
   // ── 69 ──
   {
@@ -1424,7 +1292,7 @@ const RECIPES = [
       'Add condensed milk and a pinch of salt.',
       'Eat as breakfast.'
     ],
-    cookingTime: '5 mins', estimatedCost: '₱15–₱22', category: 'Breakfast'
+    cookingTime: '5 mins', estimatedCost: '₱15–₱22', category: 'Breakfast', image: 'https://images.unsplash.com/photo-1541614101331-1a5a3a194e92?w=600&q=80'
   },
   // ── 70 ──
   {
@@ -1439,7 +1307,7 @@ const RECIPES = [
       'Toast bread, pile mushrooms on top.',
       'Serve as snack or meal.'
     ],
-    cookingTime: '10 mins', estimatedCost: '₱28–₱40', category: 'Bread'
+    cookingTime: '10 mins', estimatedCost: '₱28–₱40', category: 'Bread', image: 'https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&q=80'
   },
   // ── 71 ──
   {
@@ -1454,7 +1322,7 @@ const RECIPES = [
       'Simmer 20 minutes until vegetables are tender.',
       'Season with salt and serve.'
     ],
-    cookingTime: '35 mins', estimatedCost: '₱90–₱120', category: 'Ulam'
+    cookingTime: '35 mins', estimatedCost: '₱90–₱120', category: 'Ulam', image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&q=80'
   },
   // ── 72 ──
   {
@@ -1468,7 +1336,7 @@ const RECIPES = [
       'Cook until rice is tender and mixture is creamy.',
       'Serve as dessert or merienda.'
     ],
-    cookingTime: '25 mins', estimatedCost: '₱28–₱38', category: 'Dessert'
+    cookingTime: '25 mins', estimatedCost: '₱28–₱38', category: 'Dessert', image: 'https://images.unsplash.com/photo-1551024601-bec78aea704b?w=600&q=80'
   },
   // ── 73 ──
   {
@@ -1483,7 +1351,7 @@ const RECIPES = [
       'Cook 3 more minutes.',
       'Serve hot.'
     ],
-    cookingTime: '40 mins', estimatedCost: '₱80–₱110', category: 'Soup'
+    cookingTime: '40 mins', estimatedCost: '₱80–₱110', category: 'Soup', image: 'https://images.unsplash.com/photo-1547592180-85f173990554?w=600&q=80'
   },
   // ── 74 ──
   {
@@ -1498,7 +1366,7 @@ const RECIPES = [
       'Simmer 15 minutes until sauce thickens.',
       'Serve over rice.'
     ],
-    cookingTime: '25 mins', estimatedCost: '₱70–₱95', category: 'Ulam'
+    cookingTime: '25 mins', estimatedCost: '₱70–₱95', category: 'Ulam', image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&q=80'
   },
   // ── 75 ──
   {
@@ -1513,7 +1381,7 @@ const RECIPES = [
       'Drizzle soy sauce.',
       'Serve on rice.'
     ],
-    cookingTime: '6 mins', estimatedCost: '₱10–₱18', category: 'Eggs'
+    cookingTime: '6 mins', estimatedCost: '₱10–₱18', category: 'Eggs', image: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&q=80'
   },
   // ── 76 ──
   {
@@ -1528,7 +1396,7 @@ const RECIPES = [
       'Add noodles and soy sauce.',
       'Toss everything together and serve dry.'
     ],
-    cookingTime: '10 mins', estimatedCost: '₱15–₱22', category: 'Instant'
+    cookingTime: '10 mins', estimatedCost: '₱15–₱22', category: 'Instant', image: 'https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=600&q=80'
   },
   // ── 77 ──
   {
@@ -1543,7 +1411,7 @@ const RECIPES = [
       'Stir-fry on high heat 3 minutes.',
       'Serve over rice.'
     ],
-    cookingTime: '15 mins', estimatedCost: '₱70–₱90', category: 'Ulam'
+    cookingTime: '15 mins', estimatedCost: '₱70–₱90', category: 'Ulam', image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&q=80'
   },
   // ── 78 ──
   {
@@ -1558,7 +1426,7 @@ const RECIPES = [
       'Crack eggs, scramble into mushroom mixture.',
       'Serve hot.'
     ],
-    cookingTime: '10 mins', estimatedCost: '₱25–₱38', category: 'Eggs'
+    cookingTime: '10 mins', estimatedCost: '₱25–₱38', category: 'Eggs', image: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&q=80'
   },
   // ── 79 ──
   {
@@ -1573,7 +1441,7 @@ const RECIPES = [
       'Toss and chill 5 minutes.',
       'Serve as sawsawan or side dish.'
     ],
-    cookingTime: '5 mins', estimatedCost: '₱12–₱22', category: 'Salad'
+    cookingTime: '5 mins', estimatedCost: '₱12–₱22', category: 'Salad', image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&q=80'
   },
   // ── 80 ──
   {
@@ -1588,7 +1456,7 @@ const RECIPES = [
       'Bake in oven toaster at 180°C for 20 minutes until set.',
       'Serve warm.'
     ],
-    cookingTime: '30 mins', estimatedCost: '₱30–₱45', category: 'Dessert'
+    cookingTime: '30 mins', estimatedCost: '₱30–₱45', category: 'Dessert', image: 'https://images.unsplash.com/photo-1551024601-bec78aea704b?w=600&q=80'
   },
   // ── 81 ──
   {
@@ -1603,7 +1471,7 @@ const RECIPES = [
       'Scramble gently, season.',
       'Serve with rice.'
     ],
-    cookingTime: '12 mins', estimatedCost: '₱18–₱28', category: 'Vegetables'
+    cookingTime: '12 mins', estimatedCost: '₱18–₱28', category: 'Vegetables', image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&q=80'
   },
   // ── 82 ──
   {
@@ -1618,7 +1486,7 @@ const RECIPES = [
       'Season with patis and pepper.',
       'Serve hot.'
     ],
-    cookingTime: '35 mins', estimatedCost: '₱80–₱105', category: 'Soup'
+    cookingTime: '35 mins', estimatedCost: '₱80–₱105', category: 'Soup', image: 'https://images.unsplash.com/photo-1547592180-85f173990554?w=600&q=80'
   },
   // ── 83 ──
   {
@@ -1632,7 +1500,7 @@ const RECIPES = [
       'Fry in oil until golden on both sides.',
       'Serve with ketchup and rice.'
     ],
-    cookingTime: '15 mins', estimatedCost: '₱30–₱45', category: 'Fish'
+    cookingTime: '15 mins', estimatedCost: '₱30–₱45', category: 'Fish', image: 'https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=600&q=80'
   },
   // ── 84 ──
   {
@@ -1647,7 +1515,7 @@ const RECIPES = [
       'Cook until fully done and slightly charred.',
       'Serve with rice and spiced vinegar.'
     ],
-    cookingTime: '35 mins', estimatedCost: '₱75–₱100', category: 'Ulam'
+    cookingTime: '35 mins', estimatedCost: '₱75–₱100', category: 'Ulam', image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&q=80'
   },
   // ── 85 ──
   {
@@ -1663,7 +1531,7 @@ const RECIPES = [
       'Season with patis and salt.',
       'Serve with rice.'
     ],
-    cookingTime: '12 mins', estimatedCost: '₱28–₱42', category: 'Soup'
+    cookingTime: '12 mins', estimatedCost: '₱28–₱42', category: 'Soup', image: 'https://images.unsplash.com/photo-1547592180-85f173990554?w=600&q=80'
   },
   // ── 86 ──
   {
@@ -1678,7 +1546,7 @@ const RECIPES = [
       'Pour chili vinegar sawsawan over everything.',
       'Mix and eat.'
     ],
-    cookingTime: '10 mins', estimatedCost: '₱12–₱20', category: 'Eggs'
+    cookingTime: '10 mins', estimatedCost: '₱12–₱20', category: 'Eggs', image: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&q=80'
   },
   // ── 87 ──
   {
@@ -1693,7 +1561,7 @@ const RECIPES = [
       'Add potato and carrot, cook 10 more minutes.',
       'Season with salt and serve.'
     ],
-    cookingTime: '35 mins', estimatedCost: '₱85–₱110', category: 'Ulam'
+    cookingTime: '35 mins', estimatedCost: '₱85–₱110', category: 'Ulam', image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&q=80'
   },
   // ── 88 ──
   {
@@ -1708,7 +1576,7 @@ const RECIPES = [
       'Turn once halfway.',
       'Serve with rice and sauce from pot.'
     ],
-    cookingTime: '30 mins', estimatedCost: '₱70–₱95', category: 'Rice Cooker'
+    cookingTime: '30 mins', estimatedCost: '₱70–₱95', category: 'Rice Cooker', image: 'https://images.unsplash.com/photo-1512058564366-18510be2db19?w=600&q=80'
   },
   // ── 89 ──
   {
@@ -1723,7 +1591,7 @@ const RECIPES = [
       'Simmer 5 minutes.',
       'Serve with rice.'
     ],
-    cookingTime: '30 mins', estimatedCost: '₱75–₱100', category: 'Ulam'
+    cookingTime: '30 mins', estimatedCost: '₱75–₱100', category: 'Ulam', image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&q=80'
   },
   // ── 90 ──
   {
@@ -1738,7 +1606,7 @@ const RECIPES = [
       'Add green onion.',
       'Serve immediately.'
     ],
-    cookingTime: '8 mins', estimatedCost: '₱12–₱20', category: 'Soup'
+    cookingTime: '8 mins', estimatedCost: '₱12–₱20', category: 'Soup', image: 'https://images.unsplash.com/photo-1547592180-85f173990554?w=600&q=80'
   },
   // ── 91 ──
   {
@@ -1753,7 +1621,7 @@ const RECIPES = [
       'Fry in oil until golden.',
       'Serve as merienda.'
     ],
-    cookingTime: '20 mins', estimatedCost: '₱15–₱25', category: 'Snacks'
+    cookingTime: '20 mins', estimatedCost: '₱15–₱25', category: 'Snacks', image: 'https://images.unsplash.com/photo-1585032226651-759b368d7246?w=600&q=80'
   },
   // ── 92 ──
   {
@@ -1768,7 +1636,7 @@ const RECIPES = [
       'Fluff with fork.',
       'Serve as flavored rice.'
     ],
-    cookingTime: '20 mins', estimatedCost: '₱25–₱35', category: 'Rice'
+    cookingTime: '20 mins', estimatedCost: '₱25–₱35', category: 'Rice', image: 'https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=600&q=80'
   },
   // ── 93 ──
   {
@@ -1783,7 +1651,7 @@ const RECIPES = [
       'Season with calamansi, salt, pepper.',
       'Serve sizzling on hot pan or plate.'
     ],
-    cookingTime: '25 mins', estimatedCost: '₱60–₱85', category: 'Fish'
+    cookingTime: '25 mins', estimatedCost: '₱60–₱85', category: 'Fish', image: 'https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=600&q=80'
   },
   // ── 94 ──
   {
@@ -1798,7 +1666,7 @@ const RECIPES = [
       'Season with salt.',
       'Top with green onion and serve.'
     ],
-    cookingTime: '12 mins', estimatedCost: '₱35–₱55', category: 'Microwave'
+    cookingTime: '12 mins', estimatedCost: '₱35–₱55', category: 'Microwave', image: 'https://images.unsplash.com/photo-1484723091739-30a097e8f929?w=600&q=80'
   },
   // ── 95 ──
   {
@@ -1812,7 +1680,7 @@ const RECIPES = [
       'Fry in own fat until caramelized.',
       'Serve with garlic rice and egg.'
     ],
-    cookingTime: '20 mins (+ marinating)', estimatedCost: '₱60–₱80', category: 'Ulam'
+    cookingTime: '20 mins (+ marinating)', estimatedCost: '₱60–₱80', category: 'Ulam', image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&q=80'
   },
   // ── 96 ──
   {
@@ -1828,7 +1696,7 @@ const RECIPES = [
       'Add condensed milk and sugar.',
       'Serve warm or cold.'
     ],
-    cookingTime: '25 mins', estimatedCost: '₱35–₱50', category: 'Dessert'
+    cookingTime: '25 mins', estimatedCost: '₱35–₱50', category: 'Dessert', image: 'https://images.unsplash.com/photo-1551024601-bec78aea704b?w=600&q=80'
   },
   // ── 97 ──
   {
@@ -1843,7 +1711,7 @@ const RECIPES = [
       'Simmer 3 minutes.',
       'Season and serve.'
     ],
-    cookingTime: '15 mins', estimatedCost: '₱40–₱55', category: 'Ulam'
+    cookingTime: '15 mins', estimatedCost: '₱40–₱55', category: 'Ulam', image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&q=80'
   },
   // ── 98 ──
   {
@@ -1859,7 +1727,7 @@ const RECIPES = [
       'Season with soy sauce, salt, pepper.',
       'Serve with fried egg and rice.'
     ],
-    cookingTime: '20 mins', estimatedCost: '₱65–₱85', category: 'Ulam'
+    cookingTime: '20 mins', estimatedCost: '₱65–₱85', category: 'Ulam', image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&q=80'
   },
   // ── 99 ──
   {
@@ -1874,7 +1742,7 @@ const RECIPES = [
       'Season with salt.',
       'Serve over rice.'
     ],
-    cookingTime: '10 mins', estimatedCost: '₱22–₱35', category: 'Eggs'
+    cookingTime: '10 mins', estimatedCost: '₱22–₱35', category: 'Eggs', image: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&q=80'
   },
   // ── 100 ──
   {
@@ -1889,204 +1757,122 @@ const RECIPES = [
       'Serve with banana catsup or condensed milk.',
       'Enjoy as merienda or breakfast.'
     ],
-    cookingTime: '10 mins', estimatedCost: '₱15–₱25', category: 'Bread'
+    cookingTime: '10 mins', estimatedCost: '₱15–₱25', category: 'Bread', image: 'https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&q=80'
   }
 ];
 
-/* ============================================================
-   STATE
-   ============================================================ */
-let selectedIngredients = new Set();
-let selectedTools = new Set();
-let currentRecipe = null;
-let currentRandom = null;
-let favorites = loadFavs();
-let ingPanelOpen = false;
-let searchTimer = null;
+/* STATE */
+let selectedIngredients=new Set(),selectedTools=new Set();
+let currentRecipe=null,currentRandom=null;
+let favorites=loadFavs(),ingPanelOpen=false,searchTimer=null;
 
-/* ============================================================
-   INIT
-   ============================================================ */
-document.addEventListener('DOMContentLoaded', () => {
-  buildIngChips();
-  buildToolChips();
-  applyLang();
-  showHint();
-});
+/* INIT */
+document.addEventListener('DOMContentLoaded',()=>{buildIngChips();buildToolChips();applyLang();});
 
-/* ============================================================
-   INGREDIENT CHIPS
-   ============================================================ */
-function buildIngChips() {
-  // Assign lang keys to section labels
-  const labelKeys = ['pantry','proteins','vegetables','instant','condiments'];
-  document.querySelectorAll('.ing-section-label').forEach((el, i) => {
-    if (labelKeys[i]) el.dataset.langKey = labelKeys[i];
-  });
-  const lastLabel = document.querySelectorAll('.ing-section-label');
-  if (lastLabel[lastLabel.length-1]) lastLabel[lastLabel.length-1].dataset.langKey = 'cookingTools';
-
-  const map = { staples:'grid-staples', proteins:'grid-proteins', veggies:'grid-veggies', instant:'grid-instant', condiments:'grid-condiments' };
-  Object.entries(INGREDIENT_CATEGORIES).forEach(([key, cat]) => {
-    const grid = document.getElementById(map[key]);
-    if (!grid) return;
-    grid.innerHTML = '';
-    cat.items.forEach(item => {
-      const lbl = document.createElement('label');
-      lbl.className = 'chip-label';
-      lbl.dataset.ingredient = item.toLowerCase();
-      lbl.innerHTML = `<input type="checkbox" value="${item}" onchange="onChipChange(this)"/>${item}`;
-      grid.appendChild(lbl);
+/* CHIPS */
+function buildIngChips(){
+  const map={staples:'grid-staples',proteins:'grid-proteins',veggies:'grid-veggies',instant:'grid-instant',condiments:'grid-condiments'};
+  Object.entries(INGREDIENT_CATEGORIES).forEach(([key,cat])=>{
+    const g=document.getElementById(map[key]);if(!g)return;
+    cat.items.forEach(item=>{
+      const lbl=document.createElement('label');
+      lbl.className='chip-label';lbl.dataset.ingredient=item.toLowerCase();
+      lbl.innerHTML=`<input type="checkbox" value="${item}" onchange="onChip(this)"/>${item}`;
+      g.appendChild(lbl);
     });
   });
 }
-
-function onChipChange(cb) {
-  const lbl = cb.closest('.chip-label');
-  if (cb.checked) { selectedIngredients.add(cb.value); lbl.classList.add('checked'); }
-  else { selectedIngredients.delete(cb.value); lbl.classList.remove('checked'); }
-  updateIngBadge();
-  triggerSearch();
+function onChip(cb){
+  cb.checked?selectedIngredients.add(cb.value):selectedIngredients.delete(cb.value);
+  cb.closest('.chip-label').classList.toggle('checked',cb.checked);
+  updateIngBadge();triggerSearch();
 }
-
-function updateIngBadge() {
-  const n = selectedIngredients.size;
-  const badge = document.getElementById('ing-badge');
-  const label = document.getElementById('ing-toggle-label');
-  if (badge) { badge.textContent = n; badge.classList.toggle('hidden', n === 0); }
-  if (label) label.textContent = n > 0 ? t().ingSelected(n) : t().ingToggle;
-}
-
-function filterIngredients() {
-  const q = document.getElementById('ingredient-search').value.toLowerCase().trim();
-  document.querySelectorAll('.chip-label').forEach(l => {
-    const name = l.dataset.ingredient || '';
-    l.classList.toggle('hidden-chip', q.length > 0 && !name.includes(q));
+function buildToolChips(){
+  const g=document.getElementById('tools-chip-grid');if(!g)return;
+  TOOLS.forEach(t=>{
+    const lbl=document.createElement('label');lbl.className='chip-label';
+    lbl.innerHTML=`<input type="checkbox" value="${t.id}" onchange="onTool(this)"/>${t.icon} ${t.name}`;
+    g.appendChild(lbl);
   });
 }
-
-/* ============================================================
-   TOOL CHIPS
-   ============================================================ */
-function buildToolChips() {
-  const grid = document.getElementById('tools-chip-grid');
-  if (!grid) return;
-  TOOLS.forEach(tool => {
-    const lbl = document.createElement('label');
-    lbl.className = 'chip-label';
-    lbl.innerHTML = `<input type="checkbox" value="${tool.id}" onchange="onToolChange(this)"/>${tool.icon} ${tool.name}`;
-    grid.appendChild(lbl);
+function onTool(cb){
+  cb.checked?selectedTools.add(cb.value):selectedTools.delete(cb.value);
+  cb.closest('.chip-label').classList.toggle('checked',cb.checked);triggerSearch();
+}
+function updateIngBadge(){
+  const n=selectedIngredients.size;
+  const badge=document.getElementById('ing-badge');
+  const lbl=document.getElementById('ing-toggle-label');
+  if(badge){badge.textContent=n;badge.classList.toggle('hidden',n===0);}
+  if(lbl)lbl.textContent=n>0?L().ingSelected(n):'\uD83E\uDD18 '+L().ingToggle;
+}
+function filterIngredients(){
+  const q=document.getElementById('ingredient-search').value.toLowerCase().trim();
+  document.querySelectorAll('.chip-label').forEach(l=>{
+    const n=l.dataset.ingredient||'';
+    l.classList.toggle('hidden-chip',q.length>0&&!n.includes(q));
   });
 }
-
-function onToolChange(cb) {
-  const lbl = cb.closest('.chip-label');
-  if (cb.checked) { selectedTools.add(cb.value); lbl.classList.add('checked'); }
-  else { selectedTools.delete(cb.value); lbl.classList.remove('checked'); }
-  triggerSearch();
+function toggleIngPanel(){
+  ingPanelOpen=!ingPanelOpen;
+  document.getElementById('ing-panel').classList.toggle('open',ingPanelOpen);
+  document.getElementById('ing-toggle-btn').classList.toggle('open',ingPanelOpen);
 }
 
-/* ============================================================
-   INGREDIENT PANEL TOGGLE
-   ============================================================ */
-function toggleIngPanel() {
-  ingPanelOpen = !ingPanelOpen;
-  const panel = document.getElementById('ing-panel');
-  const btn = document.getElementById('ing-toggle-btn');
-  panel.classList.toggle('open', ingPanelOpen);
-  btn.classList.toggle('open', ingPanelOpen);
+/* SEARCH */
+function onSearch(){
+  const v=document.getElementById('global-search').value.trim();
+  document.getElementById('clear-btn').classList.toggle('hidden',v==='');
+  clearTimeout(searchTimer);searchTimer=setTimeout(triggerSearch,160);
 }
-
-/* ============================================================
-   SEARCH
-   ============================================================ */
-function onSearch() {
-  const input = document.getElementById('global-search');
-  const clearBtn = document.getElementById('clear-btn');
-  if (clearBtn) clearBtn.classList.toggle('hidden', input.value.trim() === '');
-  clearTimeout(searchTimer);
-  searchTimer = setTimeout(triggerSearch, 160);
-}
-
-function clearSearch() {
-  document.getElementById('global-search').value = '';
+function clearSearch(){
+  document.getElementById('global-search').value='';
   document.getElementById('clear-btn').classList.add('hidden');
   triggerSearch();
 }
-
-function triggerSearch() {
-  const nameQ = (document.getElementById('global-search')?.value || '').toLowerCase().trim();
-  const catQ = document.getElementById('cat-select')?.value || '';
-  const hasFilter = nameQ || catQ || selectedIngredients.size > 0;
-
-  if (!hasFilter) { showHint(); return; }
+function triggerSearch(){
+  const nameQ=(document.getElementById('global-search')?.value||'').toLowerCase().trim();
+  const catQ=document.getElementById('cat-select')?.value||'';
+  if(!nameQ&&!catQ&&selectedIngredients.size===0){showHint();return;}
   hideHint();
-
-  const scored = RECIPES.map(r => {
-    // name/category filter
-    const nameOk = !nameQ || r.name.toLowerCase().includes(nameQ) ||
-      r.category.toLowerCase().includes(nameQ) ||
-      r.ingredients.some(i => i.toLowerCase().includes(nameQ));
-    const catOk = !catQ || r.category === catQ;
-    if (!nameOk || !catOk) return null;
-
-    // tool filter
-    if (selectedTools.size > 0 && !r.tools.every(t => selectedTools.has(t))) return null;
-
-    // ingredient match
-    const matched = selectedIngredients.size === 0
-      ? r.ingredients.length
-      : r.ingredients.filter(i => selectedIngredients.has(i)).length;
-    if (selectedIngredients.size > 0 && matched === 0) return null;
-
-    const ratio = selectedIngredients.size === 0 ? 1 : matched / r.ingredients.length;
-    return { r, matched, ratio };
-  }).filter(Boolean).sort((a, b) => b.ratio - a.ratio);
-
+  const scored=RECIPES.map(r=>{
+    const nameOk=!nameQ||r.name.toLowerCase().includes(nameQ)||r.category.toLowerCase().includes(nameQ)||r.ingredients.some(i=>i.toLowerCase().includes(nameQ));
+    const catOk=!catQ||r.category===catQ;
+    if(!nameOk||!catOk)return null;
+    if(selectedTools.size>0&&!r.tools.every(t=>selectedTools.has(t)))return null;
+    const matched=selectedIngredients.size===0?r.ingredients.length:r.ingredients.filter(i=>selectedIngredients.has(i)).length;
+    if(selectedIngredients.size>0&&matched===0)return null;
+    const ratio=selectedIngredients.size===0?1:matched/r.ingredients.length;
+    return{r,matched,ratio};
+  }).filter(Boolean).sort((a,b)=>b.ratio-a.ratio);
   renderCards(scored);
 }
 
-/* ============================================================
-   RENDER CARDS
-   ============================================================ */
-function showHint() {
+/* RENDER */
+function showHint(){
   document.getElementById('start-hint').classList.remove('hidden');
   document.getElementById('empty-state').classList.add('hidden');
-  document.getElementById('recipes-container').innerHTML = '';
-  document.getElementById('results-label').innerHTML = '';
+  document.getElementById('results-label').innerHTML='';
+  document.getElementById('recipes-container').innerHTML='';
 }
-function hideHint() {
-  document.getElementById('start-hint').classList.add('hidden');
-}
+function hideHint(){document.getElementById('start-hint').classList.add('hidden');}
 
-function renderCards(scored) {
-  const container = document.getElementById('recipes-container');
-  const emptyEl = document.getElementById('empty-state');
-  const labelEl = document.getElementById('results-label');
-  container.innerHTML = '';
-
-  if (scored.length === 0) {
-    emptyEl.classList.remove('hidden');
-    labelEl.innerHTML = '';
-    return;
-  }
+function renderCards(scored){
+  const container=document.getElementById('recipes-container');
+  const emptyEl=document.getElementById('empty-state');
+  const labelEl=document.getElementById('results-label');
+  container.innerHTML='';
+  if(scored.length===0){emptyEl.classList.remove('hidden');labelEl.innerHTML='';return;}
   emptyEl.classList.add('hidden');
-  labelEl.innerHTML = t().results(scored.length);
-
-  scored.forEach(({ r, matched, ratio }) => {
-    const pct = Math.round(ratio * 100);
-    const badgeClass = pct >= 75 ? 'match-high' : 'match-mid';
-    const isFav = favorites.some(f => f.id === r.id);
-    const imgUrl = getImg(r);
-    const ytUrl = getYouTubeLink(r.name);
-    const desc = getDesc(r.name);
-    const ingLabel = selectedIngredients.size > 0
-      ? `${matched}/${r.ingredients.length} ${t().matchSuffix}`
-      : `${r.ingredients.length} ${t().matchSuffix}`;
-
-    const card = document.createElement('div');
-    card.className = 'recipe-card';
-    card.innerHTML = `
+  labelEl.innerHTML=L().results(scored.length);
+  scored.forEach(({r,matched,ratio})=>{
+    const pct=Math.round(ratio*100);
+    const isFav=favorites.some(f=>f.id===r.id);
+    const imgUrl=getImg(r);const ytUrl=getYouTubeLink(r.name);const desc=getDesc(r.name);
+    const ingTag=selectedIngredients.size>0?L().ingCount(matched,r.ingredients.length):`${r.ingredients.length} ingredients`;
+    const badge=selectedIngredients.size>0?`<div class="match-badge ${pct>=75?'match-high':'match-mid'}">${pct}%</div>`:'';
+    const card=document.createElement('div');card.className='recipe-card';
+    card.innerHTML=`
       <div class="card-inner">
         <div class="card-img-wrap">
           <img class="card-img" src="${imgUrl}" alt="${r.name}" loading="lazy"
@@ -2094,223 +1880,392 @@ function renderCards(scored) {
           <div class="card-img-placeholder" style="display:none">${getEmoji(r.category)}</div>
         </div>
         <div class="card-content">
-          <div class="card-top-row">
-            <div class="card-name">${r.name}</div>
-            ${selectedIngredients.size > 0 ? `<div class="match-badge ${badgeClass}">${pct}%</div>` : ''}
-          </div>
+          <div class="card-top-row"><div class="card-name">${r.name}</div>${badge}</div>
           <div class="card-desc">${desc}</div>
           <div class="card-meta">
-            <span class="meta-tag cat-tag">${r.category}</span>
+            <span class="meta-tag cat">${r.category}</span>
             <span class="meta-tag">⏱ ${r.cookingTime}</span>
             <span class="meta-tag">₱ ${r.estimatedCost.replace('₱','')}</span>
-            <span class="meta-tag">${ingLabel}</span>
+            <span class="meta-tag">${ingTag}</span>
           </div>
           <div class="card-bottom">
             <a class="watch-link" href="${ytUrl}" target="_blank" rel="noopener" onclick="event.stopPropagation()">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 7a2.4 2.4 0 0 0-1.69-1.7C16.35 5 12 5 12 5s-4.35 0-5.9.3A2.4 2.4 0 0 0 4.41 7 25 25 0 0 0 4.1 12a25 25 0 0 0 .31 5 2.4 2.4 0 0 0 1.69 1.7C7.65 19 12 19 12 19s4.35 0 5.9-.3A2.4 2.4 0 0 0 19.59 17 25 25 0 0 0 19.9 12a25 25 0 0 0-.31-5zM10 15V9l5.2 3z"/></svg>
-              ${t().watchYT}
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 7a2.4 2.4 0 00-1.69-1.7C16.35 5 12 5 12 5s-4.35 0-5.9.3A2.4 2.4 0 004.41 7 25 25 0 004.1 12a25 25 0 00.31 5 2.4 2.4 0 001.69 1.7C7.65 19 12 19 12 19s4.35 0 5.9-.3A2.4 2.4 0 0019.59 17 25 25 0 0019.9 12a25 25 0 00-.31-5zM10 15V9l5.2 3z"/></svg>
+              ${L().watchYT}
             </a>
-            <button class="card-fav-btn ${isFav ? 'saved' : ''}"
-              onclick="event.stopPropagation(); quickFav(${r.id}, this)">
-              ${isFav ? '♥' : '♡'}
-            </button>
+            <button class="card-fav-btn ${isFav?'saved':''}" onclick="event.stopPropagation();quickFav(${r.id},this)">${isFav?'♥':'♡'}</button>
           </div>
         </div>
-      </div>
-    `;
-    card.addEventListener('click', () => openDetail(r.id));
+      </div>`;
+    card.addEventListener('click',()=>openDetail(r.id));
     container.appendChild(card);
   });
 }
 
-/* ============================================================
-   DETAIL OVERLAY
-   ============================================================ */
-function openDetail(recipeId) {
-  currentRecipe = RECIPES.find(r => r.id === recipeId);
-  if (!currentRecipe) return;
-  renderDetail(currentRecipe);
-  updateFavBtn();
+/* DETAIL */
+function openDetail(id){
+  currentRecipe=RECIPES.find(r=>r.id===id);if(!currentRecipe)return;
+  renderDetail(currentRecipe);updateSaveBtn();
   document.getElementById('detail-overlay').classList.remove('hidden');
-  document.body.style.overflow = 'hidden';
+  document.body.style.overflow='hidden';
 }
-
-function closeDetail() {
+function closeDetail(){
   document.getElementById('detail-overlay').classList.add('hidden');
-  document.body.style.overflow = '';
+  document.body.style.overflow='';
 }
-
-function renderDetail(recipe) {
-  const body = document.getElementById('detail-body');
-  const toolsHtml = recipe.tools.map(tid => {
-    const t = TOOLS.find(x => x.id === tid);
-    return t ? `<span class="tool-pill">${t.icon} ${t.name}</span>` : '';
-  }).join('');
-  const ings = recipe.ingredients.map(i => `<li>${i}</li>`).join('');
-  const steps = recipe.steps.map((s,i) => `
-    <div class="step-item">
-      <div class="step-num">${i+1}</div>
-      <div class="step-text">${s}</div>
-    </div>`).join('');
-  const imgUrl = getImg(recipe);
-  const ytUrl = getYouTubeLink(recipe.name);
-
-  body.innerHTML = `
+function renderDetail(r){
+  const body=document.getElementById('detail-body');
+  const imgUrl=getImg(r);const ytUrl=getYouTubeLink(r.name);
+  const toolsHtml=r.tools.map(tid=>{const t=TOOLS.find(x=>x.id===tid);return t?`<span class="tool-pill">${t.icon} ${t.name}</span>`:''}).join('');
+  const ings=r.ingredients.map(i=>`<li>${i}</li>`).join('');
+  const steps=r.steps.map((s,i)=>`<div class="step-item"><div class="step-num">${i+1}</div><div class="step-text">${s}</div></div>`).join('');
+  body.innerHTML=`
     <div class="detail-hero-wrap">
-      <img class="detail-hero-img" src="${imgUrl}" alt="${recipe.name}"
-        onerror="this.style.background='rgba(192,57,43,0.2)';this.style.height='160px'">
+      <img class="detail-hero-img" src="${imgUrl}" alt="${r.name}" onerror="this.style.background='rgba(192,57,43,0.2)';this.style.height='160px'">
       <div class="detail-hero-gradient"></div>
     </div>
     <div class="detail-hero-text">
-      <div class="detail-name">${recipe.name}</div>
+      <div class="detail-name">${r.name}</div>
       <div class="detail-meta-pills">
-        <span class="detail-meta-pill cat">${recipe.category}</span>
-        <span class="detail-meta-pill">⏱ ${recipe.cookingTime}</span>
-        <span class="detail-meta-pill">₱ ${recipe.estimatedCost.replace('₱','')}</span>
+        <span class="detail-meta-pill cat">${r.category}</span>
+        <span class="detail-meta-pill">⏱ ${r.cookingTime}</span>
+        <span class="detail-meta-pill">₱ ${r.estimatedCost.replace('₱','')}</span>
       </div>
     </div>
-
     <a class="yt-watch-btn" href="${ytUrl}" target="_blank" rel="noopener">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 7a2.4 2.4 0 0 0-1.69-1.7C16.35 5 12 5 12 5s-4.35 0-5.9.3A2.4 2.4 0 0 0 4.41 7 25 25 0 0 0 4.1 12a25 25 0 0 0 .31 5 2.4 2.4 0 0 0 1.69 1.7C7.65 19 12 19 12 19s4.35 0 5.9-.3A2.4 2.4 0 0 0 19.59 17 25 25 0 0 0 19.9 12a25 25 0 0 0-.31-5zM10 15V9l5.2 3z"/></svg>
-      ${t().watchYT}
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 7a2.4 2.4 0 00-1.69-1.7C16.35 5 12 5 12 5s-4.35 0-5.9.3A2.4 2.4 0 004.41 7 25 25 0 004.1 12a25 25 0 00.31 5 2.4 2.4 0 001.69 1.7C7.65 19 12 19 12 19s4.35 0 5.9-.3A2.4 2.4 0 0019.59 17 25 25 0 0019.9 12a25 25 0 00-.31-5zM10 15V9l5.2 3z"/></svg>
+      ${L().watchYT}
     </a>
-
-    <div class="detail-section">
-      <div class="detail-section-title">${t().tools}</div>
-      <div class="tools-pills">${toolsHtml}</div>
-    </div>
-    <div class="detail-section">
-      <div class="detail-section-title">${t().ingredients}</div>
-      <ul class="detail-list">${ings}</ul>
-    </div>
-    <div class="detail-section">
-      <div class="detail-section-title">${t().instructions}</div>
-      <div class="detail-steps">${steps}</div>
-    </div>
-  `;
+    <div class="detail-section"><div class="detail-section-title">${L().toolsSection}</div><div class="tools-pills">${toolsHtml}</div></div>
+    <div class="detail-section"><div class="detail-section-title">${L().ingSection}</div><ul class="detail-list">${ings}</ul></div>
+    <div class="detail-section"><div class="detail-section-title">${L().stepsSection}</div><div class="detail-steps">${steps}</div></div>`;
 }
+function updateSaveBtn(){
+  const btn=document.getElementById('fav-toggle-btn');if(!btn||!currentRecipe)return;
+  const saved=favorites.some(f=>f.id===currentRecipe.id);
+  btn.textContent=saved?L().savedBtn:L().saveBtn;btn.classList.toggle('saved',saved);
+}
+
+/* FAVORITES */
+function loadFavs(){try{return JSON.parse(localStorage.getItem('dormchef_favorites'))||[];}catch{return[];}}
+function saveFavs(){localStorage.setItem('dormchef_favorites',JSON.stringify(favorites));}
+function toggleFavorite(){
+  if(!currentRecipe)return;
+  const idx=favorites.findIndex(f=>f.id===currentRecipe.id);
+  if(idx>=0)favorites.splice(idx,1);else favorites.push(currentRecipe);
+  saveFavs();updateSaveBtn();
+}
+function quickFav(id,btn){
+  const r=RECIPES.find(x=>x.id===id);if(!r)return;
+  const idx=favorites.findIndex(f=>f.id===id);
+  if(idx>=0){favorites.splice(idx,1);btn.innerHTML='♡';btn.classList.remove('saved');}
+  else{favorites.push(r);btn.innerHTML='♥';btn.classList.add('saved');}
+  saveFavs();
+}
+function openFavorites(){renderFavList();document.getElementById('fav-overlay').classList.remove('hidden');document.body.style.overflow='hidden';}
+function closeFavOverlay(){document.getElementById('fav-overlay').classList.add('hidden');document.body.style.overflow='';}
+function renderFavList(){
+  const list=document.getElementById('fav-list');const noFav=document.getElementById('no-fav');
+  list.innerHTML='';
+  if(favorites.length===0){noFav.classList.remove('hidden');return;}
+  noFav.classList.add('hidden');
+  favorites.forEach(r=>{
+    const row=document.createElement('div');row.className='fav-mini-card';
+    row.innerHTML=`<img class="fav-mini-img" src="${getImg(r)}" alt="${r.name}" onerror="this.style.background='rgba(255,255,255,0.1)'"><div class="fav-mini-info"><div class="fav-mini-name">${r.name}</div><div class="fav-mini-meta">${r.category} · ${r.cookingTime}</div></div><button class="fav-mini-remove" onclick="event.stopPropagation();removeFav(${r.id})">✕</button>`;
+    row.addEventListener('click',()=>{closeFavOverlay();openDetail(r.id);});
+    list.appendChild(row);
+  });
+}
+function removeFav(id){
+  const idx=favorites.findIndex(f=>f.id===id);if(idx>=0)favorites.splice(idx,1);
+  saveFavs();renderFavList();
+}
+function goTo(p){if(p==='page-favorites')openFavorites();}
+
+/* RANDOM */
+function randomRecipe(){currentRandom=RECIPES[Math.floor(Math.random()*RECIPES.length)];showRandom(currentRandom);}
+function showRandom(r){
+  document.getElementById('modal-img').src=getImg(r);
+  document.getElementById('modal-name').textContent=r.name;
+  document.getElementById('modal-meta').innerHTML=`<span>${r.category}</span><span>⏱ ${r.cookingTime}</span><span>₱ ${r.estimatedCost.replace('₱','')}</span>`;
+  const d=document.getElementById('modal-dice');d.style.animation='none';void d.offsetWidth;d.style.animation='';
+  document.getElementById('random-modal').classList.remove('hidden');document.body.style.overflow='hidden';
+}
+function closeModalBg(e){if(e.target.id==='random-modal'){document.getElementById('random-modal').classList.add('hidden');document.body.style.overflow='';}}
+function openModalRecipe(){document.getElementById('random-modal').classList.add('hidden');document.body.style.overflow='';if(currentRandom)openDetail(currentRandom.id);}
+function reroll(){currentRandom=RECIPES[Math.floor(Math.random()*RECIPES.length)];showRandom(currentRandom);}
+
+
 
 /* ============================================================
-   RANDOM RECIPE
+   PICTURE MANAGER  — Device Upload Only
+   Each recipe gets its own photo from the user's device.
+   Stored as base64 in localStorage, keyed by recipe id.
    ============================================================ */
-function randomRecipe() {
-  currentRandom = RECIPES[Math.floor(Math.random() * RECIPES.length)];
-  showRandomModal(currentRandom);
-}
 
-function showRandomModal(recipe) {
-  document.getElementById('modal-img').src = getImg(recipe);
-  document.getElementById('modal-name').textContent = recipe.name;
-  document.getElementById('modal-meta').innerHTML = `
-    <span>${recipe.category}</span>
-    <span>⏱ ${recipe.cookingTime}</span>
-    <span>₱ ${recipe.estimatedCost.replace('₱','')}</span>
-  `;
-  // Restart dice spin
-  const dice = document.getElementById('modal-dice');
-  dice.style.animation = 'none';
-  void dice.offsetWidth;
-  dice.style.animation = '';
-  document.getElementById('random-modal').classList.remove('hidden');
-  document.body.style.overflow = 'hidden';
-}
+const PHOTO_KEY = 'dormchef_photos_v2';
+let picTab = 'all'; // 'all' | 'missing' | 'done'
 
-function closeModalBg(e) {
-  if (e.target.id === 'random-modal') {
-    document.getElementById('random-modal').classList.add('hidden');
-    document.body.style.overflow = '';
+/* ─── Read / write photo store ─── */
+function photoStore() {
+  try { return JSON.parse(localStorage.getItem(PHOTO_KEY)) || {}; }
+  catch { return {}; }
+}
+function savePhotoStore(store) {
+  try {
+    localStorage.setItem(PHOTO_KEY, JSON.stringify(store));
+  } catch(e) {
+    // localStorage might be full (base64 images are large)
+    showToast('⚠️ Storage full! Try removing some photos first.');
   }
 }
 
-function openModalRecipe() {
-  document.getElementById('random-modal').classList.add('hidden');
-  document.body.style.overflow = '';
-  if (currentRandom) openDetail(currentRandom.id);
+/* ─── Get custom photo for one recipe ─── */
+function getCustomPhoto(recipeId) {
+  return photoStore()[recipeId] || null;
 }
 
-function reroll() {
-  currentRandom = RECIPES[Math.floor(Math.random() * RECIPES.length)];
-  showRandomModal(currentRandom);
-}
+/* ─── getImg: custom upload > recipe.image field > category fallback ─── */
+// (already defined above, this comment is just a reminder of priority)
 
-/* ============================================================
-   FAVORITES
-   ============================================================ */
-function loadFavs() {
-  try { return JSON.parse(localStorage.getItem('dormchef_favorites')) || []; } catch { return []; }
-}
-function saveFavs() {
-  localStorage.setItem('dormchef_favorites', JSON.stringify(favorites));
-}
-
-function toggleFavorite() {
-  if (!currentRecipe) return;
-  const idx = favorites.findIndex(f => f.id === currentRecipe.id);
-  if (idx >= 0) favorites.splice(idx, 1);
-  else favorites.push(currentRecipe);
-  saveFavs();
-  updateFavBtn();
-}
-function updateFavBtn() {
-  const btn = document.getElementById('fav-toggle-btn');
-  if (!btn || !currentRecipe) return;
-  const saved = favorites.some(f => f.id === currentRecipe.id);
-  btn.textContent = saved ? t().savedBtn : t().saveBtn;
-  btn.classList.toggle('saved', saved);
-}
-
-function quickFav(id, btn) {
-  const recipe = RECIPES.find(r => r.id === id);
-  if (!recipe) return;
-  const idx = favorites.findIndex(f => f.id === id);
-  if (idx >= 0) { favorites.splice(idx, 1); btn.innerHTML = '♡'; btn.classList.remove('saved'); }
-  else { favorites.push(recipe); btn.innerHTML = '♥'; btn.classList.add('saved'); }
-  saveFavs();
-}
-
-function goTo(page) {
-  if (page === 'page-favorites') openFavorites();
-}
-
-function openFavorites() {
-  renderFavList();
-  document.getElementById('fav-overlay').classList.remove('hidden');
+/* ─── Open / close manager ─── */
+function openPicManager() {
+  picTab = 'all';
+  document.querySelectorAll('.pic-tab').forEach(b => b.classList.remove('active'));
+  document.getElementById('pic-tab-all')?.classList.add('active');
+  document.getElementById('pic-search').value = '';
+  renderPicManager();
+  document.getElementById('pic-overlay').classList.remove('hidden');
   document.body.style.overflow = 'hidden';
 }
-function closeFavorites() {
-  document.getElementById('fav-overlay').classList.add('hidden');
+function closePicManager() {
+  document.getElementById('pic-overlay').classList.add('hidden');
   document.body.style.overflow = '';
+  triggerSearch(); // refresh cards with new photos
 }
 
-function renderFavList() {
-  const list = document.getElementById('fav-list');
-  const noFav = document.getElementById('no-fav');
+/* ─── Tab switching ─── */
+function setPicTab(tab, btn) {
+  picTab = tab;
+  document.querySelectorAll('.pic-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderPicManager();
+}
+
+/* ─── Render manager list ─── */
+function renderPicManager() {
+  const store   = photoStore();
+  const searchQ = (document.getElementById('pic-search')?.value || '').toLowerCase().trim();
+
+  // Count stats
+  const total    = RECIPES.length;
+  const doneIds  = RECIPES.filter(r => store[r.id]).length;
+  const missing  = total - doneIds;
+  const pct      = Math.round((doneIds / total) * 100);
+
+  // Update progress
+  const fill  = document.getElementById('pic-progress-fill');
+  const label = document.getElementById('pic-progress-label');
+  if (fill)  fill.style.width = pct + '%';
+  if (label) label.textContent = `${doneIds} / ${total} photos uploaded`;
+
+  // Update tab labels
+  const tabAll     = document.getElementById('pic-tab-all');
+  const tabMissing = document.getElementById('pic-tab-missing');
+  const tabDone    = document.getElementById('pic-tab-done');
+  if (tabAll)     tabAll.textContent     = `All (${total})`;
+  if (tabMissing) tabMissing.textContent = `No Photo (${missing})`;
+  if (tabDone)    tabDone.textContent    = `Uploaded (${doneIds})`;
+
+  // Filter
+  const filtered = RECIPES.filter(r => {
+    const nameOk = !searchQ ||
+      r.name.toLowerCase().includes(searchQ) ||
+      r.category.toLowerCase().includes(searchQ);
+    const hasPhoto = !!store[r.id];
+    const tabOk =
+      picTab === 'all'     ? true :
+      picTab === 'missing' ? !hasPhoto :
+      picTab === 'done'    ? hasPhoto : true;
+    return nameOk && tabOk;
+  });
+
+  // Render rows
+  const list = document.getElementById('pic-recipe-list');
   list.innerHTML = '';
-  if (favorites.length === 0) { noFav.classList.remove('hidden'); return; }
-  noFav.classList.add('hidden');
-  favorites.forEach(recipe => {
+
+  if (filtered.length === 0) {
+    list.innerHTML = `<div class="pic-empty-msg">No recipes match this filter.</div>`;
+    return;
+  }
+
+  filtered.forEach(recipe => {
+    const customPhoto = store[recipe.id] || null;
+    const emoji = CATEGORY_EMOJI[recipe.category] || '🍽️';
+    const hasPic = !!customPhoto;
+
     const row = document.createElement('div');
-    row.className = 'fav-mini-card';
+    row.className = 'pic-row' + (hasPic ? ' pic-row--done' : '');
+    row.id = 'pic-row-' + recipe.id;
+
     row.innerHTML = `
-      <img class="fav-mini-img" src="${getImg(recipe)}" alt="${recipe.name}"
-        onerror="this.style.background='rgba(255,255,255,0.1)'">
-      <div class="fav-mini-info">
-        <div class="fav-mini-name">${recipe.name}</div>
-        <div class="fav-mini-meta">${recipe.category} · ${recipe.cookingTime}</div>
+      <!-- Left: photo preview -->
+      <div class="pic-preview" id="pic-preview-${recipe.id}">
+        ${hasPic
+          ? `<img src="${customPhoto}" alt="${recipe.name}" class="pic-preview-img"
+               onerror="this.parentElement.innerHTML='${emoji}'">`
+          : `<span class="pic-preview-emoji">${emoji}</span>`
+        }
+        ${hasPic ? '<div class="pic-preview-check">✓</div>' : ''}
       </div>
-      <button class="fav-mini-remove" onclick="event.stopPropagation(); removeFav(${recipe.id})">✕</button>
+
+      <!-- Middle: info -->
+      <div class="pic-row-info">
+        <div class="pic-row-name">${recipe.name}</div>
+        <div class="pic-row-meta">
+          <span class="pic-row-cat">${recipe.category}</span>
+          <span class="pic-row-status ${hasPic ? 'status-done' : 'status-none'}">
+            ${hasPic ? '✓ Photo uploaded' : 'No photo yet'}
+          </span>
+        </div>
+      </div>
+
+      <!-- Right: upload button -->
+      <div class="pic-row-actions">
+        <label class="pic-upload-label" title="Upload photo from device">
+          <input
+            type="file"
+            accept="image/*"
+            class="pic-file-input"
+            onchange="handleUpload(${recipe.id}, this)"
+          />
+          <span class="pic-upload-icon">📷</span>
+          <span class="pic-upload-text">${hasPic ? 'Change' : 'Upload'}</span>
+        </label>
+        ${hasPic ? `
+          <button class="pic-remove-btn" onclick="removePhoto(${recipe.id})" title="Remove photo">
+            ✕
+          </button>` : ''}
+      </div>
     `;
-    row.addEventListener('click', () => {
-      closeFavorites();
-      openDetail(recipe.id);
-    });
+
     list.appendChild(row);
   });
 }
 
-function removeFav(id) {
-  const idx = favorites.findIndex(f => f.id === id);
-  if (idx >= 0) favorites.splice(idx, 1);
-  saveFavs();
-  renderFavList();
+/* ─── Handle file upload ─── */
+function handleUpload(recipeId, input) {
+  const file = input.files[0];
+  if (!file) return;
+
+  // Check file type
+  if (!file.type.startsWith('image/')) {
+    showToast('⚠️ Please select an image file.');
+    return;
+  }
+
+  // Warn if very large
+  if (file.size > 5 * 1024 * 1024) {
+    showToast('⚠️ Image is very large (>5MB). Compressing...');
+  }
+
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    const raw = e.target.result;
+
+    // Compress image via canvas to keep localStorage usage low
+    compressImage(raw, 600, 0.82, (compressed) => {
+      const store = photoStore();
+      store[recipeId] = compressed;
+      savePhotoStore(store);
+
+      const recipe = RECIPES.find(r => r.id === recipeId);
+      showToast(`✅ Photo saved for "${recipe?.name || 'recipe'}"!`);
+
+      // Update the preview in-place (no full re-render needed)
+      updatePreviewInPlace(recipeId, compressed);
+      renderPicManager(); // refresh counts/tabs
+    });
+  };
+  reader.onerror = () => showToast('❌ Failed to read file. Please try again.');
+  reader.readAsDataURL(file);
+}
+
+/* ─── Compress image using canvas ─── */
+function compressImage(dataUrl, maxWidth, quality, callback) {
+  const img = new Image();
+  img.onload = () => {
+    const canvas = document.createElement('canvas');
+    let w = img.width;
+    let h = img.height;
+
+    // Scale down if wider than maxWidth
+    if (w > maxWidth) {
+      h = Math.round((h * maxWidth) / w);
+      w = maxWidth;
+    }
+
+    canvas.width  = w;
+    canvas.height = h;
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(img, 0, 0, w, h);
+
+    const compressed = canvas.toDataURL('image/jpeg', quality);
+    callback(compressed);
+  };
+  img.onerror = () => callback(dataUrl); // fallback: use original
+  img.src = dataUrl;
+}
+
+/* ─── Update preview without full re-render ─── */
+function updatePreviewInPlace(recipeId, photoSrc) {
+  const preview = document.getElementById('pic-preview-' + recipeId);
+  if (!preview) return;
+  preview.innerHTML = `
+    <img src="${photoSrc}" alt="recipe photo" class="pic-preview-img">
+    <div class="pic-preview-check">✓</div>
+  `;
+}
+
+/* ─── Remove photo ─── */
+function removePhoto(recipeId) {
+  const store = photoStore();
+  delete store[recipeId];
+  savePhotoStore(store);
+  const recipe = RECIPES.find(r => r.id === recipeId);
+  showToast(`🗑️ Photo removed from "${recipe?.name || 'recipe'}".`);
+  renderPicManager();
+}
+
+/* ─── Toast ─── */
+let _toastTimer = null;
+function showToast(msg) {
+  let toast = document.getElementById('dc-toast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'dc-toast';
+    document.body.appendChild(toast);
+    Object.assign(toast.style, {
+      position: 'fixed', bottom: '28px', left: '50%',
+      transform: 'translateX(-50%)',
+      background: 'rgba(15,10,3,0.96)',
+      color: '#fff',
+      fontFamily: "'Nunito', sans-serif",
+      fontSize: '.88rem', fontWeight: '700',
+      padding: '12px 24px',
+      borderRadius: '30px',
+      border: '1.5px solid rgba(245,166,35,0.45)',
+      boxShadow: '0 8px 28px rgba(0,0,0,0.55)',
+      zIndex: '9999',
+      maxWidth: '340px',
+      textAlign: 'center',
+      pointerEvents: 'none',
+      transition: 'opacity .3s',
+      opacity: '0',
+    });
+  }
+  toast.textContent = msg;
+  toast.style.opacity = '1';
+  clearTimeout(_toastTimer);
+  _toastTimer = setTimeout(() => { toast.style.opacity = '0'; }, 3000);
 }
