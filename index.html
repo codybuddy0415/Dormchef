@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+  <title>DormChef – Cook with what you have.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+<!-- ═══════ FULL PAGE BG ═══════ -->
+<div class="page-bg">
+  <div class="bg-overlay"></div>
+</div>
+
+<!-- ═══════ APP WRAPPER ═══════ -->
+<div class="app-wrapper">
+
+  <!-- ══ HERO HEADER ══ -->
+  <header class="site-header">
+    <div class="site-header-inner">
+
+      <div class="logo-row">
+        <span class="logo-icon">🍳</span>
+        <div>
+          <h1 class="site-title">Dorm<span>Chef</span></h1>
+          <p class="site-tagline" data-en="Cook with what you have." data-fil="Lutuin ang mayroon mo.">Cook with what you have.</p>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <!-- Language Toggle -->
+        <div class="lang-toggle" id="lang-toggle" onclick="toggleLang()" title="Switch Language">
+          <span class="lang-opt" id="lang-en">EN</span>
+          <span class="lang-divider">|</span>
+          <span class="lang-opt" id="lang-fil">FIL</span>
+        </div>
+        <button class="icon-action-btn" onclick="goTo('page-favorites')" title="Saved Recipes">♥</button>
+        <button class="random-btn" id="btn-random" onclick="randomRecipe()"
+          data-en="🎲 Random Recipe" data-fil="🎲 Random na Recipe">🎲 Random Recipe</button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ══ SEARCH BAR ══ -->
+  <div class="search-bar-wrap glass-panel">
+    <div class="search-row">
+      <div class="search-field-wrap">
+        <span class="search-ico">🔍</span>
+        <input
+          type="text"
+          id="global-search"
+          class="search-field"
+          data-en-placeholder="Search recipe or ingredient..."
+          data-fil-placeholder="Maghanap ng recipe o sangkap..."
+          placeholder="Search recipe or ingredient..."
+          oninput="onSearch()"
+          autocomplete="off"
+        />
+        <button class="clear-btn hidden" id="clear-btn" onclick="clearSearch()">✕</button>
+      </div>
+      <select class="cat-select" id="cat-select" onchange="onSearch()">
+        <option value="" data-en="All Categories" data-fil="Lahat ng Category">All Categories</option>
+        <option value="Rice">Rice</option>
+        <option value="Silog">Silog</option>
+        <option value="Eggs">Eggs</option>
+        <option value="Ulam">Ulam</option>
+        <option value="Soup">Soup</option>
+        <option value="Fish">Fish</option>
+        <option value="Vegetables">Vegetables</option>
+        <option value="Canned">Canned</option>
+        <option value="Instant">Instant</option>
+        <option value="Snacks">Snacks</option>
+        <option value="Dessert">Dessert</option>
+        <option value="Bread">Bread</option>
+        <option value="Breakfast">Breakfast</option>
+        <option value="Salad">Salad</option>
+        <option value="Microwave">Microwave</option>
+        <option value="Rice Cooker">Rice Cooker</option>
+      </select>
+    </div>
+
+    <!-- Ingredient toggle -->
+    <button class="ing-toggle-btn" id="ing-toggle-btn" onclick="toggleIngPanel()">
+      <span id="ing-toggle-label"
+        data-en="🥘 Filter by Ingredients"
+        data-fil="🥘 Pumili ng Sangkap">🥘 Filter by Ingredients</span>
+      <span class="ing-badge hidden" id="ing-badge">0</span>
+      <span class="toggle-arrow">▼</span>
+    </button>
+
+    <!-- Ingredient Panel (collapsible) -->
+    <div class="ing-panel" id="ing-panel">
+      <div class="ing-panel-inner">
+        <input type="text" class="ing-search" id="ingredient-search"
+          data-en-placeholder="🔍 Search ingredient..."
+          data-fil-placeholder="🔍 Hanapin ang sangkap..."
+          placeholder="🔍 Search ingredient..."
+          oninput="filterIngredients()"/>
+
+        <div class="ing-section-label"
+          data-en="🛒 Pantry Staples" data-fil="🛒 Mga Pangunahing Sangkap">🛒 Pantry Staples</div>
+        <div class="chip-grid" id="grid-staples"></div>
+
+        <div class="ing-section-label"
+          data-en="🥩 Proteins" data-fil="🥩 Mga Protina">🥩 Proteins</div>
+        <div class="chip-grid" id="grid-proteins"></div>
+
+        <div class="ing-section-label"
+          data-en="🥬 Vegetables" data-fil="🥬 Mga Gulay">🥬 Vegetables</div>
+        <div class="chip-grid" id="grid-veggies"></div>
+
+        <div class="ing-section-label"
+          data-en="🥫 Instant & Canned" data-fil="🥫 Instant at Canned">🥫 Instant & Canned</div>
+        <div class="chip-grid" id="grid-instant"></div>
+
+        <div class="ing-section-label"
+          data-en="🧂 Condiments & Seasonings" data-fil="🧂 Mga Pampalasa">🧂 Condiments & Seasonings</div>
+        <div class="chip-grid" id="grid-condiments"></div>
+
+        <div class="ing-section-label" style="margin-top:14px"
+          data-en="🔧 Cooking Tools (optional)" data-fil="🔧 Mga Gamit sa Pagluluto (opsyonal)">🔧 Cooking Tools (optional)</div>
+        <div class="chip-grid" id="tools-chip-grid"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ RESULTS COUNT ══ -->
+  <div class="results-label" id="results-label"></div>
+
+  <!-- ══ RECIPE LIST ══ -->
+  <div id="recipes-container"></div>
+
+  <!-- ══ EMPTY STATE ══ -->
+  <div id="empty-state" class="empty-state hidden">
+    <div class="empty-icon">😔</div>
+    <p data-en="No recipes found." data-fil="Walang nahanap na recipe.">No recipes found.</p>
+    <small data-en="Try a different name or remove some filters."
+           data-fil="Subukan ng ibang pangalan o alisin ang mga filter.">
+      Try a different name or remove some filters.
+    </small>
+    <button class="random-btn" style="margin-top:18px" onclick="randomRecipe()"
+      data-en="🎲 Try a Random Recipe" data-fil="🎲 Subukan ang Random Recipe">
+      🎲 Try a Random Recipe
+    </button>
+  </div>
+
+  <!-- ══ START HINT ══ -->
+  <div id="start-hint" class="start-hint">
+    <p data-en="Type a recipe name, choose a category, or select your ingredients to find what you can cook right now!"
+       data-fil="Mag-type ng recipe name, pumili ng category, o mag-tick ng mga sangkap para malaman kung ano ang puwede mong lutuin ngayon!">
+      Type a recipe name, choose a category, or select your ingredients to find what you can cook right now!
+    </p>
+  </div>
+
+</div><!-- end app-wrapper -->
+
+<!-- ═══════ DETAIL OVERLAY ═══════ -->
+<div id="detail-overlay" class="detail-overlay hidden">
+  <div class="detail-panel glass-panel">
+    <div class="detail-close-row">
+      <button class="detail-close-btn" onclick="closeDetail()"
+        data-en="← Back" data-fil="← Bumalik">← Back</button>
+      <button class="fav-btn" id="fav-toggle-btn" onclick="toggleFavorite()">♡ Save</button>
+    </div>
+    <div id="detail-body"></div>
+  </div>
+</div>
+
+<!-- ═══════ FAVORITES OVERLAY ═══════ -->
+<div id="fav-overlay" class="detail-overlay hidden">
+  <div class="detail-panel glass-panel">
+    <div class="detail-close-row">
+      <button class="detail-close-btn" onclick="closeFavorites()"
+        data-en="← Back" data-fil="← Bumalik">← Back</button>
+      <span class="overlay-title"
+        data-en="❤️ Saved Recipes" data-fil="❤️ Mga Na-save na Recipe">❤️ Saved Recipes</span>
+    </div>
+    <div id="fav-list"></div>
+    <div id="no-fav" class="empty-state hidden">
+      <div class="empty-icon">🍽️</div>
+      <p data-en="No saved recipes yet." data-fil="Wala pang na-save na recipe.">No saved recipes yet.</p>
+      <small data-en="Save your favorite recipes to find them here!"
+             data-fil="I-save ang iyong paboritong recipe para makita dito!">
+        Save your favorite recipes to find them here!
+      </small>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ RANDOM MODAL ═══════ -->
+<div id="random-modal" class="modal-bg hidden" onclick="closeModalBg(event)">
+  <div class="modal-card glass-panel">
+    <div class="modal-dice" id="modal-dice">🎲</div>
+    <div class="modal-tag" data-en="RANDOM RECIPE" data-fil="RANDOM NA RECIPE">RANDOM RECIPE</div>
+    <img class="modal-img" id="modal-img" src="" alt=""/>
+    <div class="modal-name" id="modal-name"></div>
+    <div class="modal-meta" id="modal-meta"></div>
+    <div class="modal-btns">
+      <button class="random-btn" onclick="openModalRecipe()"
+        data-en="View Recipe" data-fil="Tingnan ang Recipe">View Recipe</button>
+      <button class="glass-btn" onclick="reroll()"
+        data-en="🎲 Roll Again!" data-fil="🎲 Isa pa!">🎲 Roll Again!</button>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
