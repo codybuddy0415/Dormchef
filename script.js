@@ -863,7 +863,7 @@ const RECIPES = [
       'Stir until egg sets.',
       'Serve with rice.'
     ],
-    cookingTime: '12 mins', estimatedCost: '₱20–₱30', category: 'Vegetables', image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&q=80'
+    cookingTime: '12 mins', estimatedCost: '₱20–₱30', category: 'Vegetables', image: 'ampaegg.jpg'
   },
   // ── 42 ──
   {
@@ -878,7 +878,7 @@ const RECIPES = [
       'Cook until set, flip, cook other side.',
       'Serve with rice.'
     ],
-    cookingTime: '12 mins', estimatedCost: '₱35–₱50', category: 'Eggs', image: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&q=80'
+    cookingTime: '12 mins', estimatedCost: '₱35–₱50', category: 'Eggs', image: 'corned omelette.jpg'
   },
   // ── 43 ──
   {
@@ -892,7 +892,7 @@ const RECIPES = [
       'Add melted butter, salt, and pepper.',
       'Mix gently and serve.'
     ],
-    cookingTime: '20 mins', estimatedCost: '₱30–₱45', category: 'Salad', image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&q=80'
+    cookingTime: '20 mins', estimatedCost: '₱30–₱45', category: 'Salad', image: 'potato salad.jpg'
   },
   // ── 44 ──
   {
@@ -907,23 +907,10 @@ const RECIPES = [
       'Once done, stir, season with patis.',
       'Serve topped with green onion.'
     ],
-    cookingTime: '25 mins', estimatedCost: '₱10–₱20', category: 'Rice Cooker', image: 'https://images.unsplash.com/photo-1512058564366-18510be2db19?w=600&q=80'
+    cookingTime: '25 mins', estimatedCost: '₱10–₱20', category: 'Rice Cooker', image: 'arozcaldo rice cooker,jpg'
   },
   // ── 45 ──
-  {
-    id: 45, name: 'Ginisang Ampalaya con Egg',
-    ingredients: ['Ampalaya (Bitter Melon)', 'Egg', 'Tomato', 'Garlic', 'Onion', 'Salt', 'Cooking Oil'],
-    tools: ['frying-pan'],
-    steps: [
-      'Salt ampalaya slices, rest 5 mins, squeeze dry.',
-      'Sauté garlic, onion, tomato.',
-      'Add ampalaya, stir-fry 4 minutes.',
-      'Add beaten eggs, scramble everything together.',
-      'Season with salt.',
-      'Serve hot with rice.'
-    ],
-    cookingTime: '15 mins', estimatedCost: '₱22–₱32', category: 'Vegetables', image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&q=80'
-  },
+  
   // ── 46 ──
   {
     id: 46, name: 'Pork Adobo Flakes',
@@ -936,7 +923,7 @@ const RECIPES = [
       'Mix with remaining sauce.',
       'Serve as topping over garlic rice.'
     ],
-    cookingTime: '45 mins', estimatedCost: '₱80–₱110', category: 'Ulam', image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&q=80'
+    cookingTime: '45 mins', estimatedCost: '₱80–₱110', category: 'Ulam', image: 'pork adobo flakes.webp'
   },
   // ── 47 ──
   {
@@ -950,7 +937,7 @@ const RECIPES = [
       'Bring to simmer, cook 15 minutes until kamote is tender.',
       'Serve as dessert or snack.'
     ],
-    cookingTime: '20 mins', estimatedCost: '₱30–₱45', category: 'Dessert', image: 'https://images.unsplash.com/photo-1551024601-bec78aea704b?w=600&q=80'
+    cookingTime: '20 mins', estimatedCost: '₱30–₱45', category: 'Dessert', image: 'ginataang kamote.jpg'
   },
   // ── 48 ──
   {
@@ -965,7 +952,7 @@ const RECIPES = [
       'Return squid balls, toss.',
       'Squeeze calamansi and serve.'
     ],
-    cookingTime: '10 mins', estimatedCost: '₱20–₱35', category: 'Snacks', image: 'https://images.unsplash.com/photo-1585032226651-759b368d7246?w=600&q=80'
+    cookingTime: '10 mins', estimatedCost: '₱20–₱35', category: 'Snacks', image: 'sautéed squid balls.jpg'
   },
   // ── 49 ──
   {
@@ -994,7 +981,7 @@ const RECIPES = [
       'Toss gently and serve.',
       'Best eaten with fried fish.'
     ],
-    cookingTime: '5 mins', estimatedCost: '₱12–₱20', category: 'Salad', image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&q=80'
+    cookingTime: '5 mins', estimatedCost: '₱12–₱20', category: 'Salad', image: 'ensaladang kamatis at sibuyas.jpg'
   },
   // ── 51 ──
   {
