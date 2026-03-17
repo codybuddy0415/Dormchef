@@ -639,7 +639,7 @@ const RECIPES = [
       'Uncover and cook until sauce reduces.',
       'Serve over rice.'
     ],
-    cookingTime: '35 mins', estimatedCost: '₱75–₱100', category: 'Ulam', image: 'adobo manko.jpg'
+    cookingTime: '35 mins', estimatedCost: '₱75–₱100', category: 'Ulam', image: 'adobo manok.jpg'
   },
   // ── 26 ──
   {
