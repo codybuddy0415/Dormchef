@@ -996,7 +996,7 @@ const RECIPES = [
       'Top with pork and green onion.',
       'Drizzle patis and serve.'
     ],
-    cookingTime: '35 mins', estimatedCost: '₱50–₱75', category: 'Soup', image: 'https://images.unsplash.com/photo-1547592180-85f173990554?w=600&q=80'
+    cookingTime: '35 mins', estimatedCost: '₱50–₱75', category: 'Soup', image: 'batchoy style noodels soup.webp'
   },
   // ── 52 ──
   {
@@ -1011,7 +1011,7 @@ const RECIPES = [
       'Pour sauce over rice.',
       'Serve as an affordable and filling meal.'
     ],
-    cookingTime: '15 mins', estimatedCost: '₱18–₱28', category: 'Rice', image: 'https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=600&q=80'
+    cookingTime: '15 mins', estimatedCost: '₱18–₱28', category: 'Rice', image: 'peanut butter rice.webp'
   },
   // ── 53 ──
   {
@@ -1026,7 +1026,7 @@ const RECIPES = [
       'Pour egg-milk mixture and toss quickly so egg doesn\'t curdle.',
       'Serve immediately.'
     ],
-    cookingTime: '10 mins', estimatedCost: '₱18–₱28', category: 'Instant', image: 'https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=600&q=80'
+    cookingTime: '10 mins', estimatedCost: '₱18–₱28', category: 'Instant', image: 'instant noodle upgrade.jpg'
   },
   // ── 54 ──
   {
@@ -1041,7 +1041,7 @@ const RECIPES = [
       'Season with patis.',
       'Serve hot over rice.'
     ],
-    cookingTime: '18 mins', estimatedCost: '₱28–₱40', category: 'Soup', image: 'https://images.unsplash.com/photo-1547592180-85f173990554?w=600&q=80'
+    cookingTime: '18 mins', estimatedCost: '₱28–₱40', category: 'Soup', image: 'monggo at dilis.webp'
   },
   // ── 55 ──
   {
@@ -1056,7 +1056,7 @@ const RECIPES = [
       'Let it cycle twice for thorough cooking.',
       'Serve with steamed rice.'
     ],
-    cookingTime: '30 mins', estimatedCost: '₱75–₱100', category: 'Rice Cooker', image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&q=80'
+    cookingTime: '30 mins', estimatedCost: '₱75–₱100', category: 'Rice Cooker', image: 'chicken adobo rice cooker.webp'
   },
   // ── 56 ──
   {
@@ -1071,7 +1071,7 @@ const RECIPES = [
       'Drizzle condensed milk on top.',
       'Eat as breakfast or snack.'
     ],
-    cookingTime: '20 mins', estimatedCost: '₱15–₱25', category: 'Dessert', image: 'https://images.unsplash.com/photo-1551024601-bec78aea704b?w=600&q=80'
+    cookingTime: '20 mins', estimatedCost: '₱15–₱25', category: 'Dessert', image: 'champorado.jpg'
   },
   // ── 57 ──
   {
@@ -1086,7 +1086,7 @@ const RECIPES = [
       'Squeeze calamansi generously.',
       'Season with salt and serve.'
     ],
-    cookingTime: '15 mins', estimatedCost: '₱25–₱40', category: 'Soup', image: 'https://images.unsplash.com/photo-1547592180-85f173990554?w=600&q=80'
+    cookingTime: '15 mins', estimatedCost: '₱25–₱40', category: 'Soup', image: 'Sinigang Sardinas.jpg'
   },
   // ── 58 ──
   {
@@ -1101,7 +1101,7 @@ const RECIPES = [
       'Simmer 5 minutes.',
       'Serve with rice.'
     ],
-    cookingTime: '18 mins', estimatedCost: '₱60–₱80', category: 'Ulam', image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&q=80'
+    cookingTime: '18 mins', estimatedCost: '₱60–₱80', category: 'Ulam', image: 'sautéed pork with tomato.jpg'
   },
   // ── 59 ──
   {
@@ -1116,7 +1116,7 @@ const RECIPES = [
       'Drain on paper towel.',
       'Serve with rice and ketchup.'
     ],
-    cookingTime: '20 mins', estimatedCost: '₱60–₱85', category: 'Ulam', image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&q=80'
+    cookingTime: '20 mins', estimatedCost: '₱60–₱85', category: 'Ulam', image: 'milanesa bread.jpeg'
   },
   // ── 60 ──
   {
@@ -1131,7 +1131,7 @@ const RECIPES = [
       'Season with patis.',
       'Serve hot.'
     ],
-    cookingTime: '35 mins', estimatedCost: '₱65–₱90', category: 'Soup', image: 'https://images.unsplash.com/photo-1547592180-85f173990554?w=600&q=80'
+    cookingTime: '35 mins', estimatedCost: '₱65–₱90', category: 'Soup', image: 'chicken tinola lugaw.jpg'
   },
   // ── 61 ──
   {
@@ -1146,23 +1146,10 @@ const RECIPES = [
       'Cook 2 more minutes.',
       'Serve with rice.'
     ],
-    cookingTime: '10 mins', estimatedCost: '₱15–₱25', category: 'Vegetables', image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&q=80'
+    cookingTime: '10 mins', estimatedCost: '₱15–₱25', category: 'Vegetables', image: 'ginisang togue.jpg'
   },
   // ── 62 ──
-  {
-    id: 62, name: 'Tuna Rice Cooker Bowl',
-    ingredients: ['Rice', 'Tuna (canned)', 'Soy Sauce', 'Garlic', 'Green Onion'],
-    tools: ['rice-cooker'],
-    steps: [
-      'Wash rice and place in cooker.',
-      'Drain tuna and place on top of uncooked rice.',
-      'Add minced garlic, soy sauce.',
-      'Cook as normal.',
-      'When done, mix tuna into rice.',
-      'Top with green onion.'
-    ],
-    cookingTime: '20 mins', estimatedCost: '₱28–₱40', category: 'Rice Cooker', image: 'https://images.unsplash.com/photo-1512058564366-18510be2db19?w=600&q=80'
-  },
+ 
   // ── 63 ──
   {
     id: 63, name: 'Arroz con Leche',
@@ -1175,7 +1162,7 @@ const RECIPES = [
       'Cook on low heat until thick and creamy.',
       'Serve warm or chilled.'
     ],
-    cookingTime: '25 mins', estimatedCost: '₱30–₱45', category: 'Dessert', image: 'https://images.unsplash.com/photo-1551024601-bec78aea704b?w=600&q=80'
+    cookingTime: '25 mins', estimatedCost: '₱30–₱45', category: 'Dessert', image: 'arroz con leche.jpg'
   },
   // ── 64 ──
   {
@@ -1190,7 +1177,7 @@ const RECIPES = [
       'Bake in oven toaster at 200°C for 20–25 minutes.',
       'Serve with rice and spiced vinegar.'
     ],
-    cookingTime: '30 mins', estimatedCost: '₱60–₱85', category: 'Fish', image: 'https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=600&q=80'
+    cookingTime: '30 mins', estimatedCost: '₱60–₱85', category: 'Fish', image: 'inihaw na bangus.jpg'
   },
   // ── 65 ──
   {
@@ -1205,7 +1192,7 @@ const RECIPES = [
       'Add banana catsup and season.',
       'Simmer until sauce thickens.'
     ],
-    cookingTime: '40 mins', estimatedCost: '₱85–₱110', category: 'Ulam', image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&q=80'
+    cookingTime: '40 mins', estimatedCost: '₱85–₱110', category: 'Ulam', image: 'pork pochero.webp'
   },
   // ── 66 ──
   {
@@ -1220,7 +1207,7 @@ const RECIPES = [
       'Pour over rice and mix.',
       'Serve as simple lunch.'
     ],
-    cookingTime: '15 mins', estimatedCost: '₱28–₱40', category: 'Rice', image: 'https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=600&q=80'
+    cookingTime: '15 mins', estimatedCost: '₱28–₱40', category: 'Rice', image: 'buttered corn and rice.wepb'
   },
   // ── 67 ──
   {
@@ -1235,7 +1222,7 @@ const RECIPES = [
       'Season with patis.',
       'Serve with rice.'
     ],
-    cookingTime: '15 mins', estimatedCost: '₱45–₱65', category: 'Ulam', image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&q=80'
+    cookingTime: '15 mins', estimatedCost: '₱45–₱65', category: 'Ulam', image: 'ginisang upo.jpg'
   },
   // ── 68 ──
   {
