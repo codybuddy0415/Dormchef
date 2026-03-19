@@ -1,5 +1,6 @@
 /**
  * DormChef – Cinematic Glassmorphism Edition
+ * Categories: Breakfast | Lunch | Dinner | Snacks
  */
 'use strict';
 
@@ -9,11 +10,11 @@ let currentLang = localStorage.getItem('dormchef_lang') || 'en';
 const LANG = {
   en: {
     tagline:'Cook with what you have.',searchPh:'Search recipe or ingredient...',
-    ingSearchPh:'Search ingredient...',ingToggle:'Filter by Ingredients',
-    ingSelected:(n)=>`${n} ingredient${n!==1?'s':''} selected`,
+    ingSearchPh:'Type ingredients, e.g. rice, garlic, egg...',ingToggle:'Filter by Ingredients',
+    ingSelected:(n)=>`${n} ingredient${n!==1?'s':''} added`,
     allCats:'All Categories',results:(n)=>`<strong>${n}</strong> recipe${n!==1?'s':''} found`,
     noRecipes:'No recipes found.',noRecipesSub:'Try a different name or remove some filters.',
-    noRecipesBtn:'Try a Random Recipe',hint:'Type a recipe name, choose a category, or select ingredients to find what you can cook!',
+    noRecipesBtn:'Try a Random Recipe',hint:'Type a recipe name, choose a category, or type ingredients separated by commas (e.g. pork, garlic, tomato) to find what you can cook!',
     back:'Back',saveBtn:'Save',savedBtn:'Saved',favTitle:'Saved Recipes',
     noSaved:'No saved recipes yet.',noSavedSub:'Save your favorite recipes!',
     randomTag:'RANDOM RECIPE',viewRecipe:'View Recipe',rollAgain:'Roll Again!',
@@ -25,11 +26,11 @@ const LANG = {
   },
   fil: {
     tagline:'Lutuin ang mayroon mo.',searchPh:'Maghanap ng recipe o sangkap...',
-    ingSearchPh:'Hanapin ang sangkap...',ingToggle:'Pumili ng Sangkap',
-    ingSelected:(n)=>`${n} sangkap ang napili`,
+    ingSearchPh:'Mag-type ng sangkap, hal. bigas, bawang, itlog...',ingToggle:'Pumili ng Sangkap',
+    ingSelected:(n)=>`${n} sangkap ang nailagay`,
     allCats:'Lahat ng Category',results:(n)=>`<strong>${n}</strong> recipe ang nahanap`,
     noRecipes:'Walang nahanap na recipe.',noRecipesSub:'Subukan ng ibang salita o alisin ang filter.',
-    noRecipesBtn:'Subukan ang Random Recipe',hint:'Mag-type ng recipe, pumili ng category, o mag-tick ng sangkap para malaman kung ano ang puwede mong lutuin!',
+    noRecipesBtn:'Subukan ang Random Recipe',hint:'Mag-type ng recipe, pumili ng category, o mag-type ng mga sangkap na hiwalay ng kuwit (hal. baboy, bawang, kamatis) para malaman kung ano ang puwede mong lutuin!',
     back:'Bumalik',saveBtn:'I-save',savedBtn:'Na-save',favTitle:'Mga Na-save na Recipe',
     noSaved:'Wala pang na-save na recipe.',noSavedSub:'I-save ang iyong paboritong recipe!',
     randomTag:'RANDOM NA RECIPE',viewRecipe:'Tingnan ang Recipe',rollAgain:'Isa pa!',
@@ -55,7 +56,7 @@ function applyLang(){
   document.getElementById('lang-fil')?.classList.toggle('active',currentLang==='fil');
   const tg=document.querySelector('.site-tagline');if(tg)tg.textContent=l.tagline;
   const sf=document.getElementById('global-search');if(sf)sf.placeholder=l.searchPh;
-  const is=document.getElementById('ingredient-search');if(is)is.placeholder=l.ingSearchPh;
+  const is=document.getElementById('ingredient-text-input');if(is)is.placeholder=l.ingSearchPh;
   const cs=document.getElementById('cat-select');if(cs&&cs.options[0])cs.options[0].text=l.allCats;
   const rb=document.getElementById('btn-random');if(rb)rb.textContent='\uD83C\uDFB2 '+l.randomBtn;
   updateIngBadge();
@@ -100,44 +101,38 @@ const INGREDIENT_CATEGORIES = {
 };
 
 /* ============================================================
-   DATA: COOKING TOOLS
+   CATEGORIES — now only 4
    ============================================================ */
-const TOOLS = [
-  { id: 'rice-cooker',   name: 'Rice Cooker',    icon: '??' },
-  { id: 'frying-pan',   name: 'Frying Pan',     icon: '??' },
-  { id: 'microwave',    name: 'Microwave',       icon: '??' },
-  { id: 'electric-stove', name: 'Electric Stove', icon: '??' },
-  { id: 'pot',          name: 'Pot / Casserole', icon: '??' },
-  { id: 'oven-toaster', name: 'Oven Toaster',    icon: '??' },
-  { id: 'kettle',       name: 'Electric Kettle', icon: '☕' },
-  { id: 'knife',        name: 'Knife & Board',   icon: '??' }
-];
+const CATEGORIES = ['Breakfast', 'Lunch', 'Dinner', 'Snacks'];
 
+/* Category images — one per meal category */
 const CATEGORY_IMAGES = {
-  'Rice':       'https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=700&q=80',
-  'Eggs':       'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=700&q=80',
-  'Canned':     'https://images.unsplash.com/photo-1518611012118-696072aa579a?w=700&q=80',
-  'Instant':    'https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=700&q=80',
-  'Vegetables': 'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=700&q=80',
-  'Silog':      'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=700&q=80',
-  'Soup':       'https://images.unsplash.com/photo-1547592180-85f173990554?w=700&q=80',
-  'Ulam':       'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=700&q=80',
-  'Fish':       'https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=700&q=80',
-  'Bread':      'https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=700&q=80',
-  'Dessert':    'https://images.unsplash.com/photo-1551024601-bec78aea704b?w=700&q=80',
-  'Salad':      'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=700&q=80',
-  'Snacks':     'https://images.unsplash.com/photo-1585032226651-759b368d7246?w=700&q=80',
-  'Microwave':  'https://images.unsplash.com/photo-1484723091739-30a097e8f929?w=700&q=80',
-  'Rice Cooker':'https://images.unsplash.com/photo-1512058564366-18510be2db19?w=700&q=80',
-  'Breakfast':  'https://images.unsplash.com/photo-1541614101331-1a5a3a194e92?w=700&q=80'
+  'Breakfast': 'https://images.unsplash.com/photo-1541614101331-1a5a3a194e92?w=700&q=80',
+  'Lunch':     'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=700&q=80',
+  'Dinner':    'https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=700&q=80',
+  'Snacks':    'https://images.unsplash.com/photo-1585032226651-759b368d7246?w=700&q=80',
 };
 
 const CATEGORY_EMOJI = {
-  'Rice':'??','Eggs':'??','Canned':'??','Instant':'??','Vegetables':'??',
-  'Silog':'??','Soup':'??','Ulam':'??','Fish':'??','Bread':'??',
-  'Dessert':'??','Salad':'??','Snacks':'??','Microwave':'??',
-  'Rice Cooker':'??','Breakfast':'??'
+  'Breakfast': '🍳',
+  'Lunch':     '🍱',
+  'Dinner':    '🍽️',
+  'Snacks':    '🧆',
 };
+
+/* ============================================================
+   DATA: COOKING TOOLS
+   ============================================================ */
+const TOOLS = [
+  { id: 'rice-cooker',   name: 'Rice Cooker',    icon: '🍚' },
+  { id: 'frying-pan',   name: 'Frying Pan',     icon: '🍳' },
+  { id: 'microwave',    name: 'Microwave',       icon: '📦' },
+  { id: 'electric-stove', name: 'Electric Stove', icon: '🔥' },
+  { id: 'pot',          name: 'Pot / Casserole', icon: '🫕' },
+  { id: 'oven-toaster', name: 'Oven Toaster',    icon: '🥐' },
+  { id: 'kettle',       name: 'Electric Kettle', icon: '☕' },
+  { id: 'knife',        name: 'Knife & Board',   icon: '🔪' }
+];
 
 const RECIPE_DESC = {
   'Sinangag na Kanin': 'Garlicky Filipino fried rice – the dorm staple.',
@@ -150,6 +145,7 @@ const RECIPE_DESC = {
   'Hotdog Sinangag': 'Crispy hotdog coins tossed into garlic fried rice.',
   'Instant Mami': 'Upgraded instant noodle soup with egg and green onion.',
   'Pancit Canton': 'Stir-fried noodles with veggies – Filipino street classic.',
+  'Sinigang na Baboy': 'Classic Filipino sour tamarind pork soup with vegetables.',
   'default': 'A delicious Filipino recipe you can make in your dorm.'
 };
 
@@ -252,22 +248,30 @@ function getYouTubeLink(name) {
     'Pork and Potato Hash': 'pork+potato+hash+recipe',
     'Egg in Coconut Milk': 'egg+coconut+milk+ginata+recipe',
     'Filipino French Toast (Monay Toast)': 'Filipino+french+toast+monay',
+    'Sinigang na Baboy': 'sinigang+na+baboy+recipe+Filipino',
     'Canned Tuna Pasta (No Pasta)': 'tuna+pasta+instant+noodles+hack'
   };
   const q = links[name] || encodeURIComponent(name + ' Filipino recipe');
   return 'https://www.youtube.com/results?search_query=' + q;
 }
 
-
 function getImg(r) {
   const custom = getCustomPhoto(r.id);
   if (custom) return custom;
   if (r.image && r.image.trim()) return r.image.trim();
-  return CATEGORY_IMAGES[r.category] || CATEGORY_IMAGES['Ulam'];
+  return CATEGORY_IMAGES[r.category] || CATEGORY_IMAGES['Dinner'];
 }
-function getEmoji(cat){return CATEGORY_EMOJI[cat]||'\uD83C\uDF7D\uFE0F';}
-function getDesc(name){return RECIPE_DESC[name]||'A delicious Filipino recipe you can make in your dorm.';}
+function getEmoji(cat){ return CATEGORY_EMOJI[cat] || '🍽️'; }
+function getDesc(name){ return RECIPE_DESC[name] || 'A delicious Filipino recipe you can make in your dorm.'; }
 
+/* ============================================================
+   RECIPES — category remapped to Breakfast / Lunch / Dinner / Snacks
+   Mapping logic:
+     Breakfast → morning meals, silog, eggs, porridge, oatmeal, toast, congee
+     Lunch     → rice bowls, noodles, sautéed veggies, canned mains, fried rice
+     Dinner    → soups, ulam (main dishes), grilled/stewed meats, fish
+     Snacks    → kamote que, squid balls, bread pudding, desserts, merienda items
+   ============================================================ */
 const RECIPES = [
   // ── 1 ──
   {
@@ -282,7 +286,7 @@ const RECIPES = [
       'Push rice to side, scramble egg in the space, then mix together.',
       'Serve hot with your protein of choice.'
     ],
-    cookingTime: '10 mins', estimatedCost: '₱15–₱25', category: 'Rice', image: 'fied rice.jpg'
+    cookingTime: '10 mins', estimatedCost: '₱15–₱25', category: 'Breakfast', image: 'fied rice.jpg'
   },
   // ── 2 ──
   {
@@ -296,7 +300,7 @@ const RECIPES = [
       'Drizzle soy sauce around the edges of the pan.',
       'Toss everything together and serve.'
     ],
-    cookingTime: '12 mins', estimatedCost: '₱20–₱35', category: 'Rice', image: 'egg fried rice.jpg'
+    cookingTime: '12 mins', estimatedCost: '₱20–₱35', category: 'Breakfast', image: 'egg fried rice.jpg'
   },
   // ── 3 ──
   {
@@ -311,7 +315,7 @@ const RECIPES = [
       'Flip carefully and cook the other side until golden.',
       'Serve with rice and ketchup.'
     ],
-    cookingTime: '8 mins', estimatedCost: '₱12–₱20', category: 'Eggs', image: 'tortang itlog.jpg'
+    cookingTime: '8 mins', estimatedCost: '₱12–₱20', category: 'Breakfast', image: 'tortang itlog.jpg'
   },
   // ── 4 ──
   {
@@ -325,7 +329,7 @@ const RECIPES = [
       'Mash lightly and cook 3–4 minutes, stirring.',
       'Serve generous spoonful over hot rice.'
     ],
-    cookingTime: '15 mins', estimatedCost: '₱25–₱40', category: 'Canned', image: 'sardines rice bowl.jpg'
+    cookingTime: '15 mins', estimatedCost: '₱25–₱40', category: 'Lunch', image: 'sardines rice bowl.jpg'
   },
   // ── 5 ──
   {
@@ -340,7 +344,7 @@ const RECIPES = [
       'Push to side, scramble an egg in, then combine.',
       'Season with salt and serve.'
     ],
-    cookingTime: '12 mins', estimatedCost: '₱40–₱55', category: 'Rice', image: 'corned beef rice.jpg'
+    cookingTime: '12 mins', estimatedCost: '₱40–₱55', category: 'Breakfast', image: 'corned beef rice.jpg'
   },
   // ── 6 ──
   {
@@ -355,7 +359,7 @@ const RECIPES = [
       'Cook until set, flip gently, cook other side.',
       'Serve hot.'
     ],
-    cookingTime: '10 mins', estimatedCost: '₱30–₱45', category: 'Eggs', image: 'tuna omellete.jpg'
+    cookingTime: '10 mins', estimatedCost: '₱30–₱45', category: 'Breakfast', image: 'tuna omellete.jpg'
   },
   // ── 7 ──
   {
@@ -370,7 +374,7 @@ const RECIPES = [
       'Cook until cabbage is tender but still crisp.',
       'Serve as side dish with rice.'
     ],
-    cookingTime: '10 mins', estimatedCost: '₱20–₱30', category: 'Vegetables', image: 'ginisang repolyo.jpg'
+    cookingTime: '10 mins', estimatedCost: '₱20–₱30', category: 'Lunch', image: 'ginisang repolyo.jpg'
   },
   // ── 8 ──
   {
@@ -385,7 +389,7 @@ const RECIPES = [
       'Drizzle soy sauce and mix well.',
       'Serve hot.'
     ],
-    cookingTime: '10 mins', estimatedCost: '₱30–₱45', category: 'Rice', image: 'hotdog sinangag.jpg'
+    cookingTime: '10 mins', estimatedCost: '₱30–₱45', category: 'Breakfast', image: 'hotdog sinangag.jpg'
   },
   // ── 9 ──
   {
@@ -400,7 +404,7 @@ const RECIPES = [
       'Top with chopped green onion.',
       'Serve immediately.'
     ],
-    cookingTime: '7 mins', estimatedCost: '₱12–₱18', category: 'Instant', image: 'instany mami.jpg'
+    cookingTime: '7 mins', estimatedCost: '₱12–₱18', category: 'Lunch', image: 'instany mami.jpg'
   },
   // ── 10 ──
   {
@@ -416,7 +420,7 @@ const RECIPES = [
       'Push aside, scramble egg, combine.',
       'Serve hot.'
     ],
-    cookingTime: '12 mins', estimatedCost: '₱18–₱30', category: 'Instant', image: 'pancit canton.jpg'
+    cookingTime: '12 mins', estimatedCost: '₱18–₱30', category: 'Lunch', image: 'pancit canton.jpg'
   },
   // ── 11 ──
   {
@@ -430,7 +434,7 @@ const RECIPES = [
       'Pour sauce over and serve.',
       'Best paired with congee or rice.'
     ],
-    cookingTime: '15 mins', estimatedCost: '₱18–₱25', category: 'Eggs', image: 'tokwa baboy.jpg'
+    cookingTime: '15 mins', estimatedCost: '₱18–₱25', category: 'Lunch', image: 'tokwa baboy.jpg'
   },
   // ── 12 ──
   {
@@ -446,7 +450,7 @@ const RECIPES = [
       'Add back Spam, drizzle soy sauce, and toss.',
       'Serve hot.'
     ],
-    cookingTime: '13 mins', estimatedCost: '₱55–₱70', category: 'Rice', image: 'spam rice.webp'
+    cookingTime: '13 mins', estimatedCost: '₱55–₱70', category: 'Breakfast', image: 'spam rice.webp'
   },
   // ── 13 ──
   {
@@ -460,7 +464,7 @@ const RECIPES = [
       'Plate rice, tocino, and egg together.',
       'Serve with garlic vinegar on the side.'
     ],
-    cookingTime: '15 mins', estimatedCost: '₱40–₱60', category: 'Silog', image: 'tocilog.png'
+    cookingTime: '15 mins', estimatedCost: '₱40–₱60', category: 'Breakfast', image: 'tocilog.png'
   },
   // ── 14 ──
   {
@@ -475,7 +479,7 @@ const RECIPES = [
       'Serve with sinangag (garlic rice) and egg.',
       'Dip longganisa in vinegar.'
     ],
-    cookingTime: '18 mins', estimatedCost: '₱35–₱55', category: 'Silog', image: 'longsilog.png'
+    cookingTime: '18 mins', estimatedCost: '₱35–₱55', category: 'Breakfast', image: 'longsilog.png'
   },
   // ── 15 ──
   {
@@ -490,7 +494,7 @@ const RECIPES = [
       'Add noodles and toss to coat.',
       'Season with salt and serve.'
     ],
-    cookingTime: '15 mins', estimatedCost: '₱30–₱45', category: 'Instant', image: 'https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=600&q=80'
+    cookingTime: '15 mins', estimatedCost: '₱30–₱45', category: 'Lunch', image: 'https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=600&q=80'
   },
   // ── 16 ──
   {
@@ -504,7 +508,7 @@ const RECIPES = [
       'Cover and steam 2 minutes.',
       'Serve with rice.'
     ],
-    cookingTime: '8 mins', estimatedCost: '₱15–₱25', category: 'Vegetables', image: 'ginisang pichay.jpg'
+    cookingTime: '8 mins', estimatedCost: '₱15–₱25', category: 'Lunch', image: 'ginisang pichay.jpg'
   },
   // ── 17 ──
   {
@@ -534,7 +538,7 @@ const RECIPES = [
       'Simmer 5 minutes.',
       'Serve over rice.'
     ],
-    cookingTime: '20 mins', estimatedCost: '₱55–₱75', category: 'Rice', image: 'giniling baboy.jpg'
+    cookingTime: '20 mins', estimatedCost: '₱55–₱75', category: 'Lunch', image: 'giniling baboy.jpg'
   },
   // ── 19 ──
   {
@@ -548,7 +552,7 @@ const RECIPES = [
       'Place egg on bread, season with salt and pepper.',
       'Close sandwich and enjoy.'
     ],
-    cookingTime: '8 mins', estimatedCost: '₱15–₱25', category: 'Bread', image: 'egg sandwich.jpg'
+    cookingTime: '8 mins', estimatedCost: '₱15–₱25', category: 'Breakfast', image: 'egg sandwich.jpg'
   },
   // ── 20 ──
   {
@@ -564,7 +568,7 @@ const RECIPES = [
       'Season with patis.',
       'Garnish with green onion.'
     ],
-    cookingTime: '35 mins', estimatedCost: '₱60–₱85', category: 'Soup', image: 'arozcaldo.jpg'
+    cookingTime: '35 mins', estimatedCost: '₱60–₱85', category: 'Breakfast', image: 'arozcaldo.jpg'
   },
   // ── 21 ──
   {
@@ -579,7 +583,7 @@ const RECIPES = [
       'Add oyster sauce and mix.',
       'Serve immediately.'
     ],
-    cookingTime: '7 mins', estimatedCost: '₱15–₱22', category: 'Vegetables', image: 'gisang kanfkong.jpg'
+    cookingTime: '7 mins', estimatedCost: '₱15–₱22', category: 'Lunch', image: 'gisang kanfkong.jpg'
   },
   // ── 22 ──
   {
@@ -594,7 +598,7 @@ const RECIPES = [
       'Cook until set, flip, cook other side.',
       'Repeat and serve with rice and ketchup.'
     ],
-    cookingTime: '18 mins', estimatedCost: '₱45–₱60', category: 'Eggs', image: 'tortang giniling.jpg'
+    cookingTime: '18 mins', estimatedCost: '₱45–₱60', category: 'Lunch', image: 'tortang giniling.jpg'
   },
   // ── 23 ──
   {
@@ -608,7 +612,7 @@ const RECIPES = [
       'Fry bangus until golden brown on both sides.',
       'Serve with tomato, onion salsa and rice.'
     ],
-    cookingTime: '30 mins', estimatedCost: '₱55–₱80', category: 'Fish', image: 'bangus.jpg'
+    cookingTime: '30 mins', estimatedCost: '₱55–₱80', category: 'Dinner', image: 'bangus.jpg'
   },
   // ── 24 ──
   {
@@ -624,7 +628,7 @@ const RECIPES = [
       'Add kangkong, turn off heat.',
       'Serve hot.'
     ],
-    cookingTime: '35 mins', estimatedCost: '₱80–₱110', category: 'Soup', image: 'tinolang manok.jpg'
+    cookingTime: '35 mins', estimatedCost: '₱80–₱110', category: 'Dinner', image: 'tinolang manok.jpg'
   },
   // ── 25 ──
   {
@@ -639,7 +643,7 @@ const RECIPES = [
       'Uncover and cook until sauce reduces.',
       'Serve over rice.'
     ],
-    cookingTime: '35 mins', estimatedCost: '₱75–₱100', category: 'Ulam', image: 'adobo manok.jpg'
+    cookingTime: '35 mins', estimatedCost: '₱75–₱100', category: 'Dinner', image: 'adobo manok.jpg'
   },
   // ── 26 ──
   {
@@ -652,7 +656,7 @@ const RECIPES = [
       'Uncover and fry in own fat until browned.',
       'Serve with rice.'
     ],
-    cookingTime: '35 mins', estimatedCost: '₱80–₱110', category: 'Ulam', image: 'pork Adobo.jpg'
+    cookingTime: '35 mins', estimatedCost: '₱80–₱110', category: 'Dinner', image: 'pork Adobo.jpg'
   },
   // ── 27 ──
   {
@@ -666,7 +670,7 @@ const RECIPES = [
       'Cook 5 minutes, mashing lightly.',
       'Serve hot with rice.'
     ],
-    cookingTime: '12 mins', estimatedCost: '₱25–₱35', category: 'Canned', image: 'sardinas kamatis.jpg'
+    cookingTime: '12 mins', estimatedCost: '₱25–₱35', category: 'Lunch', image: 'sardinas kamatis.jpg'
   },
   // ── 28 ──
   {
@@ -681,7 +685,7 @@ const RECIPES = [
       'Fry tilapia until golden and crispy on both sides.',
       'Serve with spiced vinegar.'
     ],
-    cookingTime: '25 mins', estimatedCost: '₱55–₱75', category: 'Fish', image: 'pritong tilapia.jpg'
+    cookingTime: '25 mins', estimatedCost: '₱55–₱75', category: 'Dinner', image: 'pritong tilapia.jpg'
   },
   // ── 29 ──
   {
@@ -697,7 +701,7 @@ const RECIPES = [
       'Season and simmer 3 mins.',
       'Serve hot.'
     ],
-    cookingTime: '30 mins', estimatedCost: '₱70–₱95', category: 'Soup', image: 'sopas.jpg'
+    cookingTime: '30 mins', estimatedCost: '₱70–₱95', category: 'Dinner', image: 'sopas.jpg'
   },
   // ── 30 ──
   {
@@ -712,7 +716,7 @@ const RECIPES = [
       'Cook 8 minutes until tender.',
       'Season with patis and serve.'
     ],
-    cookingTime: '15 mins', estimatedCost: '₱20–₱35', category: 'Vegetables', image: 'sitaw.jpg'
+    cookingTime: '15 mins', estimatedCost: '₱20–₱35', category: 'Lunch', image: 'sitaw.jpg'
   },
   // ── 31 ──
   {
@@ -727,7 +731,7 @@ const RECIPES = [
       'Season with patis.',
       'Top with poached or fried egg and green onion.'
     ],
-    cookingTime: '30 mins', estimatedCost: '₱15–₱25', category: 'Soup', image: 'lugaw.jpg'
+    cookingTime: '30 mins', estimatedCost: '₱15–₱25', category: 'Breakfast', image: 'lugaw.jpg'
   },
   // ── 32 ──
   {
@@ -739,9 +743,9 @@ const RECIPES = [
       'Add cold rice, press and stir-fry.',
       'Season with salt.',
       'Fry egg separately.',
-      'Serve rice with fried egg (substitute for tuyo with whatever salted fish is available).'
+      'Serve rice with fried egg.'
     ],
-    cookingTime: '10 mins', estimatedCost: '₱10–₱20', category: 'Rice', image: 'tuyo.jpg'
+    cookingTime: '10 mins', estimatedCost: '₱10–₱20', category: 'Breakfast', image: 'tuyo.jpg'
   },
   // ── 33 ──
   {
@@ -757,7 +761,7 @@ const RECIPES = [
       'Heat in additional 15-second intervals until just set.',
       'Serve on bread or rice.'
     ],
-    cookingTime: '3 mins', estimatedCost: '₱10–₱18', category: 'Microwave', image: 'microegg.jpg'
+    cookingTime: '3 mins', estimatedCost: '₱10–₱18', category: 'Breakfast', image: 'microegg.jpg'
   },
   // ── 34 ──
   {
@@ -772,7 +776,7 @@ const RECIPES = [
       'Microwave 2 minutes.',
       'Mix into rice and eat.'
     ],
-    cookingTime: '5 mins', estimatedCost: '₱20–₱30', category: 'Microwave', image: 'microrice.jpg'
+    cookingTime: '5 mins', estimatedCost: '₱20–₱30', category: 'Lunch', image: 'microrice.jpg'
   },
   // ── 35 ──
   {
@@ -788,9 +792,8 @@ const RECIPES = [
       'Fry in oil until golden on both sides.',
       'Serve with banana catsup.'
     ],
-    cookingTime: '20 mins', estimatedCost: '₱20–₱35', category: 'Eggs', image: 'talong omellete.webp'
+    cookingTime: '20 mins', estimatedCost: '₱20–₱35', category: 'Breakfast', image: 'talong omellete.webp'
   },
- 
   // ── 37 ──
   {
     id: 37, name: 'Pork Sinigang (Simple)',
@@ -801,10 +804,10 @@ const RECIPES = [
       'Simmer 25 minutes until pork is tender.',
       'Add sitaw and cook 3 mins.',
       'Add kangkong, season with salt.',
-      'Squeeze calamansi for sourness (substitute for sampaloc).',
+      'Squeeze calamansi for sourness.',
       'Serve hot with rice.'
     ],
-    cookingTime: '35 mins', estimatedCost: '₱90–₱120', category: 'Soup', image: 'pork sinigang.jpg'
+    cookingTime: '35 mins', estimatedCost: '₱90–₱120', category: 'Dinner', image: 'pork sinigang.jpg'
   },
   // ── 38 ──
   {
@@ -817,9 +820,9 @@ const RECIPES = [
       'Pour 3 cups water, bring to boil.',
       'Simmer 5 minutes.',
       'Season with patis.',
-      'Serve over rice (substitute for mung beans when not available).'
+      'Serve over rice.'
     ],
-    cookingTime: '12 mins', estimatedCost: '₱25–₱40', category: 'Soup', image: 'Monggo.jpg'
+    cookingTime: '12 mins', estimatedCost: '₱25–₱40', category: 'Dinner', image: 'Monggo.jpg'
   },
   // ── 39 ──
   {
@@ -833,7 +836,7 @@ const RECIPES = [
       'Plate together, season with salt.',
       'Drizzle ketchup and serve with rice.'
     ],
-    cookingTime: '8 mins', estimatedCost: '₱22–₱35', category: 'Ulam', image: 'hotegg.jpg'
+    cookingTime: '8 mins', estimatedCost: '₱22–₱35', category: 'Breakfast', image: 'hotegg.jpg'
   },
   // ── 40 ──
   {
@@ -848,7 +851,7 @@ const RECIPES = [
       'Toss in noodles and coat well.',
       'Serve hot.'
     ],
-    cookingTime: '15 mins', estimatedCost: '₱28–₱40', category: 'Instant', image: 'https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=600&q=80'
+    cookingTime: '15 mins', estimatedCost: '₱28–₱40', category: 'Lunch', image: 'https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=600&q=80'
   },
   // ── 41 ──
   {
@@ -863,7 +866,7 @@ const RECIPES = [
       'Stir until egg sets.',
       'Serve with rice.'
     ],
-    cookingTime: '12 mins', estimatedCost: '₱20–₱30', category: 'Vegetables', image: 'ampaegg.jpg'
+    cookingTime: '12 mins', estimatedCost: '₱20–₱30', category: 'Lunch', image: 'ampaegg.jpg'
   },
   // ── 42 ──
   {
@@ -878,7 +881,7 @@ const RECIPES = [
       'Cook until set, flip, cook other side.',
       'Serve with rice.'
     ],
-    cookingTime: '12 mins', estimatedCost: '₱35–₱50', category: 'Eggs', image: 'corned omelette.jpg'
+    cookingTime: '12 mins', estimatedCost: '₱35–₱50', category: 'Breakfast', image: 'corned omelette.jpg'
   },
   // ── 43 ──
   {
@@ -892,7 +895,7 @@ const RECIPES = [
       'Add melted butter, salt, and pepper.',
       'Mix gently and serve.'
     ],
-    cookingTime: '20 mins', estimatedCost: '₱30–₱45', category: 'Salad', image: 'potato salad.jpg'
+    cookingTime: '20 mins', estimatedCost: '₱30–₱45', category: 'Snacks', image: 'potato salad.jpg'
   },
   // ── 44 ──
   {
@@ -907,10 +910,8 @@ const RECIPES = [
       'Once done, stir, season with patis.',
       'Serve topped with green onion.'
     ],
-    cookingTime: '25 mins', estimatedCost: '₱10–₱20', category: 'Rice Cooker', image: 'arozcaldo rice cooker.jpg'
+    cookingTime: '25 mins', estimatedCost: '₱10–₱20', category: 'Breakfast', image: 'arozcaldo rice cooker.jpg'
   },
-  // ── 45 ──
-  
   // ── 46 ──
   {
     id: 46, name: 'Pork Adobo Flakes',
@@ -923,7 +924,7 @@ const RECIPES = [
       'Mix with remaining sauce.',
       'Serve as topping over garlic rice.'
     ],
-    cookingTime: '45 mins', estimatedCost: '₱80–₱110', category: 'Ulam', image: 'pork adobo flakes.webp'
+    cookingTime: '45 mins', estimatedCost: '₱80–₱110', category: 'Dinner', image: 'pork adobo flakes.webp'
   },
   // ── 47 ──
   {
@@ -937,7 +938,7 @@ const RECIPES = [
       'Bring to simmer, cook 15 minutes until kamote is tender.',
       'Serve as dessert or snack.'
     ],
-    cookingTime: '20 mins', estimatedCost: '₱30–₱45', category: 'Dessert', image: 'ginataang kamote.jpg'
+    cookingTime: '20 mins', estimatedCost: '₱30–₱45', category: 'Snacks', image: 'ginataang kamote.jpg'
   },
   // ── 48 ──
   {
@@ -966,7 +967,7 @@ const RECIPES = [
       'Microwave 2–3 minutes until egg is set.',
       'Mix and serve over rice.'
     ],
-    cookingTime: '8 mins', estimatedCost: '₱35–₱50', category: 'Microwave', image: 'https://images.unsplash.com/photo-1484723091739-30a097e8f929?w=600&q=80'
+    cookingTime: '8 mins', estimatedCost: '₱35–₱50', category: 'Lunch', image: 'https://images.unsplash.com/photo-1484723091739-30a097e8f929?w=600&q=80'
   },
   // ── 50 ──
   {
@@ -981,7 +982,7 @@ const RECIPES = [
       'Toss gently and serve.',
       'Best eaten with fried fish.'
     ],
-    cookingTime: '5 mins', estimatedCost: '₱12–₱20', category: 'Salad', image: 'ensaladang kamatis at sibuyas.jpg'
+    cookingTime: '5 mins', estimatedCost: '₱12–₱20', category: 'Snacks', image: 'ensaladang kamatis at sibuyas.jpg'
   },
   // ── 51 ──
   {
@@ -996,7 +997,7 @@ const RECIPES = [
       'Top with pork and green onion.',
       'Drizzle patis and serve.'
     ],
-    cookingTime: '35 mins', estimatedCost: '₱50–₱75', category: 'Soup', image: 'batchoy style noodels soup.webp'
+    cookingTime: '35 mins', estimatedCost: '₱50–₱75', category: 'Dinner', image: 'batchoy style noodels soup.webp'
   },
   // ── 52 ──
   {
@@ -1011,7 +1012,7 @@ const RECIPES = [
       'Pour sauce over rice.',
       'Serve as an affordable and filling meal.'
     ],
-    cookingTime: '15 mins', estimatedCost: '₱18–₱28', category: 'Rice', image: 'peanut butter rice.webp'
+    cookingTime: '15 mins', estimatedCost: '₱18–₱28', category: 'Lunch', image: 'peanut butter rice.webp'
   },
   // ── 53 ──
   {
@@ -1026,7 +1027,7 @@ const RECIPES = [
       'Pour egg-milk mixture and toss quickly so egg doesn\'t curdle.',
       'Serve immediately.'
     ],
-    cookingTime: '10 mins', estimatedCost: '₱18–₱28', category: 'Instant', image: 'instant noodle upgrade.jpg'
+    cookingTime: '10 mins', estimatedCost: '₱18–₱28', category: 'Lunch', image: 'instant noodle upgrade.jpg'
   },
   // ── 54 ──
   {
@@ -1041,7 +1042,7 @@ const RECIPES = [
       'Season with patis.',
       'Serve hot over rice.'
     ],
-    cookingTime: '18 mins', estimatedCost: '₱28–₱40', category: 'Soup', image: 'monggo at dilis.webp'
+    cookingTime: '18 mins', estimatedCost: '₱28–₱40', category: 'Dinner', image: 'monggo at dilis.webp'
   },
   // ── 55 ──
   {
@@ -1056,7 +1057,7 @@ const RECIPES = [
       'Let it cycle twice for thorough cooking.',
       'Serve with steamed rice.'
     ],
-    cookingTime: '30 mins', estimatedCost: '₱75–₱100', category: 'Rice Cooker', image: 'chicken adobo rice cooker.webp'
+    cookingTime: '30 mins', estimatedCost: '₱75–₱100', category: 'Dinner', image: 'chicken adobo rice cooker.webp'
   },
   // ── 56 ──
   {
@@ -1071,7 +1072,7 @@ const RECIPES = [
       'Drizzle condensed milk on top.',
       'Eat as breakfast or snack.'
     ],
-    cookingTime: '20 mins', estimatedCost: '₱15–₱25', category: 'Dessert', image: 'champorado.jpg'
+    cookingTime: '20 mins', estimatedCost: '₱15–₱25', category: 'Breakfast', image: 'champorado.jpg'
   },
   // ── 57 ──
   {
@@ -1086,7 +1087,7 @@ const RECIPES = [
       'Squeeze calamansi generously.',
       'Season with salt and serve.'
     ],
-    cookingTime: '15 mins', estimatedCost: '₱25–₱40', category: 'Soup', image: 'Sinigang Sardinas.jpg'
+    cookingTime: '15 mins', estimatedCost: '₱25–₱40', category: 'Dinner', image: 'Sinigang Sardinas.jpg'
   },
   // ── 58 ──
   {
@@ -1101,7 +1102,7 @@ const RECIPES = [
       'Simmer 5 minutes.',
       'Serve with rice.'
     ],
-    cookingTime: '18 mins', estimatedCost: '₱60–₱80', category: 'Ulam', image: 'sautéed pork with tomato.jpg'
+    cookingTime: '18 mins', estimatedCost: '₱60–₱80', category: 'Dinner', image: 'sautéed pork with tomato.jpg'
   },
   // ── 59 ──
   {
@@ -1116,7 +1117,7 @@ const RECIPES = [
       'Drain on paper towel.',
       'Serve with rice and ketchup.'
     ],
-    cookingTime: '20 mins', estimatedCost: '₱60–₱85', category: 'Ulam', image: 'milanesa bread.jpeg'
+    cookingTime: '20 mins', estimatedCost: '₱60–₱85', category: 'Dinner', image: 'milanesa bread.jpeg'
   },
   // ── 60 ──
   {
@@ -1131,7 +1132,7 @@ const RECIPES = [
       'Season with patis.',
       'Serve hot.'
     ],
-    cookingTime: '35 mins', estimatedCost: '₱65–₱90', category: 'Soup', image: 'chicken tinola lugaw.jpg'
+    cookingTime: '35 mins', estimatedCost: '₱65–₱90', category: 'Dinner', image: 'chicken tinola lugaw.jpg'
   },
   // ── 61 ──
   {
@@ -1146,10 +1147,8 @@ const RECIPES = [
       'Cook 2 more minutes.',
       'Serve with rice.'
     ],
-    cookingTime: '10 mins', estimatedCost: '₱15–₱25', category: 'Vegetables', image: 'ginisang togue.jpg'
+    cookingTime: '10 mins', estimatedCost: '₱15–₱25', category: 'Lunch', image: 'ginisang togue.jpg'
   },
-  // ── 62 ──
- 
   // ── 63 ──
   {
     id: 63, name: 'Arroz con Leche',
@@ -1162,7 +1161,7 @@ const RECIPES = [
       'Cook on low heat until thick and creamy.',
       'Serve warm or chilled.'
     ],
-    cookingTime: '25 mins', estimatedCost: '₱30–₱45', category: 'Dessert', image: 'arroz con leche.jpg'
+    cookingTime: '25 mins', estimatedCost: '₱30–₱45', category: 'Snacks', image: 'arroz con leche.jpg'
   },
   // ── 64 ──
   {
@@ -1177,7 +1176,7 @@ const RECIPES = [
       'Bake in oven toaster at 200°C for 20–25 minutes.',
       'Serve with rice and spiced vinegar.'
     ],
-    cookingTime: '30 mins', estimatedCost: '₱60–₱85', category: 'Fish', image: 'inihaw na bangus.jpg'
+    cookingTime: '30 mins', estimatedCost: '₱60–₱85', category: 'Dinner', image: 'inihaw na bangus.jpg'
   },
   // ── 65 ──
   {
@@ -1192,7 +1191,7 @@ const RECIPES = [
       'Add banana catsup and season.',
       'Simmer until sauce thickens.'
     ],
-    cookingTime: '40 mins', estimatedCost: '₱85–₱110', category: 'Ulam', image: 'pork pochero.webp'
+    cookingTime: '40 mins', estimatedCost: '₱85–₱110', category: 'Dinner', image: 'pork pochero.webp'
   },
   // ── 66 ──
   {
@@ -1207,11 +1206,11 @@ const RECIPES = [
       'Pour over rice and mix.',
       'Serve as simple lunch.'
     ],
-    cookingTime: '15 mins', estimatedCost: '₱28–₱40', category: 'Rice', image: 'buttered corn and rice.wepb'
+    cookingTime: '15 mins', estimatedCost: '₱28–₱40', category: 'Lunch', image: 'buttered corn and rice.wepb'
   },
   // ── 67 ──
   {
-    id: 67, name: 'Ginisang Upo (Bottle Gourd) Style with Sayote',
+    id: 67, name: 'Ginisang Sayote with Pork',
     ingredients: ['Sayote', 'Garlic', 'Onion', 'Pork', 'Fish Sauce (Patis)', 'Cooking Oil'],
     tools: ['frying-pan', 'electric-stove'],
     steps: [
@@ -1222,7 +1221,7 @@ const RECIPES = [
       'Season with patis.',
       'Serve with rice.'
     ],
-    cookingTime: '15 mins', estimatedCost: '₱45–₱65', category: 'Ulam', image: 'ginisang upo.jpg'
+    cookingTime: '15 mins', estimatedCost: '₱45–₱65', category: 'Dinner', image: 'ginisang upo.jpg'
   },
   // ── 68 ──
   {
@@ -1237,7 +1236,7 @@ const RECIPES = [
       'Layer Spam, egg, and ketchup.',
       'Close sandwich and serve.'
     ],
-    cookingTime: '10 mins', estimatedCost: '₱45–₱65', category: 'Bread', image: 'spam sandwich.jpg'
+    cookingTime: '10 mins', estimatedCost: '₱45–₱65', category: 'Breakfast', image: 'spam sandwich.jpg'
   },
   // ── 69 ──
   {
@@ -1267,7 +1266,7 @@ const RECIPES = [
       'Toast bread, pile mushrooms on top.',
       'Serve as snack or meal.'
     ],
-    cookingTime: '10 mins', estimatedCost: '₱28–₱40', category: 'Bread', image: 'Sautéed Mushroom on Toast.jpg'
+    cookingTime: '10 mins', estimatedCost: '₱28–₱40', category: 'Snacks', image: 'Sautéed Mushroom on Toast.jpg'
   },
   // ── 71 ──
   {
@@ -1282,7 +1281,7 @@ const RECIPES = [
       'Simmer 20 minutes until vegetables are tender.',
       'Season with salt and serve.'
     ],
-    cookingTime: '35 mins', estimatedCost: '₱90–₱120', category: 'Ulam', image: 'pork menudo.jpg'
+    cookingTime: '35 mins', estimatedCost: '₱90–₱120', category: 'Dinner', image: 'pork menudo.jpg'
   },
   // ── 72 ──
   {
@@ -1296,7 +1295,7 @@ const RECIPES = [
       'Cook until rice is tender and mixture is creamy.',
       'Serve as dessert or merienda.'
     ],
-    cookingTime: '25 mins', estimatedCost: '₱28–₱38', category: 'Dessert', image: 'ginataang mais.jpg'
+    cookingTime: '25 mins', estimatedCost: '₱28–₱38', category: 'Snacks', image: 'ginataang mais.jpg'
   },
   // ── 73 ──
   {
@@ -1311,7 +1310,7 @@ const RECIPES = [
       'Cook 3 more minutes.',
       'Serve hot.'
     ],
-    cookingTime: '40 mins', estimatedCost: '₱80–₱110', category: 'Soup', image: 'bulalo style soup.jpg'
+    cookingTime: '40 mins', estimatedCost: '₱80–₱110', category: 'Dinner', image: 'bulalo style soup.jpg'
   },
   // ── 74 ──
   {
@@ -1326,7 +1325,7 @@ const RECIPES = [
       'Simmer 15 minutes until sauce thickens.',
       'Serve over rice.'
     ],
-    cookingTime: '25 mins', estimatedCost: '₱70–₱95', category: 'Ulam', image: 'pork igado style.jpg'
+    cookingTime: '25 mins', estimatedCost: '₱70–₱95', category: 'Dinner', image: 'pork igado style.jpg'
   },
   // ── 75 ──
   {
@@ -1341,7 +1340,7 @@ const RECIPES = [
       'Drizzle soy sauce.',
       'Serve on rice.'
     ],
-    cookingTime: '6 mins', estimatedCost: '₱10–₱18', category: 'Eggs', image: 'chili garlic fried ggg.jpg'
+    cookingTime: '6 mins', estimatedCost: '₱10–₱18', category: 'Breakfast', image: 'chili garlic fried ggg.jpg'
   },
   // ── 76 ──
   {
@@ -1356,7 +1355,7 @@ const RECIPES = [
       'Add noodles and soy sauce.',
       'Toss everything together and serve dry.'
     ],
-    cookingTime: '10 mins', estimatedCost: '₱15–₱22', category: 'Instant', image: 'instant noodle Stir fry.jpg'
+    cookingTime: '10 mins', estimatedCost: '₱15–₱22', category: 'Lunch', image: 'instant noodle Stir fry.jpg'
   },
   // ── 77 ──
   {
@@ -1371,7 +1370,7 @@ const RECIPES = [
       'Stir-fry on high heat 3 minutes.',
       'Serve over rice.'
     ],
-    cookingTime: '15 mins', estimatedCost: '₱70–₱90', category: 'Ulam', image: 'pork sauté with pyster sauce.jpg'
+    cookingTime: '15 mins', estimatedCost: '₱70–₱90', category: 'Dinner', image: 'pork sauté with pyster sauce.jpg'
   },
   // ── 78 ──
   {
@@ -1386,11 +1385,11 @@ const RECIPES = [
       'Crack eggs, scramble into mushroom mixture.',
       'Serve hot.'
     ],
-    cookingTime: '10 mins', estimatedCost: '₱25–₱38', category: 'Eggs', image: 'canned mushroom with egg.jpg'
+    cookingTime: '10 mins', estimatedCost: '₱25–₱38', category: 'Lunch', image: 'canned mushroom with egg.jpg'
   },
   // ── 79 ──
   {
-    id: 79, name: 'Tomato salad (Chilled Tomato Salad)',
+    id: 79, name: 'Tomato Salad (Chilled Tomato Salad)',
     ingredients: ['Tomato', 'Onion', 'Garlic', 'Fish Sauce (Patis)', 'Calamansi', 'Chili / Siling Labuyo'],
     tools: ['knife'],
     steps: [
@@ -1401,7 +1400,7 @@ const RECIPES = [
       'Toss and chill 5 minutes.',
       'Serve as sawsawan or side dish.'
     ],
-    cookingTime: '5 mins', estimatedCost: '₱12–₱22', category: 'Salad', image: 'tomato salad.jpg'
+    cookingTime: '5 mins', estimatedCost: '₱12–₱22', category: 'Snacks', image: 'tomato salad.jpg'
   },
   // ── 80 ──
   {
@@ -1416,7 +1415,7 @@ const RECIPES = [
       'Bake in oven toaster at 180°C for 20 minutes until set.',
       'Serve warm.'
     ],
-    cookingTime: '30 mins', estimatedCost: '₱30–₱45', category: 'Dessert', image: 'bread pudding.jpg'
+    cookingTime: '30 mins', estimatedCost: '₱30–₱45', category: 'Snacks', image: 'bread pudding.jpg'
   },
   // ── 81 ──
   {
@@ -1431,7 +1430,7 @@ const RECIPES = [
       'Scramble gently, season.',
       'Serve with rice.'
     ],
-    cookingTime: '12 mins', estimatedCost: '₱18–₱28', category: 'Vegetables', image: 'ginisang sayote with egg.jpg'
+    cookingTime: '12 mins', estimatedCost: '₱18–₱28', category: 'Lunch', image: 'ginisang sayote with egg.jpg'
   },
   // ── 82 ──
   {
@@ -1446,7 +1445,7 @@ const RECIPES = [
       'Season with patis and pepper.',
       'Serve hot.'
     ],
-    cookingTime: '35 mins', estimatedCost: '₱80–₱105', category: 'Soup', image: 'Nilagang Manok.jpg'
+    cookingTime: '35 mins', estimatedCost: '₱80–₱105', category: 'Dinner', image: 'Nilagang Manok.jpg'
   },
   // ── 83 ──
   {
@@ -1460,7 +1459,7 @@ const RECIPES = [
       'Fry in oil until golden on both sides.',
       'Serve with ketchup and rice.'
     ],
-    cookingTime: '15 mins', estimatedCost: '₱30–₱45', category: 'Fish', image: 'crispy tuna patties.jpg'
+    cookingTime: '15 mins', estimatedCost: '₱30–₱45', category: 'Lunch', image: 'crispy tuna patties.jpg'
   },
   // ── 84 ──
   {
@@ -1475,26 +1474,24 @@ const RECIPES = [
       'Cook until fully done and slightly charred.',
       'Serve with rice and spiced vinegar.'
     ],
-    cookingTime: '35 mins', estimatedCost: '₱75–₱100', category: 'Ulam', image: 'chicken inasal style.jpg'
+    cookingTime: '35 mins', estimatedCost: '₱75–₱100', category: 'Dinner', image: 'chicken inasal style.jpg'
   },
   // ── 85 ──
   {
     id: 85, name: 'Sinigang na Tuna',
-    ingredients: ['Tuna ', 'Tomato', 'Onion', 'Kangkong', 'Sigang Mix', 'Salt', 'Fish Sauce (Patis)'],
+    ingredients: ['Tuna (canned)', 'Tomato', 'Onion', 'Kangkong', 'Salt', 'Fish Sauce (Patis)', 'Calamansi'],
     tools: ['pot', 'electric-stove'],
     steps: [
       'Pour 3 cups water into pot.',
       'Add tomato and onion, boil.',
       'Add tuna (with oil).',
-      'Put the sigang mix for sourness.',
+      'Squeeze calamansi generously for sourness.',
       'Add kangkong.',
       'Season with patis and salt.',
       'Serve with rice.'
     ],
-    cookingTime: '12 mins', estimatedCost: '₱28–₱42', category: 'Soup', image: 'sinigang na tuna.jpg'
+    cookingTime: '12 mins', estimatedCost: '₱28–₱42', category: 'Dinner', image: 'sinigang na tuna.jpg'
   },
-  // ── 86 ──
-  
   // ── 87 ──
   {
     id: 87, name: 'Chicken Afritada (Simple)',
@@ -1508,7 +1505,7 @@ const RECIPES = [
       'Add potato and carrot, cook 10 more minutes.',
       'Season with salt and serve.'
     ],
-    cookingTime: '35 mins', estimatedCost: '₱85–₱110', category: 'Ulam', image: 'chicken afritada.jpg'
+    cookingTime: '35 mins', estimatedCost: '₱85–₱110', category: 'Dinner', image: 'chicken afritada.jpg'
   },
   // ── 88 ──
   {
@@ -1523,7 +1520,7 @@ const RECIPES = [
       'Turn once halfway.',
       'Serve with rice and sauce from pot.'
     ],
-    cookingTime: '30 mins', estimatedCost: '₱70–₱95', category: 'Rice Cooker', image: 'steamed rice cooker chicken.jpg'
+    cookingTime: '30 mins', estimatedCost: '₱70–₱95', category: 'Dinner', image: 'steamed rice cooker chicken.jpg'
   },
   // ── 89 ──
   {
@@ -1538,7 +1535,7 @@ const RECIPES = [
       'Simmer 5 minutes.',
       'Serve with rice.'
     ],
-    cookingTime: '30 mins', estimatedCost: '₱75–₱100', category: 'Ulam', image: 'pork binagoongan.jpg'
+    cookingTime: '30 mins', estimatedCost: '₱75–₱100', category: 'Dinner', image: 'pork binagoongan.jpg'
   },
   // ── 90 ──
   {
@@ -1553,11 +1550,11 @@ const RECIPES = [
       'Add green onion.',
       'Serve immediately.'
     ],
-    cookingTime: '8 mins', estimatedCost: '₱12–₱20', category: 'Soup', image: 'egg drop soup.jpg'
+    cookingTime: '8 mins', estimatedCost: '₱12–₱20', category: 'Dinner', image: 'egg drop soup.jpg'
   },
   // ── 91 ──
   {
-    id: 91, name: 'Turon Style Banana (Oven Version)',
+    id: 91, name: 'Turon Style Kamote (Oven Version)',
     ingredients: ['Kamote (Sweet Potato)', 'Sugar', 'Flour', 'Cooking Oil'],
     tools: ['frying-pan', 'oven-toaster'],
     steps: [
@@ -1572,7 +1569,7 @@ const RECIPES = [
   },
   // ── 92 ──
   {
-    id: 92, name: 'Coconut Milk Rice (Sinanglaw Style)',
+    id: 92, name: 'Coconut Milk Rice',
     ingredients: ['Rice', 'Coconut Milk (canned)', 'Salt', 'Garlic', 'Onion'],
     tools: ['rice-cooker', 'pot'],
     steps: [
@@ -1583,7 +1580,7 @@ const RECIPES = [
       'Fluff with fork.',
       'Serve as flavored rice.'
     ],
-    cookingTime: '20 mins', estimatedCost: '₱25–₱35', category: 'Rice', image: 'coconut milk rice.webp'
+    cookingTime: '20 mins', estimatedCost: '₱25–₱35', category: 'Lunch', image: 'coconut milk rice.webp'
   },
   // ── 93 ──
   {
@@ -1598,7 +1595,7 @@ const RECIPES = [
       'Season with calamansi, salt, pepper.',
       'Serve sizzling on hot pan or plate.'
     ],
-    cookingTime: '25 mins', estimatedCost: '₱60–₱85', category: 'Fish', image: 'bangus sisig.jpg'
+    cookingTime: '25 mins', estimatedCost: '₱60–₱85', category: 'Dinner', image: 'bangus sisig.jpg'
   },
   // ── 94 ──
   {
@@ -1613,7 +1610,7 @@ const RECIPES = [
       'Season with salt.',
       'Top with green onion and serve.'
     ],
-    cookingTime: '12 mins', estimatedCost: '₱35–₱55', category: 'Microwave', image: 'simple chicken congee.jpg'
+    cookingTime: '12 mins', estimatedCost: '₱35–₱55', category: 'Breakfast', image: 'simple chicken congee.jpg'
   },
   // ── 95 ──
   {
@@ -1627,7 +1624,7 @@ const RECIPES = [
       'Fry in own fat until caramelized.',
       'Serve with garlic rice and egg.'
     ],
-    cookingTime: '20 mins (+ marinating)', estimatedCost: '₱60–₱80', category: 'Ulam', image: 'pork tocino style.webp'
+    cookingTime: '20 mins (+ marinating)', estimatedCost: '₱60–₱80', category: 'Breakfast', image: 'pork tocino style.webp'
   },
   // ── 96 ──
   {
@@ -1643,7 +1640,7 @@ const RECIPES = [
       'Add condensed milk and sugar.',
       'Serve warm or cold.'
     ],
-    cookingTime: '25 mins', estimatedCost: '₱35–₱50', category: 'Dessert', image: 'ginataang bilo bilo.jpg'
+    cookingTime: '25 mins', estimatedCost: '₱35–₱50', category: 'Snacks', image: 'ginataang bilo bilo.jpg'
   },
   // ── 97 ──
   {
@@ -1658,7 +1655,7 @@ const RECIPES = [
       'Simmer 3 minutes.',
       'Season and serve.'
     ],
-    cookingTime: '15 mins', estimatedCost: '₱40–₱55', category: 'Ulam', image: 'nilagang sitaw at corned beef.jpg'
+    cookingTime: '15 mins', estimatedCost: '₱40–₱55', category: 'Lunch', image: 'nilagang sitaw at corned beef.jpg'
   },
   // ── 98 ──
   {
@@ -1674,7 +1671,7 @@ const RECIPES = [
       'Season with soy sauce, salt, pepper.',
       'Serve with fried egg and rice.'
     ],
-    cookingTime: '20 mins', estimatedCost: '₱65–₱85', category: 'Ulam', image: 'pork and potato hash.jpg'
+    cookingTime: '20 mins', estimatedCost: '₱65–₱85', category: 'Dinner', image: 'pork and potato hash.jpg'
   },
   // ── 99 ──
   {
@@ -1689,7 +1686,7 @@ const RECIPES = [
       'Season with salt.',
       'Serve over rice.'
     ],
-    cookingTime: '10 mins', estimatedCost: '₱22–₱35', category: 'Eggs', image: 'egg coconut.jpg'
+    cookingTime: '10 mins', estimatedCost: '₱22–₱35', category: 'Breakfast', image: 'egg coconut.jpg'
   },
   // ── 100 ──
   {
@@ -1704,7 +1701,23 @@ const RECIPES = [
       'Serve with banana catsup or condensed milk.',
       'Enjoy as merienda or breakfast.'
     ],
-    cookingTime: '10 mins', estimatedCost: '₱15–₱25', category: 'Bread', image: 'filipino french toast.jpg'
+    cookingTime: '10 mins', estimatedCost: '₱15–₱25', category: 'Breakfast', image: 'filipino french toast.jpg'
+  },
+  // ── 101 ──
+  {
+    id: 101, name: 'Sinigang na Baboy',
+    ingredients: ['Pork', 'Tamarind', 'Tomato', 'Onion', 'Radish', 'Talong (Eggplant)', 'Kangkong', 'Fish Sauce (Patis)', 'Salt'],
+    tools: ['pot', 'electric-stove'],
+    steps: [
+      'Boil pork ribs or belly in 6 cups water with onion and tomato.',
+      'Simmer 25–30 minutes until pork is tender.',
+      'Add tamarind (fresh boiled and strained, or sinigang mix) for sourness.',
+      'Add radish slices, cook 5 minutes.',
+      'Add eggplant, cook 3 minutes.',
+      'Add kangkong last, season with patis and salt.',
+      'Serve hot with steamed rice.'
+    ],
+    cookingTime: '45 mins', estimatedCost: '₱95–₱130', category: 'Dinner', image: 'pork sinigang.jpg'
   }
 ];
 
@@ -1714,26 +1727,138 @@ let currentRecipe=null,currentRandom=null;
 let favorites=loadFavs(),ingPanelOpen=false,searchTimer=null;
 
 /* INIT */
-document.addEventListener('DOMContentLoaded',()=>{buildIngChips();buildToolChips();applyLang();});
+document.addEventListener('DOMContentLoaded',()=>{
+  buildToolChips();
+  applyLang();
+  populateCatSelect();
+  initIngredientInput();
+});
 
-/* CHIPS */
-function buildIngChips(){
-  const map={staples:'grid-staples',proteins:'grid-proteins',veggies:'grid-veggies',instant:'grid-instant',condiments:'grid-condiments'};
-  Object.entries(INGREDIENT_CATEGORIES).forEach(([key,cat])=>{
-    const g=document.getElementById(map[key]);if(!g)return;
-    cat.items.forEach(item=>{
-      const lbl=document.createElement('label');
-      lbl.className='chip-label';lbl.dataset.ingredient=item.toLowerCase();
-      lbl.innerHTML=`<input type="checkbox" value="${item}" onchange="onChip(this)"/>${item}`;
-      g.appendChild(lbl);
-    });
+/* Populate category <select> with the 4 categories */
+function populateCatSelect(){
+  const cs = document.getElementById('cat-select');
+  if(!cs) return;
+  while(cs.options.length > 1) cs.remove(1);
+  CATEGORIES.forEach(cat => {
+    const opt = document.createElement('option');
+    opt.value = cat;
+    opt.textContent = getEmoji(cat) + ' ' + cat;
+    cs.appendChild(opt);
   });
 }
-function onChip(cb){
-  cb.checked?selectedIngredients.add(cb.value):selectedIngredients.delete(cb.value);
-  cb.closest('.chip-label').classList.toggle('checked',cb.checked);
-  updateIngBadge();triggerSearch();
+
+/* ============================================================
+   INGREDIENT TEXT INPUT — comma-separated tags
+   ============================================================ */
+function initIngredientInput(){
+  const input = document.getElementById('ingredient-text-input');
+  if(!input) return;
+  input.addEventListener('keydown', onIngKeydown);
+  input.addEventListener('input', onIngInput);
+  input.addEventListener('paste', (e)=>{ setTimeout(()=>parseIngredientInput(), 10); });
 }
+
+/* Parse on every keystroke — add tag on comma or Enter */
+function onIngKeydown(e){
+  if(e.key === ',' || e.key === 'Enter'){
+    e.preventDefault();
+    const val = e.target.value.trim().replace(/,+$/, '');
+    if(val) addIngredientTag(val);
+    e.target.value = '';
+  } else if(e.key === 'Backspace' && e.target.value === ''){
+    // Remove last tag on backspace when input is empty
+    const tags = [...selectedIngredients];
+    if(tags.length > 0){
+      removeIngredientTag(tags[tags.length - 1]);
+    }
+  }
+}
+
+function onIngInput(e){
+  // If user typed a comma mid-word, split and add
+  if(e.target.value.includes(',')){
+    parseIngredientInput();
+  }
+  triggerSearch();
+}
+
+function parseIngredientInput(){
+  const input = document.getElementById('ingredient-text-input');
+  if(!input) return;
+  const parts = input.value.split(',');
+  // All complete parts (before the last) become tags
+  parts.slice(0, -1).forEach(p => {
+    const v = p.trim();
+    if(v) addIngredientTag(v);
+  });
+  // Keep only the last part in the input (may be incomplete)
+  input.value = parts[parts.length - 1];
+}
+
+function addIngredientTag(value){
+  const key = value.toLowerCase().trim();
+  if(!key) return;
+  // Find the best-matching real ingredient name (case-insensitive partial match)
+  const allIngredients = Object.values(INGREDIENT_CATEGORIES).flatMap(c => c.items);
+  const match = allIngredients.find(i => i.toLowerCase() === key) ||
+                allIngredients.find(i => i.toLowerCase().includes(key)) ||
+                value.trim(); // fallback: use as-is
+  if(selectedIngredients.has(match)) return;
+  selectedIngredients.add(match);
+  renderIngredientTags();
+  updateIngBadge();
+  triggerSearch();
+}
+
+function removeIngredientTag(value){
+  selectedIngredients.delete(value);
+  renderIngredientTags();
+  updateIngBadge();
+  triggerSearch();
+}
+
+function clearAllIngredients(){
+  selectedIngredients.clear();
+  const input = document.getElementById('ingredient-text-input');
+  if(input) input.value = '';
+  renderIngredientTags();
+  updateIngBadge();
+  triggerSearch();
+}
+
+function renderIngredientTags(){
+  const container = document.getElementById('ingredient-tags');
+  if(!container) return;
+  container.innerHTML = '';
+  selectedIngredients.forEach(ing => {
+    const tag = document.createElement('span');
+    tag.className = 'ing-tag';
+    tag.innerHTML = `${ing}<button class="ing-tag-remove" onclick="removeIngredientTag('${ing.replace(/'/g,"\\'")}')">×</button>`;
+    container.appendChild(tag);
+  });
+  // Show/hide clear-all button
+  const clearBtn = document.getElementById('ing-clear-all');
+  if(clearBtn) clearBtn.classList.toggle('hidden', selectedIngredients.size === 0);
+}
+
+function updateIngBadge(){
+  const n=selectedIngredients.size;
+  const badge=document.getElementById('ing-badge');
+  const lbl=document.getElementById('ing-toggle-label');
+  if(badge){badge.textContent=n;badge.classList.toggle('hidden',n===0);}
+  if(lbl)lbl.textContent=n>0?L().ingSelected(n):'\uD83E\uDD18 '+L().ingToggle;
+}
+
+function toggleIngPanel(){
+  ingPanelOpen=!ingPanelOpen;
+  document.getElementById('ing-panel').classList.toggle('open',ingPanelOpen);
+  document.getElementById('ing-toggle-btn').classList.toggle('open',ingPanelOpen);
+  if(ingPanelOpen){
+    setTimeout(()=>document.getElementById('ingredient-text-input')?.focus(), 100);
+  }
+}
+
+/* TOOL CHIPS (kept as-is) */
 function buildToolChips(){
   const g=document.getElementById('tools-chip-grid');if(!g)return;
   TOOLS.forEach(t=>{
@@ -1745,25 +1870,6 @@ function buildToolChips(){
 function onTool(cb){
   cb.checked?selectedTools.add(cb.value):selectedTools.delete(cb.value);
   cb.closest('.chip-label').classList.toggle('checked',cb.checked);triggerSearch();
-}
-function updateIngBadge(){
-  const n=selectedIngredients.size;
-  const badge=document.getElementById('ing-badge');
-  const lbl=document.getElementById('ing-toggle-label');
-  if(badge){badge.textContent=n;badge.classList.toggle('hidden',n===0);}
-  if(lbl)lbl.textContent=n>0?L().ingSelected(n):'\uD83E\uDD18 '+L().ingToggle;
-}
-function filterIngredients(){
-  const q=document.getElementById('ingredient-search').value.toLowerCase().trim();
-  document.querySelectorAll('.chip-label').forEach(l=>{
-    const n=l.dataset.ingredient||'';
-    l.classList.toggle('hidden-chip',q.length>0&&!n.includes(q));
-  });
-}
-function toggleIngPanel(){
-  ingPanelOpen=!ingPanelOpen;
-  document.getElementById('ing-panel').classList.toggle('open',ingPanelOpen);
-  document.getElementById('ing-toggle-btn').classList.toggle('open',ingPanelOpen);
 }
 
 /* SEARCH */
@@ -1779,17 +1885,32 @@ function clearSearch(){
 }
 function triggerSearch(){
   const nameQ=(document.getElementById('global-search')?.value||'').toLowerCase().trim();
+  // Also check if there's a partial ingredient typed but not yet committed
+  const partialIng = (document.getElementById('ingredient-text-input')?.value||'').toLowerCase().trim();
   const catQ=document.getElementById('cat-select')?.value||'';
-  if(!nameQ&&!catQ&&selectedIngredients.size===0){showHint();return;}
+  const hasFilters = nameQ || catQ || selectedIngredients.size > 0 || partialIng;
+  if(!hasFilters){showHint();return;}
   hideHint();
+
+  // Build effective ingredient set: committed tags + partial text
+  const effectiveIngs = new Set([...selectedIngredients].map(i=>i.toLowerCase()));
+  if(partialIng) effectiveIngs.add(partialIng);
+
   const scored=RECIPES.map(r=>{
     const nameOk=!nameQ||r.name.toLowerCase().includes(nameQ)||r.category.toLowerCase().includes(nameQ)||r.ingredients.some(i=>i.toLowerCase().includes(nameQ));
     const catOk=!catQ||r.category===catQ;
     if(!nameOk||!catOk)return null;
     if(selectedTools.size>0&&!r.tools.every(t=>selectedTools.has(t)))return null;
-    const matched=selectedIngredients.size===0?r.ingredients.length:r.ingredients.filter(i=>selectedIngredients.has(i)).length;
-    if(selectedIngredients.size>0&&matched===0)return null;
-    const ratio=selectedIngredients.size===0?1:matched/r.ingredients.length;
+    if(effectiveIngs.size===0){
+      return{r, matched:r.ingredients.length, ratio:1};
+    }
+    // Match: ingredient from recipe contains any typed ingredient (partial match too)
+    const matched = r.ingredients.filter(i => {
+      const il = i.toLowerCase();
+      return [...effectiveIngs].some(q => il.includes(q) || q.includes(il));
+    }).length;
+    if(matched===0)return null;
+    const ratio=matched/r.ingredients.length;
     return{r,matched,ratio};
   }).filter(Boolean).sort((a,b)=>b.ratio-a.ratio);
   renderCards(scored);
@@ -1817,7 +1938,7 @@ function renderCards(scored){
     const isFav=favorites.some(f=>f.id===r.id);
     const imgUrl=getImg(r);const ytUrl=getYouTubeLink(r.name);const desc=getDesc(r.name);
     const ingTag=selectedIngredients.size>0?L().ingCount(matched,r.ingredients.length):`${r.ingredients.length} ingredients`;
-    const badge=selectedIngredients.size>0?`<div class="match-badge ${pct>=75?'match-high':'match-mid'}">${pct}%</div>`:'';
+    const badge=selectedIngredients.size>0?`<div class="match-badge ${pct>=75?'match-high':'match-mid'}">${pct}% match</div>`:'';
     const card=document.createElement('div');card.className='recipe-card';
     card.innerHTML=`
       <div class="card-inner">
@@ -1830,7 +1951,7 @@ function renderCards(scored){
           <div class="card-top-row"><div class="card-name">${r.name}</div>${badge}</div>
           <div class="card-desc">${desc}</div>
           <div class="card-meta">
-            <span class="meta-tag cat">${r.category}</span>
+            <span class="meta-tag cat">${getEmoji(r.category)} ${r.category}</span>
             <span class="meta-tag">⏱ ${r.cookingTime}</span>
             <span class="meta-tag">₱ ${r.estimatedCost.replace('₱','')}</span>
             <span class="meta-tag">${ingTag}</span>
@@ -1874,7 +1995,7 @@ function renderDetail(r){
     <div class="detail-hero-text">
       <div class="detail-name">${r.name}</div>
       <div class="detail-meta-pills">
-        <span class="detail-meta-pill cat">${r.category}</span>
+        <span class="detail-meta-pill cat">${getEmoji(r.category)} ${r.category}</span>
         <span class="detail-meta-pill">⏱ ${r.cookingTime}</span>
         <span class="detail-meta-pill">₱ ${r.estimatedCost.replace('₱','')}</span>
       </div>
@@ -1918,7 +2039,7 @@ function renderFavList(){
   noFav.classList.add('hidden');
   favorites.forEach(r=>{
     const row=document.createElement('div');row.className='fav-mini-card';
-    row.innerHTML=`<img class="fav-mini-img" src="${getImg(r)}" alt="${r.name}" onerror="this.style.background='rgba(255,255,255,0.1)'"><div class="fav-mini-info"><div class="fav-mini-name">${r.name}</div><div class="fav-mini-meta">${r.category} · ${r.cookingTime}</div></div><button class="fav-mini-remove" onclick="event.stopPropagation();removeFav(${r.id})">✕</button>`;
+    row.innerHTML=`<img class="fav-mini-img" src="${getImg(r)}" alt="${r.name}" onerror="this.style.background='rgba(255,255,255,0.1)'"><div class="fav-mini-info"><div class="fav-mini-name">${r.name}</div><div class="fav-mini-meta">${getEmoji(r.category)} ${r.category} · ${r.cookingTime}</div></div><button class="fav-mini-remove" onclick="event.stopPropagation();removeFav(${r.id})">✕</button>`;
     row.addEventListener('click',()=>{closeFavOverlay();openDetail(r.id);});
     list.appendChild(row);
   });
@@ -1934,7 +2055,7 @@ function randomRecipe(){currentRandom=RECIPES[Math.floor(Math.random()*RECIPES.l
 function showRandom(r){
   document.getElementById('modal-img').src=getImg(r);
   document.getElementById('modal-name').textContent=r.name;
-  document.getElementById('modal-meta').innerHTML=`<span>${r.category}</span><span>⏱ ${r.cookingTime}</span><span>₱ ${r.estimatedCost.replace('₱','')}</span>`;
+  document.getElementById('modal-meta').innerHTML=`<span>${getEmoji(r.category)} ${r.category}</span><span>⏱ ${r.cookingTime}</span><span>₱ ${r.estimatedCost.replace('₱','')}</span>`;
   const d=document.getElementById('modal-dice');d.style.animation='none';void d.offsetWidth;d.style.animation='';
   document.getElementById('random-modal').classList.remove('hidden');document.body.style.overflow='hidden';
 }
@@ -1943,17 +2064,13 @@ function openModalRecipe(){document.getElementById('random-modal').classList.add
 function reroll(){currentRandom=RECIPES[Math.floor(Math.random()*RECIPES.length)];showRandom(currentRandom);}
 
 
-
 /* ============================================================
    PICTURE MANAGER  — Device Upload Only
-   Each recipe gets its own photo from the user's device.
-   Stored as base64 in localStorage, keyed by recipe id.
    ============================================================ */
 
 const PHOTO_KEY = 'dormchef_photos_v2';
-let picTab = 'all'; // 'all' | 'missing' | 'done'
+let picTab = 'all';
 
-/* ─── Read / write photo store ─── */
 function photoStore() {
   try { return JSON.parse(localStorage.getItem(PHOTO_KEY)) || {}; }
   catch { return {}; }
@@ -1962,20 +2079,14 @@ function savePhotoStore(store) {
   try {
     localStorage.setItem(PHOTO_KEY, JSON.stringify(store));
   } catch(e) {
-    // localStorage might be full (base64 images are large)
     showToast('⚠️ Storage full! Try removing some photos first.');
   }
 }
 
-/* ─── Get custom photo for one recipe ─── */
 function getCustomPhoto(recipeId) {
   return photoStore()[recipeId] || null;
 }
 
-/* ─── getImg: custom upload > recipe.image field > category fallback ─── */
-// (already defined above, this comment is just a reminder of priority)
-
-/* ─── Open / close manager ─── */
 function openPicManager() {
   picTab = 'all';
   document.querySelectorAll('.pic-tab').forEach(b => b.classList.remove('active'));
@@ -1988,10 +2099,9 @@ function openPicManager() {
 function closePicManager() {
   document.getElementById('pic-overlay').classList.add('hidden');
   document.body.style.overflow = '';
-  triggerSearch(); // refresh cards with new photos
+  triggerSearch();
 }
 
-/* ─── Tab switching ─── */
 function setPicTab(tab, btn) {
   picTab = tab;
   document.querySelectorAll('.pic-tab').forEach(b => b.classList.remove('active'));
@@ -1999,24 +2109,20 @@ function setPicTab(tab, btn) {
   renderPicManager();
 }
 
-/* ─── Render manager list ─── */
 function renderPicManager() {
   const store   = photoStore();
   const searchQ = (document.getElementById('pic-search')?.value || '').toLowerCase().trim();
 
-  // Count stats
   const total    = RECIPES.length;
   const doneIds  = RECIPES.filter(r => store[r.id]).length;
   const missing  = total - doneIds;
   const pct      = Math.round((doneIds / total) * 100);
 
-  // Update progress
   const fill  = document.getElementById('pic-progress-fill');
   const label = document.getElementById('pic-progress-label');
   if (fill)  fill.style.width = pct + '%';
   if (label) label.textContent = `${doneIds} / ${total} photos uploaded`;
 
-  // Update tab labels
   const tabAll     = document.getElementById('pic-tab-all');
   const tabMissing = document.getElementById('pic-tab-missing');
   const tabDone    = document.getElementById('pic-tab-done');
@@ -2024,7 +2130,6 @@ function renderPicManager() {
   if (tabMissing) tabMissing.textContent = `No Photo (${missing})`;
   if (tabDone)    tabDone.textContent    = `Uploaded (${doneIds})`;
 
-  // Filter
   const filtered = RECIPES.filter(r => {
     const nameOk = !searchQ ||
       r.name.toLowerCase().includes(searchQ) ||
@@ -2037,7 +2142,6 @@ function renderPicManager() {
     return nameOk && tabOk;
   });
 
-  // Render rows
   const list = document.getElementById('pic-recipe-list');
   list.innerHTML = '';
 
@@ -2048,7 +2152,7 @@ function renderPicManager() {
 
   filtered.forEach(recipe => {
     const customPhoto = store[recipe.id] || null;
-    const emoji = CATEGORY_EMOJI[recipe.category] || '🍽️';
+    const emoji = getEmoji(recipe.category);
     const hasPic = !!customPhoto;
 
     const row = document.createElement('div');
@@ -2056,7 +2160,6 @@ function renderPicManager() {
     row.id = 'pic-row-' + recipe.id;
 
     row.innerHTML = `
-      <!-- Left: photo preview -->
       <div class="pic-preview" id="pic-preview-${recipe.id}">
         ${hasPic
           ? `<img src="${customPhoto}" alt="${recipe.name}" class="pic-preview-img"
@@ -2065,19 +2168,15 @@ function renderPicManager() {
         }
         ${hasPic ? '<div class="pic-preview-check">✓</div>' : ''}
       </div>
-
-      <!-- Middle: info -->
       <div class="pic-row-info">
         <div class="pic-row-name">${recipe.name}</div>
         <div class="pic-row-meta">
-          <span class="pic-row-cat">${recipe.category}</span>
+          <span class="pic-row-cat">${emoji} ${recipe.category}</span>
           <span class="pic-row-status ${hasPic ? 'status-done' : 'status-none'}">
             ${hasPic ? '✓ Photo uploaded' : 'No photo yet'}
           </span>
         </div>
       </div>
-
-      <!-- Right: upload button -->
       <div class="pic-row-actions">
         <label class="pic-upload-label" title="Upload photo from device">
           <input
@@ -2100,71 +2199,54 @@ function renderPicManager() {
   });
 }
 
-/* ─── Handle file upload ─── */
 function handleUpload(recipeId, input) {
   const file = input.files[0];
   if (!file) return;
-
-  // Check file type
   if (!file.type.startsWith('image/')) {
     showToast('⚠️ Please select an image file.');
     return;
   }
-
-  // Warn if very large
   if (file.size > 5 * 1024 * 1024) {
     showToast('⚠️ Image is very large (>5MB). Compressing...');
   }
-
   const reader = new FileReader();
   reader.onload = (e) => {
     const raw = e.target.result;
-
-    // Compress image via canvas to keep localStorage usage low
     compressImage(raw, 600, 0.82, (compressed) => {
       const store = photoStore();
       store[recipeId] = compressed;
       savePhotoStore(store);
-
       const recipe = RECIPES.find(r => r.id === recipeId);
       showToast(`✅ Photo saved for "${recipe?.name || 'recipe'}"!`);
-
-      // Update the preview in-place (no full re-render needed)
       updatePreviewInPlace(recipeId, compressed);
-      renderPicManager(); // refresh counts/tabs
+      renderPicManager();
     });
   };
   reader.onerror = () => showToast('❌ Failed to read file. Please try again.');
   reader.readAsDataURL(file);
 }
 
-/* ─── Compress image using canvas ─── */
 function compressImage(dataUrl, maxWidth, quality, callback) {
   const img = new Image();
   img.onload = () => {
     const canvas = document.createElement('canvas');
     let w = img.width;
     let h = img.height;
-
-    // Scale down if wider than maxWidth
     if (w > maxWidth) {
       h = Math.round((h * maxWidth) / w);
       w = maxWidth;
     }
-
     canvas.width  = w;
     canvas.height = h;
     const ctx = canvas.getContext('2d');
     ctx.drawImage(img, 0, 0, w, h);
-
     const compressed = canvas.toDataURL('image/jpeg', quality);
     callback(compressed);
   };
-  img.onerror = () => callback(dataUrl); // fallback: use original
+  img.onerror = () => callback(dataUrl);
   img.src = dataUrl;
 }
 
-/* ─── Update preview without full re-render ─── */
 function updatePreviewInPlace(recipeId, photoSrc) {
   const preview = document.getElementById('pic-preview-' + recipeId);
   if (!preview) return;
@@ -2174,7 +2256,6 @@ function updatePreviewInPlace(recipeId, photoSrc) {
   `;
 }
 
-/* ─── Remove photo ─── */
 function removePhoto(recipeId) {
   const store = photoStore();
   delete store[recipeId];
@@ -2184,7 +2265,6 @@ function removePhoto(recipeId) {
   renderPicManager();
 }
 
-/* ─── Toast ─── */
 let _toastTimer = null;
 function showToast(msg) {
   let toast = document.getElementById('dc-toast');
