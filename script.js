@@ -216,7 +216,106 @@ function getYouTubeLink(name) {
     'Pork and Potato Hash': 'pork+potato+hash+recipe',
     'Egg in Coconut Milk': 'egg+coconut+milk+ginata+recipe',
     'Filipino French Toast (Monay Toast)': 'Filipino+french+toast+monay',
-    'Canned Tuna Pasta (No Pasta)': 'tuna+pasta+instant+noodles+hack'
+    'Canned Tuna Pasta (No Pasta)': 'tuna+pasta+instant+noodles+hack','Sinabawang Isda': 'sinabawang+isda+Filipino',
+    'Pinakbet': 'pinakbet+Filipino+recipe',
+    'Chopsuey': 'chopsuey+Filipino+recipe',
+    'Paksiw na Isda': 'paksiw+na+isda+recipe',
+    'Daing na Bangus': 'daing+na+bangus+recipe',
+    'Menudo sa Lata': 'menudo+sa+lata+corned+beef',
+    'Canned Tuna with Sayote': 'tuna+sayote+stir+fry',
+    'Sizzling Tofu Style Egg': 'sizzling+egg+Filipino',
+    'Pork Nilaga': 'pork+nilaga+Filipino',
+    'Scrambled Egg with Sardines': 'scrambled+egg+sardines+Filipino',
+    'Ginisang Munggo': 'ginisang+munggo+recipe',
+    'Stir-fried Corned Beef with Cabbage': 'corned+beef+cabbage+stir+fry',
+    'Ginataang Manok': 'ginataang+manok+recipe',
+    'Spicy Tuna Rice Bowl': 'spicy+tuna+rice+bowl+Filipino',
+    'Ginisang Ampalaya with Pork': 'ginisang+ampalaya+pork+recipe',
+    'Tortang Tuna': 'tortang+tuna+recipe',
+    'Arroz Caldo (Microwave)': 'arroz+caldo+microwave+recipe',
+    'Chicken and Potato Stew': 'chicken+potato+stew+Filipino',
+    'Itlog na Maalat (Salted Egg) with Tomato': 'salted+egg+tomato+Filipino',
+    'Adobong Kangkong': 'adobong+kangkong+recipe',
+    'Pork Steak Filipino Style': 'pork+steak+Filipino+bistek',
+    'Ginisang Sitaw at Hipon Style': 'ginisang+sitaw+recipe',
+    'Banana Cue': 'banana+cue+Filipino+recipe',
+    'Lugaw with Corned Beef': 'lugaw+corned+beef+recipe',
+    'Tokwa at Itlog (Egg & Bean Curd Style)': 'tokwa+itlog+recipe',
+    'Tuna Sinangag': 'tuna+sinangag+recipe',
+    'Karekare Style Peanut Vegetable': 'kare+kare+vegetable+Filipino',
+    'Hotdog Pasta Hack': 'hotdog+pasta+Filipino+hack',
+    'Pork Salpicao': 'pork+salpicao+recipe',
+    'Ginataang Gulay': 'ginataang+gulay+recipe',
+    'Egg and Potato Frittata': 'egg+potato+frittata+Filipino',
+    'Chicken Arroz Caldo de Leche': 'arroz+caldo+de+leche+recipe',
+    'Garlicky Spinach Style Kangkong': 'garlicky+kangkong+recipe',
+    'Pork Hamonado': 'pork+hamonado+recipe',
+    'Ginisang Kamote Tops': 'ginisang+kamote+tops+recipe',
+    'Sardines Spaghetti (Instant Noodle)': 'sardines+spaghetti+instant+noodle',
+    'Pork Humba': 'pork+humba+Filipino+recipe',
+    'Scrambled Egg with Corned Beef Toast': 'corned+beef+scrambled+egg+toast',
+    'Adobong Pusit Style Squid Ball': 'adobong+squid+balls+recipe',
+    'Steamed Egg (Chinese Style)': 'steamed+egg+Filipino+Chinese+style',
+    'Bulalo Rice (One Pot)': 'bulalo+rice+one+pot',
+    'Pancit Canton Guisado': 'pancit+canton+guisado+recipe',
+    'Chicken Pastel Budget Style': 'chicken+pastel+Filipino+budget',
+    'Ginisang Upo': 'ginisang+upo+recipe',
+    'Egg and Mushroom Scramble': 'egg+mushroom+scramble+Filipino',
+    'Coconut Milk Oatmeal': 'coconut+milk+oatmeal+Filipino',
+    'Adobo Flakes Sinangag': 'adobo+flakes+sinangag+recipe',
+    'Sinabawang Manok at Mais Style': 'sinabawang+manok+coconut+milk',
+    'Spam and Egg Rice Bowl': 'spam+egg+rice+bowl+Filipino',
+    'Ginataang Sitaw': 'ginataang+sitaw+recipe',
+    'Fried Rice with Vegetables': 'fried+rice+with+vegetables+Filipino',
+    'Pork Belly Fried': 'fried+pork+belly+Filipino',
+    'Chicken Soup with Ginger': 'chicken+soup+ginger+Filipino',
+    'Peanut Sauce Noodles': 'peanut+sauce+noodles+Filipino',
+    'Caldereta Budget Style': 'caldereta+budget+recipe',
+    'Canned Mushroom Soup': 'mushroom+soup+Filipino+style',
+    'Tomato Egg Stir-fry': 'tomato+egg+stir+fry+Filipino',
+    'Nilasing na Hipon Style (Spicy Squid Balls)': 'spicy+squid+balls+Filipino',
+    'Rice Cooker Chicken Rice (Hainanese Style)': 'hainanese+chicken+rice+Filipino',
+    'Pork Tocino Bowl': 'pork+tocino+bowl+recipe',
+    'Sautéed Kangkong with Oyster Sauce': 'kangkong+oyster+sauce+recipe',
+    'Microwave Omelette': 'microwave+omelette+recipe',
+    'Spicy Garlic Corned Beef': 'spicy+garlic+corned+beef+Filipino',
+    'Ginataang Puso ng Saging Style': 'ginataang+puso+ng+saging+recipe',
+    'Pancit Canton Soup Style': 'pancit+canton+soup+recipe',
+    'Chicken Asado Budget': 'chicken+asado+Filipino+budget',
+    'Coconut Milk Chicken Soup': 'coconut+milk+chicken+soup+Filipino',
+    'Dried Fish Style Spam Scramble': 'spam+egg+scramble+Filipino',
+    'Macaroni Soup (Budget Sopas)': 'budget+sopas+macaroni+Filipino',
+    'Miso Soup Style': 'Filipino+miso+soup+style',
+    'Adobong Atay ng Manok Style (No Liver)': 'adobong+atay+manok+recipe',
+    'Garlic Butter Shrimp Style (Squid Balls)': 'garlic+butter+squid+balls',
+    'Pork Chop Rice Cooker': 'pork+chop+rice+cooker+recipe',
+    'Skinless Longganisa Fried Rice': 'skinless+longganisa+fried+rice',
+    'Tomato Soup Filipino Style': 'tomato+soup+Filipino+style',
+    'Corned Beef Hash Bowl': 'corned+beef+hash+Filipino',
+    'Pork and Egg Topping Rice': 'pork+egg+topping+rice+Filipino',
+    'Arroz Caldo with Corned Beef': 'arroz+caldo+corned+beef+recipe',
+    'Ginisang Talong': 'ginisang+talong+recipe',
+    'Sweetened Kamote Dessert': 'sweetened+kamote+dessert',
+    'Pork Asado Style': 'pork+asado+Filipino+recipe',
+    'Saging na Saba Style Snack': 'kamote+condensed+milk+snack+Filipino',
+    'Ensaladang Talong': 'ensaladang+talong+recipe',
+    'Pork Binagoongan Instant Style': 'pork+binagoongan+recipe',
+    'Corned Beef Sopas': 'corned+beef+sopas+recipe',
+    'Pinoy Egg Salad Sandwich': 'Filipino+egg+salad+sandwich',
+    'Monggo at Baboy (Budget)': 'monggo+baboy+Filipino',
+    'Butter Garlic Bangus': 'butter+garlic+bangus+recipe',
+    'Tokwa Style Hard Boiled Egg': 'marinated+egg+Filipino+tokwa+style',
+    'Chicken Sopas sa Rice Cooker': 'chicken+sopas+rice+cooker',
+    'Sweet and Sour Pork (Budget)': 'sweet+sour+pork+Filipino+budget',
+    'Pechay at Corned Beef': 'pechay+corned+beef+stir+fry',
+    'Chicken Inasal Rice Cooker': 'chicken+inasal+rice+cooker',
+    'Champorado with Condensed Milk': 'champorado+condensed+milk',
+    'Ginataang Langka Style with Cabbage': 'ginataang+langka+cabbage+recipe',
+    'Tuna and Pechay Stir-fry': 'tuna+pechay+stir+fry',
+    'Monggo with Kangkong and Sardines': 'monggo+kangkong+sardines',
+    'Pinoy Garlic Toast': 'Filipino+garlic+toast+recipe',
+    'Squid Ball Soup': 'squid+ball+soup+Filipino',
+    'Chicken Longganisa Style': 'chicken+longganisa+homemade',
   };
   const q = links[name] || encodeURIComponent(name + ' Filipino recipe');
   return 'https://www.youtube.com/results?search_query=' + q;
@@ -1677,9 +1776,1507 @@ const RECIPES = [
       'Serve hot with steamed rice.'
     ],
     cookingTime: '45 mins', estimatedCost: '₱95–₱130', category: 'Dinner', image: 'pork sinigang.jpg'
-  }
-];
+  },
+// ── 102 ──
+  {
+    id: 102, name: 'Sinabawang Isda',
+    ingredients: ['Tilapia', 'Ginger', 'Tomato', 'Onion', 'Kangkong', 'Fish Sauce (Patis)', 'Salt'],
+    tools: ['pot', 'electric-stove'],
+    steps: [
+      'Boil 4 cups water in pot.',
+      'Add ginger, onion, and tomato.',
+      'Add tilapia pieces, simmer 10 minutes.',
+      'Add kangkong.',
+      'Season with patis and salt.',
+      'Serve hot with steamed rice.'
+    ],
+    cookingTime: '18 mins', estimatedCost: '₱55–₱75', category: 'Dinner', image: 'sinabawang isda.jpg'
+  },
+  // ── 103 ──
+  {
+    id: 103, name: 'Pinakbet',
+    ingredients: ['Sitaw (String Beans)', 'Ampalaya (Bitter Melon)', 'Talong (Eggplant)', 'Garlic', 'Onion', 'Tomato', 'Cooking Oil', 'Fish Sauce (Patis)'],
+    tools: ['pot', 'electric-stove'],
+    steps: [
+      'Sauté garlic, onion, and tomato in oil.',
+      'Add all vegetables and toss.',
+      'Season with patis.',
+      'Add ¼ cup water, cover and cook 10 minutes.',
+      'Do not over-stir to keep vegetables intact.',
+      'Serve with rice.'
+    ],
+    cookingTime: '20 mins', estimatedCost: '₱45–₱65', category: 'Lunch', image: 'pinakbet.jpg'
+  },
+  // ── 104 ──
+  {
+    id: 104, name: 'Chopsuey',
+    ingredients: ['Cabbage', 'Carrot', 'Sitaw (String Beans)', 'Egg', 'Garlic', 'Onion', 'Oyster Sauce', 'Cooking Oil'],
+    tools: ['frying-pan', 'electric-stove'],
+    steps: [
+      'Heat oil, sauté garlic and onion.',
+      'Add carrot and sitaw, stir-fry 3 minutes.',
+      'Add cabbage and toss.',
+      'Add oyster sauce and ¼ cup water.',
+      'Crack egg in center and scramble into veggies.',
+      'Season with salt, serve with rice.'
+    ],
+    cookingTime: '15 mins', estimatedCost: '₱35–₱55', category: 'Lunch', image: 'chopsuey.jpg'
+  },
+  // ── 105 ──
+  {
+    id: 105, name: 'Paksiw na Isda',
+    ingredients: ['Bangus (Milkfish)', 'Vinegar', 'Garlic', 'Ginger', 'Salt', 'Pepper'],
+    tools: ['pot', 'electric-stove'],
+    steps: [
+      'Place fish in pot.',
+      'Add vinegar, garlic, ginger, salt, and pepper.',
+      'Add ½ cup water.',
+      'Bring to boil without stirring.',
+      'Simmer 15 minutes until fish is cooked.',
+      'Serve with rice.'
+    ],
+    cookingTime: '20 mins', estimatedCost: '₱55–₱75', category: 'Lunch', image: 'paksiw na isda.jpg'
+  },
+  // ── 106 ──
+  {
+    id: 106, name: 'Daing na Bangus',
+    ingredients: ['Bangus (Milkfish)', 'Vinegar', 'Garlic', 'Salt', 'Pepper', 'Cooking Oil'],
+    tools: ['frying-pan'],
+    steps: [
+      'Butterfly the bangus, marinate in vinegar, garlic, salt, pepper overnight or 1 hour.',
+      'Heat generous oil in pan.',
+      'Fry bangus belly-side down first until golden.',
+      'Flip and fry other side.',
+      'Serve with garlic rice, egg, and tomatoes.'
+    ],
+    cookingTime: '20 mins (+ marinating)', estimatedCost: '₱60–₱85', category: 'Breakfast', image: 'daing na bangus.jpg'
+  },
+  // ── 107 ──
+  {
+    id: 107, name: 'Menudo sa Lata',
+    ingredients: ['Corned Beef (canned)', 'Potato', 'Carrot', 'Tomato Sauce (canned)', 'Garlic', 'Onion', 'Cooking Oil'],
+    tools: ['frying-pan', 'electric-stove'],
+    steps: [
+      'Sauté garlic and onion in oil.',
+      'Add diced potato and carrot, cook 5 minutes.',
+      'Add corned beef, break apart and mix.',
+      'Pour tomato sauce, simmer 8 minutes.',
+      'Season with salt and pepper.',
+      'Serve with rice.'
+    ],
+    cookingTime: '20 mins', estimatedCost: '₱55–₱75', category: 'Lunch', image: 'menudo sa lata.jpg'
+  },
+  // ── 108 ──
+  {
+    id: 108, name: 'Canned Tuna with Sayote',
+    ingredients: ['Tuna (canned)', 'Sayote', 'Garlic', 'Onion', 'Soy Sauce', 'Cooking Oil'],
+    tools: ['frying-pan'],
+    steps: [
+      'Peel and slice sayote into thin strips.',
+      'Sauté garlic and onion.',
+      'Add sayote, cook 4 minutes.',
+      'Add drained tuna and soy sauce.',
+      'Stir and cook 3 more minutes.',
+      'Serve over rice.'
+    ],
+    cookingTime: '12 mins', estimatedCost: '₱30–₱45', category: 'Lunch', image: 'tuna sayote.jpg'
+  },
+  // ── 109 ──
+  {
+    id: 109, name: 'Sizzling Tofu Style Egg',
+    ingredients: ['Egg', 'Soy Sauce', 'Calamansi', 'Chili / Siling Labuyo', 'Onion', 'Cooking Oil', 'Margarine / Butter'],
+    tools: ['frying-pan'],
+    steps: [
+      'Melt butter in pan until very hot.',
+      'Fry eggs sunny-side up.',
+      'Meanwhile mix soy sauce, calamansi, chili, minced onion.',
+      'Pour sauce over eggs in hot pan.',
+      'It will sizzle dramatically — serve immediately.',
+      'Eat with rice.'
+    ],
+    cookingTime: '8 mins', estimatedCost: '₱12–₱22', category: 'Breakfast', image: 'sizzling tofu egg.jpg'
+  },
+  // ── 110 ──
+  {
+    id: 110, name: 'Pork Nilaga',
+    ingredients: ['Pork', 'Potato', 'Cabbage', 'Onion', 'Garlic', 'Salt', 'Pepper'],
+    tools: ['pot', 'electric-stove'],
+    steps: [
+      'Boil pork with onion and garlic in 5 cups water.',
+      'Simmer 25 minutes until tender.',
+      'Add potato, cook 10 minutes.',
+      'Add cabbage, season with salt and pepper.',
+      'Simmer 3 more minutes.',
+      'Serve hot with rice and patis.'
+    ],
+    cookingTime: '40 mins', estimatedCost: '₱75–₱100', category: 'Dinner', image: 'pork nilaga.jpg'
+  },
+  // ── 111 ──
+  {
+    id: 111, name: 'Scrambled Egg with Sardines',
+    ingredients: ['Egg', 'Sardines (canned)', 'Onion', 'Tomato', 'Salt', 'Cooking Oil'],
+    tools: ['frying-pan'],
+    steps: [
+      'Drain most of sardine sauce, mash fish lightly.',
+      'Beat eggs in bowl with salt.',
+      'Sauté onion and tomato in oil.',
+      'Add sardines and stir 1 minute.',
+      'Pour eggs over, scramble everything together.',
+      'Serve with rice.'
+    ],
+    cookingTime: '8 mins', estimatedCost: '₱22–₱35', category: 'Breakfast', image: 'scrambled egg sardines.jpg'
+  },
+  // ── 112 ──
+  {
+    id: 112, name: 'Ginisang Munggo',
+    ingredients: ['Garlic', 'Onion', 'Tomato', 'Kangkong', 'Fish Sauce (Patis)', 'Cooking Oil', 'Sardines (canned)'],
+    tools: ['pot', 'electric-stove'],
+    steps: [
+      'Sauté garlic, onion, and tomato in oil.',
+      'Add sardines (mashed slightly).',
+      'Pour 3 cups water and bring to boil.',
+      'Simmer 10 minutes.',
+      'Add kangkong, season with patis.',
+      'Serve over rice.'
+    ],
+    cookingTime: '18 mins', estimatedCost: '₱28–₱42', category: 'Dinner', image: 'ginisang munggo.jpg'
+  },
+  // ── 113 ──
+  {
+    id: 113, name: 'Stir-fried Corned Beef with Cabbage',
+    ingredients: ['Corned Beef (canned)', 'Cabbage', 'Garlic', 'Onion', 'Soy Sauce', 'Cooking Oil'],
+    tools: ['frying-pan'],
+    steps: [
+      'Sauté garlic and onion until soft.',
+      'Add corned beef, break apart and cook 3 minutes.',
+      'Add shredded cabbage and toss on high heat.',
+      'Drizzle soy sauce.',
+      'Cook until cabbage is tender.',
+      'Serve with rice.'
+    ],
+    cookingTime: '10 mins', estimatedCost: '₱40–₱55', category: 'Lunch', image: 'corned beef cabbage.jpg'
+  },
+  // ── 114 ──
+  {
+    id: 114, name: 'Ginataang Manok',
+    ingredients: ['Chicken', 'Coconut Milk (canned)', 'Garlic', 'Ginger', 'Onion', 'Chili / Siling Labuyo', 'Fish Sauce (Patis)'],
+    tools: ['pot', 'electric-stove'],
+    steps: [
+      'Sauté garlic, ginger, onion.',
+      'Add chicken pieces, cook until white.',
+      'Pour coconut milk and add chili.',
+      'Simmer 20 minutes.',
+      'Season with patis.',
+      'Cook until sauce thickens slightly.',
+      'Serve with rice.'
+    ],
+    cookingTime: '30 mins', estimatedCost: '₱90–₱120', category: 'Dinner', image: 'ginataang manok.jpg'
+  },
+  // ── 115 ──
+  {
+    id: 115, name: 'Spicy Tuna Rice Bowl',
+    ingredients: ['Tuna (canned)', 'Rice', 'Chili / Siling Labuyo', 'Garlic', 'Soy Sauce', 'Calamansi', 'Onion'],
+    tools: ['frying-pan', 'rice-cooker'],
+    steps: [
+      'Cook rice.',
+      'Drain tuna.',
+      'Sauté garlic, onion, and chili.',
+      'Add tuna, season with soy sauce and calamansi.',
+      'Cook 3 minutes, stirring.',
+      'Serve over rice.'
+    ],
+    cookingTime: '12 mins', estimatedCost: '₱28–₱40', category: 'Lunch', image: 'spicy tuna rice bowl.jpg'
+  },
+  // ── 116 ──
+  {
+    id: 116, name: 'Ginisang Ampalaya with Pork',
+    ingredients: ['Ampalaya (Bitter Melon)', 'Pork', 'Garlic', 'Onion', 'Tomato', 'Egg', 'Cooking Oil', 'Salt'],
+    tools: ['frying-pan', 'electric-stove'],
+    steps: [
+      'Slice ampalaya, rub with salt, squeeze and rinse.',
+      'Sauté garlic, onion, tomato.',
+      'Add pork strips, cook until done.',
+      'Add ampalaya, stir-fry 4 minutes.',
+      'Pour beaten egg, scramble in.',
+      'Season and serve.'
+    ],
+    cookingTime: '18 mins', estimatedCost: '₱55–₱75', category: 'Dinner', image: 'ginisang ampalaya pork.jpg'
+  },
+  // ── 117 ──
+  {
+    id: 117, name: 'Tortang Tuna',
+    ingredients: ['Tuna (canned)', 'Egg', 'Onion', 'Garlic', 'Salt', 'Pepper', 'Cooking Oil'],
+    tools: ['frying-pan'],
+    steps: [
+      'Drain tuna and flake it.',
+      'Beat eggs, mix in tuna, diced onion, garlic, salt, pepper.',
+      'Heat oil in pan.',
+      'Pour half the mixture, cook until set.',
+      'Flip carefully, cook other side.',
+      'Repeat, serve with rice and ketchup.'
+    ],
+    cookingTime: '12 mins', estimatedCost: '₱30–₱44', category: 'Lunch', image: 'tortang tuna.jpg'
+  },
+  // ── 118 ──
+  {
+    id: 118, name: 'Arroz Caldo (Microwave)',
+    ingredients: ['Rice', 'Chicken', 'Ginger', 'Fish Sauce (Patis)', 'Green Onion', 'Salt'],
+    tools: ['microwave'],
+    steps: [
+      'Mix cooked rice with 3 cups water in large microwave-safe bowl.',
+      'Add chicken strips and grated ginger.',
+      'Microwave 6 minutes, stir.',
+      'Microwave 4 more minutes until porridge consistency.',
+      'Season with patis and salt.',
+      'Top with green onion.'
+    ],
+    cookingTime: '15 mins', estimatedCost: '₱38–₱55', category: 'Breakfast', image: 'arroz caldo microwave.jpg'
+  },
+  // ── 119 ──
+  {
+    id: 119, name: 'Chicken and Potato Stew',
+    ingredients: ['Chicken', 'Potato', 'Tomato Sauce (canned)', 'Garlic', 'Onion', 'Cooking Oil', 'Salt', 'Pepper'],
+    tools: ['pot', 'electric-stove'],
+    steps: [
+      'Sauté garlic and onion.',
+      'Brown chicken pieces on all sides.',
+      'Add potato cubes and toss.',
+      'Pour tomato sauce and ½ cup water.',
+      'Simmer 20 minutes until potato is tender.',
+      'Season and serve with rice.'
+    ],
+    cookingTime: '30 mins', estimatedCost: '₱80–₱110', category: 'Dinner', image: 'chicken potato stew.jpg'
+  },
+  // ── 120 ──
+  {
+    id: 120, name: 'Itlog na Maalat (Salted Egg) with Tomato',
+    ingredients: ['Egg', 'Tomato', 'Onion', 'Calamansi', 'Salt', 'Chili / Siling Labuyo'],
+    tools: ['pot', 'knife'],
+    steps: [
+      'Hard-boil eggs until fully cooked (12 minutes).',
+      'Let cool, peel and slice.',
+      'Slice tomatoes and onions.',
+      'Arrange egg, tomato, and onion on plate.',
+      'Squeeze calamansi, add chili and a pinch of salt.',
+      'Serve as side dish.'
+    ],
+    cookingTime: '15 mins', estimatedCost: '₱18–₱28', category: 'Snacks', image: 'itlog salted egg.jpg'
+  },
+  // ── 121 ──
+  {
+    id: 121, name: 'Adobong Kangkong',
+    ingredients: ['Kangkong', 'Garlic', 'Soy Sauce', 'Vinegar', 'Cooking Oil', 'Pepper'],
+    tools: ['frying-pan'],
+    steps: [
+      'Heat oil and fry garlic until golden.',
+      'Add kangkong stems first, then leaves.',
+      'Pour soy sauce and vinegar.',
+      'Toss quickly over high heat.',
+      'Season with pepper.',
+      'Serve immediately — do not overcook.'
+    ],
+    cookingTime: '5 mins', estimatedCost: '₱15–₱22', category: 'Lunch', image: 'adobong kangkong.jpg'
+  },
+  // ── 122 ──
+  {
+    id: 122, name: 'Pork Steak Filipino Style',
+    ingredients: ['Pork', 'Soy Sauce', 'Calamansi', 'Garlic', 'Onion', 'Cooking Oil', 'Pepper'],
+    tools: ['frying-pan'],
+    steps: [
+      'Marinate pork in soy sauce, calamansi, garlic, pepper for 30 mins.',
+      'Heat oil in pan on high.',
+      'Sear pork slices until browned on both sides.',
+      'Remove pork, sauté onion rings in same pan.',
+      'Add marinade to pan and simmer 2 minutes.',
+      'Pour sauce over pork and serve.'
+    ],
+    cookingTime: '20 mins (+ marinating)', estimatedCost: '₱70–₱95', category: 'Dinner', image: 'pork steak.jpg'
+  },
+  // ── 123 ──
+  {
+    id: 123, name: 'Ginisang Sitaw at Hipon Style',
+    ingredients: ['Sitaw (String Beans)', 'Garlic', 'Onion', 'Tomato', 'Soy Sauce', 'Cooking Oil', 'Salt'],
+    tools: ['frying-pan'],
+    steps: [
+      'Cut sitaw into 2-inch pieces.',
+      'Heat oil, sauté garlic, onion, tomato.',
+      'Add sitaw, stir-fry 5 minutes.',
+      'Season with soy sauce and salt.',
+      'Add 2 tbsp water, cover 3 minutes.',
+      'Serve with rice.'
+    ],
+    cookingTime: '12 mins', estimatedCost: '₱20–₱32', category: 'Lunch', image: 'ginisang sitaw hipon.jpg'
+  },
+  // ── 124 ──
+  {
+    id: 124, name: 'Banana Cue',
+    ingredients: ['Kamote (Sweet Potato)', 'Sugar', 'Cooking Oil'],
+    tools: ['frying-pan'],
+    steps: [
+      'Use kamote slices as banana substitute.',
+      'Heat oil in pan over medium.',
+      'Fry kamote until soft, about 5 minutes.',
+      'Sprinkle brown sugar liberally over kamote.',
+      'Let sugar caramelize and coat the pieces.',
+      'Skewer and serve as merienda.'
+    ],
+    cookingTime: '15 mins', estimatedCost: '₱12–₱20', category: 'Snacks', image: 'banana cue.jpg'
+  },
+  // ── 125 ──
+  {
+    id: 125, name: 'Lugaw with Corned Beef',
+    ingredients: ['Rice', 'Corned Beef (canned)', 'Ginger', 'Garlic', 'Onion', 'Green Onion', 'Salt'],
+    tools: ['pot', 'electric-stove'],
+    steps: [
+      'Sauté garlic, ginger, onion.',
+      'Add rice and stir 1 minute.',
+      'Pour 5 cups water, boil then simmer 25 minutes.',
+      'Stir in corned beef, cook 5 more minutes.',
+      'Season with salt.',
+      'Top with green onion and serve.'
+    ],
+    cookingTime: '35 mins', estimatedCost: '₱35–₱50', category: 'Breakfast', image: 'lugaw corned beef.jpg'
+  },
+  // ── 126 ──
+  {
+    id: 126, name: 'Tokwa at Itlog (Egg & Bean Curd Style)',
+    ingredients: ['Egg', 'Soy Sauce', 'Vinegar', 'Garlic', 'Onion', 'Chili / Siling Labuyo', 'Cooking Oil'],
+    tools: ['frying-pan'],
+    steps: [
+      'Hard-boil 3 eggs, peel and halve.',
+      'Mix soy sauce, vinegar, minced garlic, onion, chili.',
+      'Fry eggs in oil until edges are crispy.',
+      'Place in bowl, pour sauce over.',
+      'Let sit 2 minutes to absorb.',
+      'Serve as side dish.'
+    ],
+    cookingTime: '15 mins', estimatedCost: '₱15–₱25', category: 'Lunch', image: 'tokwa itlog.jpg'
+  },
+  // ── 127 ──
+  {
+    id: 127, name: 'Tuna Sinangag',
+    ingredients: ['Rice', 'Tuna (canned)', 'Garlic', 'Onion', 'Soy Sauce', 'Cooking Oil', 'Egg'],
+    tools: ['frying-pan'],
+    steps: [
+      'Fry garlic in oil until golden.',
+      'Add onion and sauté.',
+      'Add drained tuna, stir-fry 2 minutes.',
+      'Add cold rice, press and stir-fry on high.',
+      'Drizzle soy sauce, push aside and scramble egg.',
+      'Mix all together and serve.'
+    ],
+    cookingTime: '10 mins', estimatedCost: '₱28–₱40', category: 'Breakfast', image: 'tuna sinangag.jpg'
+  },
+  // ── 128 ──
+  {
+    id: 128, name: 'Karekare Style Peanut Vegetable',
+    ingredients: ['Sitaw (String Beans)', 'Cabbage', 'Peanut Butter', 'Garlic', 'Onion', 'Cooking Oil', 'Salt', 'Fish Sauce (Patis)'],
+    tools: ['pot', 'electric-stove'],
+    steps: [
+      'Sauté garlic and onion in oil.',
+      'Add sitaw and cabbage, stir-fry 3 minutes.',
+      'Dissolve peanut butter in 1 cup warm water.',
+      'Pour peanut sauce over vegetables.',
+      'Simmer 5 minutes until thick.',
+      'Season with patis and serve over rice.'
+    ],
+    cookingTime: '18 mins', estimatedCost: '₱35–₱50', category: 'Dinner', image: 'karekare style.jpg'
+  },
+  // ── 129 ──
+  {
+    id: 129, name: 'Hotdog Pasta Hack',
+    ingredients: ['Instant Noodles', 'Hotdog', 'Tomato Sauce (canned)', 'Garlic', 'Onion', 'Cooking Oil'],
+    tools: ['pot', 'electric-stove'],
+    steps: [
+      'Cook noodles without seasoning packet, drain.',
+      'Slice hotdogs into coins and fry until charred.',
+      'Sauté garlic and onion.',
+      'Add tomato sauce, simmer 3 minutes.',
+      'Add noodles and hotdog, toss.',
+      'Season and serve.'
+    ],
+    cookingTime: '15 mins', estimatedCost: '₱28–₱40', category: 'Lunch', image: 'hotdog pasta.jpg'
+  },
+  // ── 130 ──
+  {
+    id: 130, name: 'Pork Salpicao',
+    ingredients: ['Pork', 'Garlic', 'Soy Sauce', 'Oyster Sauce', 'Cooking Oil', 'Pepper'],
+    tools: ['frying-pan'],
+    steps: [
+      'Cube pork into bite-sized pieces.',
+      'Marinate in soy sauce, oyster sauce, pepper 15 mins.',
+      'Heat oil in pan on very high heat.',
+      'Add garlic, fry until golden and crispy.',
+      'Add pork, sear quickly until cooked through.',
+      'Serve on rice with garlic oil drizzle.'
+    ],
+    cookingTime: '20 mins', estimatedCost: '₱65–₱88', category: 'Dinner', image: 'pork salpicao.jpg'
+  },
+  // ── 131 ──
+  {
+    id: 131, name: 'Ginataang Gulay',
+    ingredients: ['Sitaw (String Beans)', 'Ampalaya (Bitter Melon)', 'Coconut Milk (canned)', 'Garlic', 'Onion', 'Ginger', 'Fish Sauce (Patis)'],
+    tools: ['pot', 'electric-stove'],
+    steps: [
+      'Sauté garlic, ginger, and onion.',
+      'Add vegetables and stir-fry 2 minutes.',
+      'Pour coconut milk and simmer 10 minutes.',
+      'Season with patis.',
+      'Cook until vegetables are tender.',
+      'Serve with rice.'
+    ],
+    cookingTime: '18 mins', estimatedCost: '₱40–₱58', category: 'Dinner', image: 'ginataang gulay.jpg'
+  },
+  // ── 132 ──
+  {
+    id: 132, name: 'Egg and Potato Frittata',
+    ingredients: ['Egg', 'Potato', 'Onion', 'Garlic', 'Salt', 'Pepper', 'Cooking Oil'],
+    tools: ['frying-pan', 'oven-toaster'],
+    steps: [
+      'Dice and pan-fry potato until golden.',
+      'Beat eggs with salt, pepper, garlic, onion.',
+      'Pour egg mixture over potato in pan.',
+      'Cook on low until edges set.',
+      'Finish in oven toaster 5 minutes until fully set.',
+      'Slice and serve like pizza slices.'
+    ],
+    cookingTime: '20 mins', estimatedCost: '₱25–₱38', category: 'Breakfast', image: 'egg potato frittata.jpg'
+  },
+  // ── 133 ──
+  {
+    id: 133, name: 'Chicken Arroz Caldo de Leche',
+    ingredients: ['Rice', 'Chicken', 'Condensed Milk', 'Ginger', 'Salt', 'Green Onion'],
+    tools: ['pot', 'electric-stove'],
+    steps: [
+      'Boil chicken and ginger in 5 cups water.',
+      'Add rice, simmer until thick.',
+      'Stir in condensed milk for creamy sweetness.',
+      'Season with salt.',
+      'Top with green onion.',
+      'Serve as comforting meal.'
+    ],
+    cookingTime: '35 mins', estimatedCost: '₱55–₱75', category: 'Breakfast', image: 'arroz caldo de leche.jpg'
+  },
+  // ── 134 ──
+  {
+    id: 134, name: 'Garlicky Spinach Style Kangkong',
+    ingredients: ['Kangkong', 'Garlic', 'Cooking Oil', 'Salt', 'Oyster Sauce'],
+    tools: ['frying-pan'],
+    steps: [
+      'Slice garlic thinly.',
+      'Heat generous oil, fry garlic until golden.',
+      'Add kangkong leaves, toss quickly on high heat.',
+      'Add oyster sauce.',
+      'Season with salt and serve immediately.',
+      'Do not overcook.'
+    ],
+    cookingTime: '5 mins', estimatedCost: '₱12–₱20', category: 'Lunch', image: 'garlicky kangkong.jpg'
+  },
+  // ── 135 ──
+  {
+    id: 135, name: 'Pork Hamonado',
+    ingredients: ['Pork', 'Condensed Milk', 'Soy Sauce', 'Garlic', 'Cooking Oil', 'Salt', 'Pepper'],
+    tools: ['frying-pan', 'pot'],
+    steps: [
+      'Slice pork thinly.',
+      'Marinate in soy sauce, garlic 20 minutes.',
+      'Fry pork until browned.',
+      'Pour condensed milk over pork.',
+      'Simmer until sauce caramelizes and thickens.',
+      'Season and serve with rice.'
+    ],
+    cookingTime: '25 mins', estimatedCost: '₱65–₱90', category: 'Dinner', image: 'pork hamonado.jpg'
+  },
+  // ── 136 ──
+  {
+    id: 136, name: 'Ginisang Kamote Tops',
+    ingredients: ['Kamote (Sweet Potato)', 'Garlic', 'Onion', 'Fish Sauce (Patis)', 'Cooking Oil'],
+    tools: ['frying-pan'],
+    steps: [
+      'Use the leafy tops of kamote if available, or slice kamote thinly.',
+      'Heat oil and sauté garlic and onion.',
+      'Add kamote, toss to coat.',
+      'Season with patis.',
+      'Add 2 tbsp water, cover and cook 5 minutes.',
+      'Serve with rice.'
+    ],
+    cookingTime: '10 mins', estimatedCost: '₱12–₱22', category: 'Lunch', image: 'ginisang kamote tops.jpg'
+  },
+  // ── 137 ──
+  {
+    id: 137, name: 'Sardines Spaghetti (Instant Noodle)',
+    ingredients: ['Instant Noodles', 'Sardines (canned)', 'Tomato Sauce (canned)', 'Garlic', 'Onion', 'Sugar', 'Cooking Oil'],
+    tools: ['pot', 'electric-stove'],
+    steps: [
+      'Cook noodles, drain.',
+      'Sauté garlic and onion.',
+      'Add sardines, mash slightly.',
+      'Add tomato sauce and a pinch of sugar.',
+      'Simmer 5 minutes.',
+      'Toss with noodles and serve.'
+    ],
+    cookingTime: '15 mins', estimatedCost: '₱28–₱40', category: 'Lunch', image: 'sardines spaghetti.jpg'
+  },
+  // ── 138 ──
+  {
+    id: 138, name: 'Pork Humba',
+    ingredients: ['Pork', 'Soy Sauce', 'Vinegar', 'Sugar', 'Garlic', 'Cooking Oil', 'Pepper'],
+    tools: ['pot', 'electric-stove'],
+    steps: [
+      'Brown pork pieces in oil.',
+      'Add soy sauce, vinegar, garlic, and pepper.',
+      'Add ½ cup water and sugar.',
+      'Simmer 30 minutes until sauce thickens.',
+      'The pork should be tender and caramelized.',
+      'Serve with rice.'
+    ],
+    cookingTime: '40 mins', estimatedCost: '₱75–₱100', category: 'Dinner', image: 'pork humba.jpg'
+  },
+  // ── 139 ──
+  {
+    id: 139, name: 'Scrambled Egg with Corned Beef Toast',
+    ingredients: ['Egg', 'Corned Beef (canned)', 'Bread', 'Margarine / Butter', 'Salt', 'Pepper'],
+    tools: ['frying-pan', 'oven-toaster'],
+    steps: [
+      'Toast bread in oven toaster.',
+      'Melt butter in pan.',
+      'Add corned beef and cook 2 minutes.',
+      'Beat eggs and pour over beef.',
+      'Scramble gently until set.',
+      'Pile onto toast and serve.'
+    ],
+    cookingTime: '10 mins', estimatedCost: '₱35–₱50', category: 'Breakfast', image: 'corned beef toast.jpg'
+  },
+  // ── 140 ──
+  {
+    id: 140, name: 'Adobong Pusit Style Squid Ball',
+    ingredients: ['Squid Ball', 'Soy Sauce', 'Vinegar', 'Garlic', 'Onion', 'Chili / Siling Labuyo', 'Cooking Oil'],
+    tools: ['frying-pan'],
+    steps: [
+      'Fry squid balls until golden.',
+      'Set aside.',
+      'Sauté garlic, onion, chili in same pan.',
+      'Add soy sauce and vinegar.',
+      'Return squid balls and toss.',
+      'Simmer 3 minutes and serve.'
+    ],
+    cookingTime: '12 mins', estimatedCost: '₱22–₱35', category: 'Snacks', image: 'adobong pusit squid ball.jpg'
+  },
+  // ── 141 ──
+  {
+    id: 141, name: 'Steamed Egg (Chinese Style)',
+    ingredients: ['Egg', 'Soy Sauce', 'Salt', 'Green Onion'],
+    tools: ['pot', 'electric-stove', 'rice-cooker'],
+    steps: [
+      'Beat 3 eggs with equal amount of warm water.',
+      'Add pinch of salt, strain into bowl.',
+      'Steam over very low heat in pot with water, covered, 15 minutes.',
+      'Or place in rice cooker during rice cooking.',
+      'Drizzle soy sauce over finished custard.',
+      'Garnish with green onion.'
+    ],
+    cookingTime: '18 mins', estimatedCost: '₱10–₱18', category: 'Lunch', image: 'steamed egg.jpg'
+  },
+  // ── 142 ──
+  {
+    id: 142, name: 'Bulalo Rice (One Pot)',
+    ingredients: ['Rice', 'Pork', 'Cabbage', 'Onion', 'Salt', 'Pepper', 'Fish Sauce (Patis)'],
+    tools: ['pot', 'electric-stove'],
+    steps: [
+      'Boil pork with onion in 4 cups water until tender.',
+      'Remove pork, add rice to broth.',
+      'Cook rice in broth until absorbed.',
+      'Add cabbage and return pork.',
+      'Season with patis and pepper.',
+      'Serve as one-pot meal.'
+    ],
+    cookingTime: '40 mins', estimatedCost: '₱70–₱95', category: 'Dinner', image: 'bulalo rice.jpg'
+  },
+  // ── 143 ──
+  {
+    id: 143, name: 'Pancit Canton Guisado',
+    ingredients: ['Lucky Me Pancit Canton', 'Pork', 'Cabbage', 'Carrot', 'Garlic', 'Onion', 'Soy Sauce', 'Cooking Oil'],
+    tools: ['frying-pan', 'electric-stove'],
+    steps: [
+      'Soak noodles in warm water briefly, drain.',
+      'Sauté garlic, onion, add pork strips.',
+      'Add vegetables, stir-fry 3 minutes.',
+      'Add noodles and seasoning packet.',
+      'Drizzle soy sauce and toss well.',
+      'Serve with calamansi on the side.'
+    ],
+    cookingTime: '15 mins', estimatedCost: '₱45–₱65', category: 'Lunch', image: 'pancit canton guisado.jpg'
+  },
+  // ── 144 ──
+  {
+    id: 144, name: 'Chicken Pastel Budget Style',
+    ingredients: ['Chicken', 'Potato', 'Carrot', 'Onion', 'Garlic', 'Evaporated Milk', 'Cooking Oil', 'Salt', 'Pepper'],
+    tools: ['pot', 'electric-stove'],
+    steps: [
+      'Sauté garlic, onion, brown chicken.',
+      'Add potato and carrot cubes.',
+      'Pour evaporated milk and ½ cup water.',
+      'Simmer 20 minutes until vegetables are soft.',
+      'Season with salt and pepper.',
+      'Serve over rice or with bread.'
+    ],
+    cookingTime: '30 mins', estimatedCost: '₱85–₱110', category: 'Dinner', image: 'chicken pastel.jpg'
+  },
+  // ── 145 ──
+  {
+    id: 145, name: 'Ginisang Upo',
+    ingredients: ['Sayote', 'Garlic', 'Onion', 'Fish Sauce (Patis)', 'Cooking Oil', 'Salt'],
+    tools: ['frying-pan'],
+    steps: [
+      'Peel and cube sayote (used as upo substitute).',
+      'Heat oil and sauté garlic and onion.',
+      'Add sayote cubes.',
+      'Season with patis and salt.',
+      'Cover and cook 10 minutes until tender.',
+      'Serve with rice.'
+    ],
+    cookingTime: '15 mins', estimatedCost: '₱18–₱28', category: 'Lunch', image: 'ginisang upo.jpg'
+  },
+  // ── 146 ──
+  {
+    id: 146, name: 'Egg and Mushroom Scramble',
+    ingredients: ['Egg', 'Mushroom (canned)', 'Garlic', 'Onion', 'Soy Sauce', 'Cooking Oil', 'Salt'],
+    tools: ['frying-pan'],
+    steps: [
+      'Drain and slice canned mushrooms.',
+      'Sauté garlic and onion.',
+      'Add mushrooms, cook 3 minutes.',
+      'Beat eggs and pour over mushrooms.',
+      'Scramble gently.',
+      'Season with soy sauce and salt, serve with toast or rice.'
+    ],
+    cookingTime: '10 mins', estimatedCost: '₱22–₱35', category: 'Breakfast', image: 'egg mushroom scramble.jpg'
+  },
+  // ── 147 ──
+  {
+    id: 147, name: 'Coconut Milk Oatmeal',
+    ingredients: ['Instant Oatmeal', 'Coconut Milk (canned)', 'Sugar', 'Salt', 'Banana Catsup'],
+    tools: ['pot', 'microwave'],
+    steps: [
+      'Pour coconut milk into pot or microwave bowl.',
+      'Add oatmeal and mix.',
+      'Cook 2–3 minutes until thick.',
+      'Add sugar and pinch of salt.',
+      'Serve warm.',
+      'Optionally top with banana catsup for Filipino twist.'
+    ],
+    cookingTime: '5 mins', estimatedCost: '₱22–₱32', category: 'Breakfast', image: 'coconut oatmeal.jpg'
+  },
+  // ── 148 ──
+  {
+    id: 148, name: 'Adobo Flakes Sinangag',
+    ingredients: ['Rice', 'Pork', 'Soy Sauce', 'Vinegar', 'Garlic', 'Cooking Oil', 'Pepper'],
+    tools: ['pot', 'frying-pan'],
+    steps: [
+      'Cook pork adobo until very tender, then shred.',
+      'Crisp shredded pork in oil until dry and flaky.',
+      'Fry garlic in same pan.',
+      'Add cold rice, stir-fry.',
+      'Mix in pork flakes.',
+      'Season and serve.'
+    ],
+    cookingTime: '45 mins', estimatedCost: '₱75–₱100', category: 'Breakfast', image: 'adobo flakes sinangag.jpg'
+  },
+  // ── 149 ──
+  {
+    id: 149, name: 'Sinabawang Manok at Gata',
+    ingredients: ['Chicken', 'Onion', 'Garlic', 'Ginger', 'Fish Sauce (Patis)', 'Salt', 'Pepper', 'Coconut Milk (canned)'],
+    tools: ['pot', 'electric-stove'],
+    steps: [
+      'Boil chicken with onion, garlic, ginger.',
+      'Simmer 20 minutes.',
+      'Add coconut milk.',
+      'Season with patis, salt, and pepper.',
+      'Simmer 5 more minutes.',
+      'Serve as comforting soup.'
+    ],
+    cookingTime: '30 mins', estimatedCost: '₱80–₱105', category: 'Dinner', image: 'sinabawang manok.jpg'
+  },
+  // ── 150 ──
+  {
+    id: 150, name: 'Spam and Egg Rice Bowl',
+    ingredients: ['Spam', 'Egg', 'Rice', 'Soy Sauce', 'Garlic', 'Cooking Oil', 'Green Onion'],
+    tools: ['frying-pan', 'rice-cooker'],
+    steps: [
+      'Cook rice.',
+      'Slice and fry Spam until caramelized.',
+      'Fry egg sunny-side up.',
+      'Mix garlic in oil, sauté briefly.',
+      'Drizzle soy sauce over.',
+      'Serve Spam and egg over rice, top with green onion.'
+    ],
+    cookingTime: '12 mins', estimatedCost: '₱55–₱75', category: 'Breakfast', image: 'spam egg rice bowl.jpg'
+  },
+  // ── 151 ──
+  {
+    id: 151, name: 'Ginataang Sitaw',
+    ingredients: ['Sitaw (String Beans)', 'Coconut Milk (canned)', 'Garlic', 'Onion', 'Ginger', 'Fish Sauce (Patis)', 'Salt'],
+    tools: ['pot', 'electric-stove'],
+    steps: [
+      'Sauté garlic, ginger, onion.',
+      'Add sitaw, stir-fry 2 minutes.',
+      'Pour coconut milk.',
+      'Simmer 10 minutes until sitaw is tender.',
+      'Season with patis and salt.',
+      'Serve with rice.'
+    ],
+    cookingTime: '15 mins', estimatedCost: '₱30–₱45', category: 'Dinner', image: 'ginataang sitaw.jpg'
+  },
+  // ── 152 ──
+  {
+    id: 152, name: 'Fried Rice with Vegetables',
+    ingredients: ['Rice', 'Carrot', 'Cabbage', 'Egg', 'Garlic', 'Soy Sauce', 'Cooking Oil'],
+    tools: ['frying-pan'],
+    steps: [
+      'Sauté garlic in oil.',
+      'Add diced carrot, stir-fry 2 minutes.',
+      'Add shredded cabbage, toss.',
+      'Add cold rice, stir-fry on high.',
+      'Drizzle soy sauce, push aside and scramble egg.',
+      'Mix everything and serve.'
+    ],
+    cookingTime: '12 mins', estimatedCost: '₱18–₱30', category: 'Lunch', image: 'fried rice vegetables.jpg'
+  },
+  // ── 153 ──
+  {
+    id: 153, name: 'Pork Belly Fried',
+    ingredients: ['Pork', 'Garlic', 'Salt', 'Pepper', 'Vinegar', 'Cooking Oil'],
+    tools: ['frying-pan'],
+    steps: [
+      'Slice pork belly into strips.',
+      'Season with salt and pepper.',
+      'Marinate in garlic and vinegar 15 minutes.',
+      'Pat dry.',
+      'Fry in oil until crispy and golden.',
+      'Serve with spiced vinegar and rice.'
+    ],
+    cookingTime: '25 mins', estimatedCost: '₱70–₱95', category: 'Dinner', image: 'pork belly fried.jpg'
+  },
+  // ── 154 ──
+  {
+    id: 154, name: 'Chicken Soup with Ginger',
+    ingredients: ['Chicken', 'Ginger', 'Garlic', 'Onion', 'Salt', 'Pepper', 'Green Onion'],
+    tools: ['pot', 'electric-stove'],
+    steps: [
+      'Boil 5 cups water.',
+      'Add chicken, garlic, ginger, onion.',
+      'Simmer 25 minutes.',
+      'Season with salt and pepper.',
+      'Top with green onion.',
+      'Serve as healing soup.'
+    ],
+    cookingTime: '30 mins', estimatedCost: '₱70–₱95', category: 'Dinner', image: 'chicken ginger soup.jpg'
+  },
+  // ── 155 ──
+  {
+    id: 155, name: 'Peanut Sauce Noodles',
+    ingredients: ['Instant Noodles', 'Peanut Butter', 'Soy Sauce', 'Garlic', 'Chili / Siling Labuyo', 'Calamansi', 'Sugar'],
+    tools: ['pot', 'electric-stove'],
+    steps: [
+      'Cook noodles, drain.',
+      'Mix peanut butter, soy sauce, calamansi, chili, sugar, and 3 tbsp hot water.',
+      'Whisk until smooth.',
+      'Pour sauce over noodles.',
+      'Add minced garlic.',
+      'Toss and serve.'
+    ],
+    cookingTime: '10 mins', estimatedCost: '₱18–₱28', category: 'Lunch', image: 'peanut sauce noodles.jpg'
+  },
+  // ── 156 ──
+  {
+    id: 156, name: 'Caldereta Budget Style',
+    ingredients: ['Pork', 'Potato', 'Carrot', 'Tomato Sauce (canned)', 'Garlic', 'Onion', 'Cooking Oil', 'Salt'],
+    tools: ['pot', 'electric-stove'],
+    steps: [
+      'Sauté garlic and onion.',
+      'Brown pork pieces.',
+      'Add tomato sauce and ½ cup water.',
+      'Add potato and carrot.',
+      'Simmer 25 minutes until tender.',
+      'Season with salt and serve with rice.'
+    ],
+    cookingTime: '38 mins', estimatedCost: '₱85–₱115', category: 'Dinner', image: 'caldereta budget.jpg'
+  },
+  // ── 157 ──
+  {
+    id: 157, name: 'Canned Mushroom Soup',
+    ingredients: ['Mushroom (canned)', 'Evaporated Milk', 'Garlic', 'Onion', 'Margarine / Butter', 'Salt', 'Pepper'],
+    tools: ['pot', 'electric-stove'],
+    steps: [
+      'Melt butter, sauté garlic and onion.',
+      'Add mushrooms (with liquid).',
+      'Pour evaporated milk and 1 cup water.',
+      'Simmer 8 minutes.',
+      'Season with salt and pepper.',
+      'Serve with bread as light meal.'
+    ],
+    cookingTime: '15 mins', estimatedCost: '₱35–₱50', category: 'Dinner', image: 'canned mushroom soup.jpg'
+  },
+  // ── 158 ──
+  {
+    id: 158, name: 'Tomato Egg Stir-fry',
+    ingredients: ['Tomato', 'Egg', 'Garlic', 'Onion', 'Salt', 'Sugar', 'Cooking Oil'],
+    tools: ['frying-pan'],
+    steps: [
+      'Heat oil, sauté garlic and onion.',
+      'Add diced tomatoes, cook until soft.',
+      'Add a pinch of sugar to balance acidity.',
+      'Pour beaten eggs over tomatoes.',
+      'Scramble gently.',
+      'Season with salt and serve with rice.'
+    ],
+    cookingTime: '8 mins', estimatedCost: '₱15–₱24', category: 'Breakfast', image: 'tomato egg stir fry.jpg'
+  },
+  // ── 159 ──
+  {
+    id: 159, name: 'Spicy Squid Balls Street Style',
+    ingredients: ['Squid Ball', 'Garlic', 'Chili / Siling Labuyo', 'Calamansi', 'Salt', 'Cooking Oil', 'Vinegar'],
+    tools: ['frying-pan'],
+    steps: [
+      'Deep or shallow fry squid balls until golden.',
+      'Make dipping sauce: vinegar, calamansi, chili, garlic, salt.',
+      'Or toss squid balls in the sauce over heat 1 minute.',
+      'Serve hot as street food style snack.'
+    ],
+    cookingTime: '8 mins', estimatedCost: '₱18–₱28', category: 'Snacks', image: 'nilasing squid balls.jpg'
+  },
+  // ── 160 ──
+  {
+    id: 160, name: 'Rice Cooker Chicken Rice (Hainanese Style)',
+    ingredients: ['Chicken', 'Rice', 'Ginger', 'Garlic', 'Salt', 'Soy Sauce', 'Green Onion'],
+    tools: ['rice-cooker'],
+    steps: [
+      'Season chicken with salt, ginger, garlic.',
+      'Place chicken on top of washed rice in rice cooker.',
+      'Add normal amount of water.',
+      'Cook on normal setting.',
+      'Remove chicken, slice.',
+      'Serve chicken over flavored rice with soy sauce and green onion.'
+    ],
+    cookingTime: '30 mins', estimatedCost: '₱70–₱95', category: 'Dinner', image: 'hainanese style chicken rice.jpg'
+  },
+  // ── 161 ──
+  {
+    id: 161, name: 'Pork Tocino Bowl',
+    ingredients: ['Tocino', 'Egg', 'Rice', 'Garlic', 'Vinegar', 'Cooking Oil'],
+    tools: ['frying-pan', 'rice-cooker'],
+    steps: [
+      'Cook rice.',
+      'Fry tocino until caramelized.',
+      'Fry garlic until golden.',
+      'Fry egg sunny-side up.',
+      'Plate over rice.',
+      'Serve with garlic vinegar dip.'
+    ],
+    cookingTime: '15 mins', estimatedCost: '₱40–₱60', category: 'Breakfast', image: 'pork tocino bowl.jpg'
+  },
+  // ── 162 ──
+  {
+    id: 162, name: 'Sautéed Kangkong with Oyster Sauce',
+    ingredients: ['Kangkong', 'Garlic', 'Oyster Sauce', 'Cooking Oil', 'Soy Sauce'],
+    tools: ['frying-pan'],
+    steps: [
+      'Blanch kangkong in boiling water 1 minute, drain.',
+      'Heat oil, sauté sliced garlic until golden.',
+      'Add kangkong back to pan.',
+      'Pour oyster sauce and soy sauce.',
+      'Toss quickly and serve.',
+      'Best eaten immediately.'
+    ],
+    cookingTime: '8 mins', estimatedCost: '₱15–₱22', category: 'Lunch', image: 'kangkong oyster sauce.jpg'
+  },
+  // ── 163 ──
+  {
+    id: 163, name: 'Microwave Omelette',
+    ingredients: ['Egg', 'Onion', 'Tomato', 'Salt', 'Pepper'],
+    tools: ['microwave'],
+    steps: [
+      'Beat 2 eggs in microwave-safe mug.',
+      'Add diced onion, tomato, salt, pepper.',
+      'Mix well.',
+      'Microwave 1 minute, stir.',
+      'Microwave 45 more seconds until set.',
+      'Slide onto rice and eat.'
+    ],
+    cookingTime: '4 mins', estimatedCost: '₱10–₱18', category: 'Breakfast', image: 'microwave omelette.jpg'
+  },
+  // ── 164 ──
+  {
+    id: 164, name: 'Spicy Garlic Corned Beef',
+    ingredients: ['Corned Beef (canned)', 'Garlic', 'Chili / Siling Labuyo', 'Onion', 'Cooking Oil', 'Soy Sauce'],
+    tools: ['frying-pan'],
+    steps: [
+      'Heat oil, fry garlic and chili until fragrant.',
+      'Add onion, sauté.',
+      'Add corned beef, break apart.',
+      'Drizzle soy sauce.',
+      'Fry on high heat until slightly crispy.',
+      'Serve with garlic rice.'
+    ],
+    cookingTime: '8 mins', estimatedCost: '₱38–₱52', category: 'Breakfast', image: 'spicy garlic corned beef.jpg'
+  },
+  // ── 165 ──
+  {
+    id: 165, name: 'Ginataang Puso ng Saging Style',
+    ingredients: ['Cabbage', 'Coconut Milk (canned)', 'Pork', 'Garlic', 'Onion', 'Fish Sauce (Patis)', 'Chili / Siling Labuyo'],
+    tools: ['pot', 'electric-stove'],
+    steps: [
+      'Sauté garlic and onion.',
+      'Add pork, brown lightly.',
+      'Add shredded cabbage (as banana blossom substitute).',
+      'Pour coconut milk and chili.',
+      'Simmer 15 minutes.',
+      'Season with patis and serve.'
+    ],
+    cookingTime: '25 mins', estimatedCost: '₱70–₱95', category: 'Dinner', image: 'ginataang puso.jpg'
+  },
+  // ── 166 ──
+  {
+    id: 166, name: 'Pancit Canton Soup Style',
+    ingredients: ['Lucky Me Pancit Canton', 'Egg', 'Garlic', 'Green Onion', 'Soy Sauce'],
+    tools: ['pot', 'electric-stove'],
+    steps: [
+      'Boil 2 cups water.',
+      'Add noodles and cook 2 minutes.',
+      'Add seasoning packet and soy sauce.',
+      'Crack egg and gently stir.',
+      'Add minced garlic.',
+      'Serve in bowl topped with green onion.'
+    ],
+    cookingTime: '8 mins', estimatedCost: '₱14–₱20', category: 'Lunch', image: 'pancit canton soup.jpg'
+  },
+  // ── 167 ──
+  {
+    id: 167, name: 'Chicken Asado Budget',
+    ingredients: ['Chicken', 'Soy Sauce', 'Tomato Sauce (canned)', 'Sugar', 'Garlic', 'Onion', 'Cooking Oil'],
+    tools: ['pot', 'electric-stove'],
+    steps: [
+      'Brown chicken in oil.',
+      'Sauté garlic and onion.',
+      'Add soy sauce, tomato sauce, and sugar.',
+      'Add ¼ cup water.',
+      'Simmer 20 minutes until chicken is cooked.',
+      'Reduce sauce and serve over rice.'
+    ],
+    cookingTime: '30 mins', estimatedCost: '₱75–₱100', category: 'Dinner', image: 'chicken asado.jpg'
+  },
+  // ── 168 ──
+  {
+    id: 168, name: 'Coconut Milk Chicken Soup',
+    ingredients: ['Chicken', 'Coconut Milk (canned)', 'Ginger', 'Garlic', 'Onion', 'Fish Sauce (Patis)', 'Chili / Siling Labuyo'],
+    tools: ['pot', 'electric-stove'],
+    steps: [
+      'Sauté garlic, ginger, onion.',
+      'Add chicken, cook 5 minutes.',
+      'Pour coconut milk and 2 cups water.',
+      'Add chili.',
+      'Simmer 20 minutes.',
+      'Season with patis and serve with rice.'
+    ],
+    cookingTime: '30 mins', estimatedCost: '₱85–₱110', category: 'Dinner', image: 'coconut chicken soup.jpg'
+  },
+  // ── 169 ──
+  {
+    id: 169, name: 'Crispy Spam Scramble',
+    ingredients: ['Spam', 'Egg', 'Garlic', 'Onion', 'Tomato', 'Cooking Oil'],
+    tools: ['frying-pan'],
+    steps: [
+      'Dice Spam small and fry until very crispy.',
+      'Remove Spam, sauté garlic, onion, tomato in same oil.',
+      'Beat eggs and add to pan, scramble.',
+      'Stir in crispy Spam.',
+      'Season to taste.',
+      'Serve with garlic rice.'
+    ],
+    cookingTime: '12 mins', estimatedCost: '₱50–₱68', category: 'Breakfast', image: 'spam scramble.jpg'
+  },
+  // ── 170 ──
+  {
+    id: 170, name: 'Macaroni Soup (Budget Sopas)',
+    ingredients: ['Instant Noodles', 'Evaporated Milk', 'Carrot', 'Cabbage', 'Garlic', 'Onion', 'Salt', 'Pepper'],
+    tools: ['pot', 'electric-stove'],
+    steps: [
+      'Sauté garlic and onion in oil.',
+      'Add carrot and cabbage.',
+      'Pour 3 cups water, bring to boil.',
+      'Add broken noodles (as macaroni substitute).',
+      'Cook 3 minutes, add evaporated milk.',
+      'Season with salt and pepper, serve hot.'
+    ],
+    cookingTime: '15 mins', estimatedCost: '₱25–₱38', category: 'Dinner', image: 'budget sopas.jpg'
+  },
+  // ── 171 ──
+  {
+    id: 171, name: 'Miso Soup Style',
+    ingredients: ['Garlic', 'Onion', 'Tomato', 'Fish Sauce (Patis)', 'Salt', 'Green Onion', 'Egg'],
+    tools: ['pot', 'electric-stove'],
+    steps: [
+      'Boil 3 cups water.',
+      'Add garlic, onion, tomato.',
+      'Simmer 5 minutes.',
+      'Season with patis and salt.',
+      'Crack egg into soup, stir gently.',
+      'Top with green onion and serve.'
+    ],
+    cookingTime: '10 mins', estimatedCost: '₱10–₱18', category: 'Breakfast', image: 'miso soup style.jpg'
+  },
+  // ── 172 ──
+  {
+    id: 172, name: 'Chicken Adobo Dry Style',
+    ingredients: ['Chicken', 'Soy Sauce', 'Vinegar', 'Garlic', 'Onion', 'Pepper', 'Cooking Oil'],
+    tools: ['frying-pan', 'pot'],
+    steps: [
+      'Cut chicken into small pieces.',
+      'Marinate in soy sauce, vinegar, garlic, pepper 15 minutes.',
+      'Heat oil, sauté onion.',
+      'Add chicken with marinade.',
+      'Cook until liquid reduces and chicken is glossy.',
+      'Serve over rice.'
+    ],
+    cookingTime: '25 mins', estimatedCost: '₱70–₱92', category: 'Dinner', image: 'chicken adobo dry.jpg'
+  },
+  // ── 173 ──
+  {
+    id: 173, name: 'Garlic Butter Squid Balls',
+    ingredients: ['Squid Ball', 'Garlic', 'Margarine / Butter', 'Salt', 'Pepper', 'Calamansi'],
+    tools: ['frying-pan'],
+    steps: [
+      'Fry squid balls until golden.',
+      'Melt butter in pan, add lots of garlic.',
+      'Sauté garlic until fragrant.',
+      'Add squid balls, toss in garlic butter.',
+      'Season with salt and pepper.',
+      'Squeeze calamansi and serve.'
+    ],
+    cookingTime: '10 mins', estimatedCost: '₱25–₱38', category: 'Snacks', image: 'garlic butter squid balls.jpg'
+  },
+  // ── 174 ──
+  {
+    id: 174, name: 'Pork Chop Rice Cooker',
+    ingredients: ['Pork', 'Soy Sauce', 'Calamansi', 'Garlic', 'Salt', 'Pepper'],
+    tools: ['rice-cooker'],
+    steps: [
+      'Marinate pork chop in soy sauce, calamansi, garlic, salt, pepper 20 minutes.',
+      'Place pork in rice cooker.',
+      'Cook on cook setting.',
+      'Flip halfway through.',
+      'Let it cycle once more.',
+      'Serve with garlic rice.'
+    ],
+    cookingTime: '30 mins', estimatedCost: '₱65–₱90', category: 'Dinner', image: 'pork chop rice cooker.jpg'
+  },
+  // ── 175 ──
+  {
+    id: 175, name: 'Skinless Longganisa Fried Rice',
+    ingredients: ['Longganisa', 'Rice', 'Garlic', 'Egg', 'Soy Sauce', 'Cooking Oil'],
+    tools: ['frying-pan'],
+    steps: [
+      'Remove longganisa casing, crumble meat.',
+      'Fry longganisa in oil until cooked and slightly crispy.',
+      'Add garlic, fry golden.',
+      'Add cold rice, stir-fry.',
+      'Scramble egg in.',
+      'Drizzle soy sauce, mix and serve.'
+    ],
+    cookingTime: '12 mins', estimatedCost: '₱35–₱50', category: 'Breakfast', image: 'longganisa fried rice.jpg'
+  },
+  // ── 176 ──
+  {
+    id: 176, name: 'Tomato Soup Filipino Style',
+    ingredients: ['Tomato', 'Onion', 'Garlic', 'Evaporated Milk', 'Margarine / Butter', 'Salt', 'Pepper', 'Sugar'],
+    tools: ['pot', 'electric-stove'],
+    steps: [
+      'Sauté garlic and onion in butter.',
+      'Add diced tomatoes, cook until soft.',
+      'Add 2 cups water and simmer 10 minutes.',
+      'Mash tomatoes or blend if possible.',
+      'Pour evaporated milk, add sugar.',
+      'Season with salt and pepper, serve with bread.'
+    ],
+    cookingTime: '20 mins', estimatedCost: '₱30–₱45', category: 'Dinner', image: 'tomato soup.jpg'
+  },
+  // ── 177 ──
+  {
+    id: 177, name: 'Corned Beef Hash Bowl',
+    ingredients: ['Corned Beef (canned)', 'Potato', 'Onion', 'Egg', 'Cooking Oil', 'Salt', 'Pepper'],
+    tools: ['frying-pan'],
+    steps: [
+      'Dice and fry potato until golden.',
+      'Add diced onion, sauté.',
+      'Add corned beef, break apart.',
+      'Fry until crispy bits form.',
+      'Top with a fried egg.',
+      'Season and serve over rice.'
+    ],
+    cookingTime: '18 mins', estimatedCost: '₱45–₱60', category: 'Breakfast', image: 'corned beef hash bowl.jpg'
+  },
+  // ── 178 ──
+  {
+    id: 178, name: 'Pork and Egg Topping Rice',
+    ingredients: ['Pork', 'Egg', 'Soy Sauce', 'Garlic', 'Onion', 'Sugar', 'Cooking Oil', 'Rice'],
+    tools: ['frying-pan', 'rice-cooker'],
+    steps: [
+      'Cook rice.',
+      'Brown ground or minced pork with garlic and onion.',
+      'Add soy sauce and a pinch of sugar.',
+      'Simmer until sauce is slightly thick.',
+      'Fry egg separately.',
+      'Serve pork and egg over rice.'
+    ],
+    cookingTime: '18 mins', estimatedCost: '₱55–₱75', category: 'Lunch', image: 'pork egg rice.jpg'
+  },
+  // ── 179 ──
+  {
+    id: 179, name: 'Arroz Caldo with Corned Beef',
+    ingredients: ['Rice', 'Corned Beef (canned)', 'Ginger', 'Garlic', 'Onion', 'Fish Sauce (Patis)', 'Green Onion'],
+    tools: ['pot', 'electric-stove'],
+    steps: [
+      'Sauté garlic, ginger, onion.',
+      'Add rice, stir 1 minute.',
+      'Pour 5 cups water, simmer 25 minutes.',
+      'Add corned beef in last 5 minutes.',
+      'Season with patis.',
+      'Serve topped with green onion.'
+    ],
+    cookingTime: '35 mins', estimatedCost: '₱35–₱52', category: 'Breakfast', image: 'arroz caldo corned beef.jpg'
+  },
+  // ── 180 ──
+  {
+    id: 180, name: 'Ginisang Talong',
+    ingredients: ['Talong (Eggplant)', 'Garlic', 'Onion', 'Tomato', 'Fish Sauce (Patis)', 'Cooking Oil'],
+    tools: ['frying-pan'],
+    steps: [
+      'Slice eggplant into rounds.',
+      'Fry in oil until golden on both sides, set aside.',
+      'In same pan, sauté garlic, onion, tomato.',
+      'Return eggplant, add patis.',
+      'Stir gently, cook 2 minutes.',
+      'Serve with rice.'
+    ],
+    cookingTime: '15 mins', estimatedCost: '₱18–₱28', category: 'Lunch', image: 'ginisang talong.jpg'
+  },
+  // ── 181 ──
+  {
+    id: 181, name: 'Sweetened Kamote Dessert',
+    ingredients: ['Kamote (Sweet Potato)', 'Sugar', 'Coconut Milk (canned)', 'Salt'],
+    tools: ['pot', 'electric-stove'],
+    steps: [
+      'Peel and cube kamote.',
+      'Boil in water until half-cooked.',
+      'Drain, add coconut milk and sugar.',
+      'Simmer 10 minutes until kamote is very soft.',
+      'Add pinch of salt.',
+      'Serve warm as dessert.'
+    ],
+    cookingTime: '22 mins', estimatedCost: '₱25–₱38', category: 'Snacks', image: 'sweetened kamote.jpg'
+  },
+  // ── 182 ──
+  {
+    id: 182, name: 'Pork Asado Style',
+    ingredients: ['Pork', 'Soy Sauce', 'Sugar', 'Garlic', 'Cooking Oil', 'Onion'],
+    tools: ['pot', 'frying-pan'],
+    steps: [
+      'Marinate pork in soy sauce, garlic, sugar 20 minutes.',
+      'Sauté onion in oil.',
+      'Add pork with marinade.',
+      'Add ¼ cup water, simmer 20 minutes.',
+      'Reduce sauce until thick and caramelized.',
+      'Slice and serve over rice.'
+    ],
+    cookingTime: '30 mins', estimatedCost: '₱70–₱95', category: 'Dinner', image: 'pork asado.jpg'
+  },
+  // ── 183 ──
+  {
+    id: 183, name: 'Kamote with Condensed Milk Snack',
+    ingredients: ['Kamote (Sweet Potato)', 'Condensed Milk', 'Sugar', 'Cooking Oil'],
+    tools: ['frying-pan'],
+    steps: [
+      'Cut kamote into thick slices.',
+      'Fry until soft and golden.',
+      'Drain excess oil.',
+      'Plate and drizzle condensed milk.',
+      'Sprinkle sugar on top.',
+      'Serve as sweet merienda.'
+    ],
+    cookingTime: '15 mins', estimatedCost: '₱18–₱28', category: 'Snacks', image: 'saging saba style.jpg'
+  },
+  // ── 184 ──
+  {
+    id: 184, name: 'Ensaladang Talong',
+    ingredients: ['Talong (Eggplant)', 'Tomato', 'Onion', 'Fish Sauce (Patis)', 'Calamansi', 'Salt'],
+    tools: ['oven-toaster', 'knife'],
+    steps: [
+      'Roast eggplant whole in oven toaster until charred.',
+      'Peel off burnt skin.',
+      'Slice eggplant flesh.',
+      'Top with diced tomato and onion.',
+      'Dress with patis and calamansi.',
+      'Season with salt and serve.'
+    ],
+    cookingTime: '20 mins', estimatedCost: '₱18–₱28', category: 'Snacks', image: 'ensaladang talong.jpg'
+  },
+  // ── 185 ──
+  {
+    id: 185, name: 'Pork Binagoongan Quick Style',
+    ingredients: ['Pork', 'Vinegar', 'Garlic', 'Onion', 'Tomato', 'Chili / Siling Labuyo', 'Fish Sauce (Patis)', 'Cooking Oil'],
+    tools: ['frying-pan', 'electric-stove'],
+    steps: [
+      'Boil pork until tender.',
+      'Fry pork until crispy.',
+      'Sauté garlic, onion, tomato, chili.',
+      'Add vinegar and patis to make sauce.',
+      'Toss pork in sauce.',
+      'Simmer 3 minutes and serve.'
+    ],
+    cookingTime: '30 mins', estimatedCost: '₱70–₱95', category: 'Dinner', image: 'pork binagoongan instant.jpg'
+  },
+  // ── 186 ──
+  {
+    id: 186, name: 'Corned Beef Sopas',
+    ingredients: ['Corned Beef (canned)', 'Instant Noodles', 'Carrot', 'Cabbage', 'Evaporated Milk', 'Garlic', 'Onion', 'Salt'],
+    tools: ['pot', 'electric-stove'],
+    steps: [
+      'Sauté garlic and onion.',
+      'Add carrot and cabbage.',
+      'Pour 3 cups water and bring to boil.',
+      'Add broken noodles, cook 3 minutes.',
+      'Add corned beef and evaporated milk.',
+      'Season with salt and serve hot.'
+    ],
+    cookingTime: '18 mins', estimatedCost: '₱45–₱62', category: 'Dinner', image: 'corned beef sopas.jpg'
+  },
+  // ── 187 ──
+  {
+    id: 187, name: 'Pinoy Egg Salad Sandwich',
+    ingredients: ['Egg', 'Bread', 'Margarine / Butter', 'Sugar', 'Salt', 'Condensed Milk'],
+    tools: ['pot', 'electric-stove', 'knife'],
+    steps: [
+      'Hard-boil eggs, peel and mash.',
+      'Mix with condensed milk, a pinch of sugar and salt.',
+      'Toast bread.',
+      'Spread butter on toast.',
+      'Pile egg salad on bread.',
+      'Close and serve.'
+    ],
+    cookingTime: '15 mins', estimatedCost: '₱18–₱28', category: 'Snacks', image: 'egg salad sandwich.jpg'
+  },
+  // ── 188 ──
+  {
+    id: 188, name: 'Monggo at Baboy (Budget)',
+    ingredients: ['Garlic', 'Onion', 'Tomato', 'Pork', 'Kangkong', 'Fish Sauce (Patis)', 'Cooking Oil'],
+    tools: ['pot', 'electric-stove'],
+    steps: [
+      'Sauté garlic, onion, tomato.',
+      'Add pork strips, cook through.',
+      'Pour 3 cups water, boil.',
+      'Simmer 10 minutes.',
+      'Add kangkong, season with patis.',
+      'Serve over rice.'
+    ],
+    cookingTime: '20 mins', estimatedCost: '₱60–₱82', category: 'Dinner', image: 'monggo baboy.jpg'
+  },
+  // ── 189 ──
+  {
+    id: 189, name: 'Butter Garlic Bangus',
+    ingredients: ['Bangus (Milkfish)', 'Margarine / Butter', 'Garlic', 'Salt', 'Pepper', 'Calamansi'],
+    tools: ['frying-pan', 'oven-toaster'],
+    steps: [
+      'Butterfly bangus, season with salt and pepper.',
+      'Melt butter in pan.',
+      'Fry garlic until golden.',
+      'Fry bangus in garlic butter until cooked.',
+      'Squeeze calamansi over.',
+      'Serve with rice.'
+    ],
+    cookingTime: '22 mins', estimatedCost: '₱65–₱88', category: 'Dinner', image: 'butter garlic bangus.jpg'
+  },
+  // ── 190 ──
+  {
+    id: 190, name: 'Marinated Boiled Egg (Tokwa Style)',
+    ingredients: ['Egg', 'Soy Sauce', 'Vinegar', 'Sugar', 'Garlic', 'Onion', 'Chili / Siling Labuyo'],
+    tools: ['pot', 'electric-stove'],
+    steps: [
+      'Hard-boil eggs, peel.',
+      'Mix soy sauce, vinegar, sugar, garlic, onion, chili.',
+      'Marinate eggs in sauce 10 minutes.',
+      'Slice and serve with sauce.',
+      'Can be eaten hot or cold.',
+      'Great with rice or as pulutan.'
+    ],
+    cookingTime: '15 mins', estimatedCost: '₱12–₱20', category: 'Snacks', image: 'tokwa style egg.jpg'
+  },
+  // ── 191 ──
+  {
+    id: 191, name: 'Chicken Sopas sa Rice Cooker',
+    ingredients: ['Chicken', 'Instant Noodles', 'Carrot', 'Cabbage', 'Evaporated Milk', 'Onion', 'Salt', 'Pepper'],
+    tools: ['rice-cooker'],
+    steps: [
+      'Place chicken, onion, and carrot in rice cooker.',
+      'Add 3 cups water.',
+      'Cook on setting once.',
+      'Remove chicken and shred.',
+      'Add noodles, cabbage, milk.',
+      'Cook one more cycle, season and serve.'
+    ],
+    cookingTime: '30 mins', estimatedCost: '₱70–₱95', category: 'Dinner', image: 'chicken sopas rice cooker.jpg'
+  },
+  // ── 192 ──
+  {
+    id: 192, name: 'Sweet and Sour Pork (Budget)',
+    ingredients: ['Pork', 'Tomato Sauce (canned)', 'Vinegar', 'Sugar', 'Garlic', 'Onion', 'Cooking Oil', 'Salt'],
+    tools: ['frying-pan', 'electric-stove'],
+    steps: [
+      'Cut pork into chunks, season with salt.',
+      'Fry pork until golden, set aside.',
+      'Sauté garlic and onion.',
+      'Mix tomato sauce, vinegar, and sugar.',
+      'Pour sauce over garlic-onion.',
+      'Add pork, simmer 5 minutes and serve.'
+    ],
+    cookingTime: '25 mins', estimatedCost: '₱70–₱95', category: 'Dinner', image: 'sweet sour pork.jpg'
+  },
+  // ── 193 ──
+  {
+    id: 193, name: 'Pechay at Corned Beef',
+    ingredients: ['Pechay', 'Corned Beef (canned)', 'Garlic', 'Onion', 'Soy Sauce', 'Cooking Oil'],
+    tools: ['frying-pan'],
+    steps: [
+      'Sauté garlic and onion.',
+      'Add corned beef, break apart.',
+      'Add pechay, stir-fry.',
+      'Season with soy sauce.',
+      'Cook until pechay is wilted.',
+      'Serve with rice.'
+    ],
+    cookingTime: '8 mins', estimatedCost: '₱38–₱52', category: 'Lunch', image: 'pechay corned beef.jpg'
+  },
+  // ── 194 ──
+  {
+    id: 194, name: 'Chicken Inasal Rice Cooker',
+    ingredients: ['Chicken', 'Calamansi', 'Garlic', 'Vinegar', 'Salt', 'Cooking Oil'],
+    tools: ['rice-cooker'],
+    steps: [
+      'Marinate chicken in calamansi, garlic, vinegar, salt 30 minutes.',
+      'Brush with oil.',
+      'Place in rice cooker and cook.',
+      'Flip halfway and brush with more oil.',
+      'Let cycle complete.',
+      'Serve with garlic rice and sauce.'
+    ],
+    cookingTime: '40 mins', estimatedCost: '₱70–₱95', category: 'Dinner', image: 'chicken inasal rice cooker.jpg'
+  },
+  // ── 195 ──
+  {
+    id: 195, name: 'Creamy Champorado',
+    ingredients: ['Rice', 'Condensed Milk', 'Sugar', 'Salt', 'Evaporated Milk'],
+    tools: ['pot', 'electric-stove'],
+    steps: [
+      'Cook rice in 4 cups water until very soft.',
+      'Add sugar and pinch of salt.',
+      'Stir in condensed milk.',
+      'Cook until creamy and thick.',
+      'Serve topped with evaporated milk.',
+      'Eat as breakfast or merienda.'
+    ],
+    cookingTime: '25 mins', estimatedCost: '₱18–₱28', category: 'Breakfast', image: 'champorado condensed milk.jpg'
+  },
+  // ── 196 ──
+  {
+    id: 196, name: 'Ginataang Langka Style (with Cabbage)',
+    ingredients: ['Cabbage', 'Coconut Milk (canned)', 'Pork', 'Garlic', 'Onion', 'Ginger', 'Fish Sauce (Patis)', 'Chili / Siling Labuyo'],
+    tools: ['pot', 'electric-stove'],
+    steps: [
+      'Sauté garlic, ginger, onion.',
+      'Brown pork.',
+      'Add cabbage and chili.',
+      'Pour coconut milk.',
+      'Simmer 15 minutes until cabbage is tender.',
+      'Season with patis and serve.'
+    ],
+    cookingTime: '25 mins', estimatedCost: '₱70–₱95', category: 'Dinner', image: 'ginataang cabbage.jpg'
+  },
+  // ── 197 ──
+  {
+    id: 197, name: 'Tuna and Pechay Stir-fry',
+    ingredients: ['Tuna (canned)', 'Pechay', 'Garlic', 'Oyster Sauce', 'Soy Sauce', 'Cooking Oil'],
+    tools: ['frying-pan'],
+    steps: [
+      'Heat oil, sauté garlic.',
+      'Add drained tuna, cook 2 minutes.',
+      'Add pechay and toss.',
+      'Season with oyster sauce and soy sauce.',
+      'Cook 2 more minutes.',
+      'Serve over rice.'
+    ],
+    cookingTime: '8 mins', estimatedCost: '₱28–₱40', category: 'Lunch', image: 'tuna pechay.jpg'
+  },
+  // ── 198 ──
+  {
+    id: 198, name: 'Monggo with Kangkong and Sardines',
+    ingredients: ['Sardines (canned)', 'Kangkong', 'Garlic', 'Onion', 'Tomato', 'Cooking Oil', 'Fish Sauce (Patis)'],
+    tools: ['pot', 'electric-stove'],
+    steps: [
+      'Sauté garlic, onion, tomato.',
+      'Add sardines and mash.',
+      'Pour 3 cups water, boil.',
+      'Simmer 8 minutes.',
+      'Add kangkong.',
+      'Season with patis and serve over rice.'
+    ],
+    cookingTime: '15 mins', estimatedCost: '₱25–₱38', category: 'Dinner', image: 'monggo sardines kangkong.jpg'
+  },
+  // ── 199 ──
+  {
+    id: 199, name: 'Pinoy Garlic Toast',
+    ingredients: ['Bread', 'Margarine / Butter', 'Garlic', 'Salt'],
+    tools: ['oven-toaster', 'frying-pan'],
+    steps: [
+      'Mince garlic finely.',
+      'Mix softened butter with garlic and salt.',
+      'Spread generously on bread.',
+      'Toast in oven toaster until golden.',
+      'Serve as snack or breakfast side.',
+      'Can be paired with hot chocolate or coffee.'
+    ],
+    cookingTime: '5 mins', estimatedCost: '₱8–₱15', category: 'Snacks', image: 'garlic toast.jpg'
+  },
+  // ── 200 ──
+  {
+    id: 200, name: 'Squid Ball Soup',
+    ingredients: ['Squid Ball', 'Instant Noodles', 'Garlic', 'Green Onion', 'Soy Sauce', 'Salt'],
+    tools: ['pot', 'electric-stove'],
+    steps: [
+      'Boil 2 cups water.',
+      'Add squid balls, cook 2 minutes.',
+      'Add noodles and cook through.',
+      'Season with soy sauce and salt.',
+      'Add minced garlic.',
+      'Top with green onion and serve.'
+    ],
+    cookingTime: '8 mins', estimatedCost: '₱18–₱28', category: 'Lunch', image: 'squid ball soup.jpg'
+  },
+  // ── 201 ──
+  {
+    id: 201, name: 'Chicken Longganisa Style',
+    ingredients: ['Chicken', 'Garlic', 'Sugar', 'Salt', 'Soy Sauce', 'Pepper', 'Cooking Oil'],
+    tools: ['frying-pan'],
+    steps: [
+      'Mince chicken or use small pieces.',
+      'Season with garlic, sugar, soy sauce, salt, and pepper.',
+      'Form into small patties or logs.',
+      'Cook in pan with a little water first.',
+      'Let water evaporate, then fry in oil.',
+      'Serve with garlic rice and egg.'
+    ],
+    cookingTime: '20 mins', estimatedCost: '₱55–₱75', category: 'Breakfast', image: 'chicken longganisa.jpg'
+  },
 
+];
 
 /* STATE */
 let selectedIngredients=new Set(), selectedTools=new Set();
