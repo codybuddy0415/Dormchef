@@ -870,13 +870,14 @@ const RECIPES = [
   // ── 38 ──
   {
     id: 38, name: 'Monggo (Simple)',
-    ingredients: ['Garlic', 'Onion', 'Tomato', 'Cooking Oil', 'Fish Sauce (Patis)', 'Sardines (canned)'],
+    ingredients: ['Garlic', 'Onion', 'Tomato', 'Cooking Oil', 'Fish Sauce (Patis)', 'Monggo Bean'],
     tools: ['pot', 'electric-stove'],
     steps: [
+      'Boil the Monggo bean until it soft',
       'Heat oil, sauté garlic, onion, tomato.',
-      'Add sardines (without liquid).',
-      'Pour 3 cups water, bring to boil.',
-      'Simmer 5 minutes.',
+      'Add the soft beans and vegetables',
+      'Pour water, bring to boil.',
+      'Simmer until cook.',
       'Season with patis.',
       'Serve over rice.'
     ],
@@ -1779,7 +1780,7 @@ const RECIPES = [
   },
 // ── 102 ──
   {
-    id: 102, name: 'Sinabawang Isda',
+    id: 102, name: 'Sinabawang Tilapia',
     ingredients: ['Tilapia', 'Ginger', 'Tomato', 'Onion', 'Kangkong', 'Fish Sauce (Patis)', 'Salt'],
     tools: ['pot', 'electric-stove'],
     steps: [
@@ -1790,7 +1791,7 @@ const RECIPES = [
       'Season with patis and salt.',
       'Serve hot with steamed rice.'
     ],
-    cookingTime: '18 mins', estimatedCost: '₱55–₱75', category: 'Dinner', image: 'sinabawang isda.jpg'
+    cookingTime: '18 mins', estimatedCost: '₱55–₱75', category: 'Dinner', image: 'sinabawang tilapia.webp'
   },
   // ── 103 ──
   {
@@ -1805,7 +1806,7 @@ const RECIPES = [
       'Do not over-stir to keep vegetables intact.',
       'Serve with rice.'
     ],
-    cookingTime: '20 mins', estimatedCost: '₱45–₱65', category: 'Lunch', image: 'pinakbet.jpg'
+    cookingTime: '20 mins', estimatedCost: '₱45–₱65', category: 'Lunch', image: 'pinakbet.webp'
   },
   // ── 104 ──
   {
@@ -1824,7 +1825,7 @@ const RECIPES = [
   },
   // ── 105 ──
   {
-    id: 105, name: 'Paksiw na Isda',
+    id: 105, name: 'Paksiw na Bangus',
     ingredients: ['Bangus (Milkfish)', 'Vinegar', 'Garlic', 'Ginger', 'Salt', 'Pepper'],
     tools: ['pot', 'electric-stove'],
     steps: [
@@ -1835,7 +1836,7 @@ const RECIPES = [
       'Simmer 15 minutes until fish is cooked.',
       'Serve with rice.'
     ],
-    cookingTime: '20 mins', estimatedCost: '₱55–₱75', category: 'Lunch', image: 'paksiw na isda.jpg'
+    cookingTime: '20 mins', estimatedCost: '₱55–₱75', category: 'Lunch', image: 'paksiw na bangus.jpg'
   },
   // ── 106 ──
   {
@@ -1853,7 +1854,7 @@ const RECIPES = [
   },
   // ── 107 ──
   {
-    id: 107, name: 'Menudo sa Lata',
+    id: 107, name: 'Menudo sa Corned Beef',
     ingredients: ['Corned Beef (canned)', 'Potato', 'Carrot', 'Tomato Sauce (canned)', 'Garlic', 'Onion', 'Cooking Oil'],
     tools: ['frying-pan', 'electric-stove'],
     steps: [
@@ -1927,20 +1928,7 @@ const RECIPES = [
     cookingTime: '8 mins', estimatedCost: '₱22–₱35', category: 'Breakfast', image: 'scrambled egg sardines.jpg'
   },
   // ── 112 ──
-  {
-    id: 112, name: 'Ginisang Munggo',
-    ingredients: ['Garlic', 'Onion', 'Tomato', 'Kangkong', 'Fish Sauce (Patis)', 'Cooking Oil', 'Sardines (canned)'],
-    tools: ['pot', 'electric-stove'],
-    steps: [
-      'Sauté garlic, onion, and tomato in oil.',
-      'Add sardines (mashed slightly).',
-      'Pour 3 cups water and bring to boil.',
-      'Simmer 10 minutes.',
-      'Add kangkong, season with patis.',
-      'Serve over rice.'
-    ],
-    cookingTime: '18 mins', estimatedCost: '₱28–₱42', category: 'Dinner', image: 'ginisang munggo.jpg'
-  },
+  
   // ── 113 ──
   {
     id: 113, name: 'Stir-fried Corned Beef with Cabbage',
@@ -1965,7 +1953,7 @@ const RECIPES = [
       'Sauté garlic, ginger, onion.',
       'Add chicken pieces, cook until white.',
       'Pour coconut milk and add chili.',
-      'Simmer 20 minutes.',
+      'Simmer until cook.',
       'Season with patis.',
       'Cook until sauce thickens slightly.',
       'Serve with rice.'
@@ -2003,44 +1991,19 @@ const RECIPES = [
     cookingTime: '18 mins', estimatedCost: '₱55–₱75', category: 'Dinner', image: 'ginisang ampalaya pork.jpg'
   },
   // ── 117 ──
-  {
-    id: 117, name: 'Tortang Tuna',
-    ingredients: ['Tuna (canned)', 'Egg', 'Onion', 'Garlic', 'Salt', 'Pepper', 'Cooking Oil'],
-    tools: ['frying-pan'],
-    steps: [
-      'Drain tuna and flake it.',
-      'Beat eggs, mix in tuna, diced onion, garlic, salt, pepper.',
-      'Heat oil in pan.',
-      'Pour half the mixture, cook until set.',
-      'Flip carefully, cook other side.',
-      'Repeat, serve with rice and ketchup.'
-    ],
-    cookingTime: '12 mins', estimatedCost: '₱30–₱44', category: 'Lunch', image: 'tortang tuna.jpg'
-  },
+ 
   // ── 118 ──
-  {
-    id: 118, name: 'Arroz Caldo (Microwave)',
-    ingredients: ['Rice', 'Chicken', 'Ginger', 'Fish Sauce (Patis)', 'Green Onion', 'Salt'],
-    tools: ['microwave'],
-    steps: [
-      'Mix cooked rice with 3 cups water in large microwave-safe bowl.',
-      'Add chicken strips and grated ginger.',
-      'Microwave 6 minutes, stir.',
-      'Microwave 4 more minutes until porridge consistency.',
-      'Season with patis and salt.',
-      'Top with green onion.'
-    ],
-    cookingTime: '15 mins', estimatedCost: '₱38–₱55', category: 'Breakfast', image: 'arroz caldo microwave.jpg'
-  },
+ 
   // ── 119 ──
   {
     id: 119, name: 'Chicken and Potato Stew',
-    ingredients: ['Chicken', 'Potato', 'Tomato Sauce (canned)', 'Garlic', 'Onion', 'Cooking Oil', 'Salt', 'Pepper'],
+    ingredients: ['Chicken', 'Potato', 'Tomato Sauce (canned)', 'Garlic', 'Onion', 'Cooking Oil', 'Salt', 'Pepper', 'Caroots'],
     tools: ['pot', 'electric-stove'],
     steps: [
       'Sauté garlic and onion.',
       'Brown chicken pieces on all sides.',
       'Add potato cubes and toss.',
+      'add caroot',
       'Pour tomato sauce and ½ cup water.',
       'Simmer 20 minutes until potato is tender.',
       'Season and serve with rice.'
@@ -2122,7 +2085,7 @@ const RECIPES = [
     ],
     cookingTime: '15 mins', estimatedCost: '₱12–₱20', category: 'Snacks', image: 'banana cue.jpg'
   },
-  // ── 125 ──
+  // ── 125  ──
   {
     id: 125, name: 'Lugaw with Corned Beef',
     ingredients: ['Rice', 'Corned Beef (canned)', 'Ginger', 'Garlic', 'Onion', 'Green Onion', 'Salt'],
