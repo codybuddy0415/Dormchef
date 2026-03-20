@@ -154,11 +154,11 @@ img { display: block; max-width: 100%; }
 
 .nav-brand { display: flex; align-items: center; gap: 10px; }
 .nav-logo {
-  width: 36px; height: 36px; border-radius: var(--r-md);
-  background: linear-gradient(135deg, var(--red-spice), #a33020);
+  width: 36px; height: 36px; border-radius: 100px;
+  background: linear-gradient(135deg, var(--red-spice), #0a0a0a);
   display: flex; align-items: center; justify-content: center;
   font-size: 18px;
-  box-shadow: 0 4px 12px rgba(196,62,42,0.4);
+  box-shadow: 0 4px 12px rgba(17, 17, 17, 0.4);
   flex-shrink: 0;
   transform: rotate(-4deg);
 }
