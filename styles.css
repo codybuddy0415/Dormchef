@@ -384,6 +384,35 @@ img { display: block; max-width: 100%; }
 }
 .ing-clear-btn:hover { border-color: var(--red-spice); color: #ff8070; background: var(--red-glow); }
 
+/* Random Recipe button inside search panel */
+.sp-random-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, rgba(232,160,32,0.18), rgba(232,160,32,0.08));
+  border: 1.5px solid rgba(232,160,32,0.35);
+  border-radius: var(--r-md);
+  font-family: var(--font-ui);
+  font-size: .9rem;
+  font-weight: 700;
+  color: var(--amber);
+  letter-spacing: 0.2px;
+  cursor: pointer;
+  transition: all .18s var(--ease);
+}
+.sp-random-btn:hover {
+  background: linear-gradient(135deg, rgba(232,160,32,0.30), rgba(232,160,32,0.15));
+  border-color: var(--amber);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(232,160,32,0.2);
+}
+.sp-random-btn:active { transform: scale(.98); }
+.sp-random-btn span:first-child { font-size: 1.1rem; }
+
+
 /* ════════════════════════════════════════
    RESULTS AREA
 ════════════════════════════════════════ */
