@@ -6,197 +6,247 @@
   <title>DormChef – Cook with what you have.</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
 
-<!-- ═══ FULL PAGE BG ═══ -->
-<div class="page-bg"><div class="bg-overlay"></div></div>
+<!-- ░░░ AMBIENT BG ░░░ -->
+<div class="ambient-bg">
+  <div class="ambient-orb orb-1"></div>
+  <div class="ambient-orb orb-2"></div>
+  <div class="ambient-orb orb-3"></div>
+  <div class="grain"></div>
+</div>
 
-<!-- ═══ APP WRAPPER ═══ -->
-<div class="app-wrapper">
-
-  <!-- HEADER -->
-  <header class="site-header">
-    <div class="site-header-inner">
-      <div class="logo-row">
-        <span class="logo-icon">🍳</span>
-        <div>
-          <h1 class="site-title">Dorm<span>Chef</span></h1>
-          <p class="site-tagline">Cook with what you have.</p>
-        </div>
+<!-- ░░░ STICKY NAV ░░░ -->
+<nav class="topnav" id="topnav">
+  <div class="nav-inner">
+    <div class="nav-brand">
+      <div class="nav-logo">
+        <span>🍳</span>
       </div>
-      <div class="header-actions">
-        <div class="lang-toggle" id="lang-toggle" onclick="toggleLang()">
-          <span class="lang-opt active" id="lang-en">EN</span>
-          <span class="lang-divider">|</span>
-          <span class="lang-opt" id="lang-fil">FIL</span>
-        </div>
-        <button class="icon-action-btn" onclick="openFavorites()" title="Saved Recipes">♥</button>
-        <button class="icon-action-btn pic-mgr-trigger" onclick="openPicManager()" title="Upload Recipe Photos">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
-            <polyline points="21 15 16 10 5 21"/>
-          </svg>
-        </button>
-        <button class="random-btn" id="btn-random" onclick="randomRecipe()">🎲 Random Recipe</button>
+      <div class="nav-wordmark">
+        Dorm<em>Chef</em>
       </div>
     </div>
-  </header>
-
-  <!-- SEARCH BAR -->
-  <div class="search-bar-wrap glass-panel">
-    <div class="search-row">
-      <div class="search-field-wrap">
-        <span class="search-ico">🔍</span>
-        <input type="text" id="global-search" class="search-field"
-          placeholder="Search recipe or ingredient..."
-          oninput="onSearch()" autocomplete="off"/>
-        <button class="clear-btn hidden" id="clear-btn" onclick="clearSearch()">✕</button>
-      </div>
-      <select class="cat-select" id="cat-select" onchange="onSearch()">
-        <option value="">All Categories</option>
-        <option value="Rice">Rice</option>
-        <option value="Silog">Silog</option>
-        <option value="Eggs">Eggs</option>
-        <option value="Ulam">Ulam</option>
-        <option value="Soup">Soup</option>
-        <option value="Fish">Fish</option>
-        <option value="Vegetables">Vegetables</option>
-        <option value="Canned">Canned</option>
-        <option value="Instant">Instant</option>
-        <option value="Snacks">Snacks</option>
-        <option value="Dessert">Dessert</option>
-        <option value="Bread">Bread</option>
-        <option value="Breakfast">Breakfast</option>
-        <option value="Salad">Salad</option>
-        <option value="Microwave">Microwave</option>
-        <option value="Rice Cooker">Rice Cooker</option>
-      </select>
+    <div class="nav-actions">
+      <button class="lang-pill" onclick="toggleLang()">
+        <span id="lang-en" class="lp-opt active">EN</span>
+        <span class="lp-dot"></span>
+        <span id="lang-fil" class="lp-opt">FIL</span>
+      </button>
+      <button class="nav-icon-btn" onclick="openFavorites()" title="Saved Recipes" id="fav-nav-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        <span class="fav-nav-count hidden" id="fav-nav-count">0</span>
+      </button>
+      <button class="nav-icon-btn" onclick="openPicManager()" title="Upload Recipe Photos">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      </button>
+      <button class="dice-btn" id="btn-random" onclick="randomRecipe()">
+        <span class="dice-icon">🎲</span>
+        <span class="dice-label">Random</span>
+      </button>
     </div>
-    <button class="ing-toggle-btn" id="ing-toggle-btn" onclick="toggleIngPanel()">
-      <span id="ing-toggle-label">🥘 Filter by Ingredients</span>
-      <span class="ing-badge hidden" id="ing-badge">0</span>
-      <span class="toggle-arrow">▼</span>
-    </button>
-    <div class="ing-panel" id="ing-panel">
-      <div class="ing-panel-inner">
-        <input type="text" class="ing-search" id="ingredient-search"
-          placeholder="🔍 Search ingredient..." oninput="filterIngredients()"/>
-        <div class="ing-section-label" data-key="pantry">🛒 Pantry Staples</div>
-        <div class="chip-grid" id="grid-staples"></div>
-        <div class="ing-section-label" data-key="proteins">🥩 Proteins</div>
-        <div class="chip-grid" id="grid-proteins"></div>
-        <div class="ing-section-label" data-key="vegetables">🥬 Vegetables</div>
-        <div class="chip-grid" id="grid-veggies"></div>
-        <div class="ing-section-label" data-key="instant">🥫 Instant &amp; Canned</div>
-        <div class="chip-grid" id="grid-instant"></div>
-        <div class="ing-section-label" data-key="condiments">🧂 Condiments</div>
-        <div class="chip-grid" id="grid-condiments"></div>
-        <div class="ing-section-label" data-key="cookingTools" style="margin-top:14px">🔧 Cooking Tools (optional)</div>
-        <div class="chip-grid" id="tools-chip-grid"></div>
-      </div>
+  </div>
+</nav>
+
+<!-- ░░░ HERO ░░░ -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">
+      <span class="eyebrow-dot"></span>
+      100 Filipino Recipes
+    </div>
+    <h1 class="hero-title">
+      <span class="hero-title-main">Find what to</span>
+      <span class="hero-title-accent">cook today.</span>
+    </h1>
+    <p class="hero-sub" id="hero-sub">Match recipes to the ingredients you already have in your dorm.</p>
+  </div>
+</section>
+
+<!-- ░░░ SEARCH PANEL ░░░ -->
+<div class="search-panel" id="search-panel">
+
+  <!-- Row 1: text + category -->
+  <div class="sp-row">
+    <div class="sp-input-wrap">
+      <svg class="sp-input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input id="global-search" class="sp-input" type="text"
+        placeholder="Search any dish or ingredient..."
+        oninput="onSearch()" autocomplete="off"/>
+      <button class="sp-clear hidden" id="clear-btn" onclick="clearSearch()">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <select class="sp-select" id="cat-select" onchange="onSearch()">
+      <option value="">All</option>
+      <option value="Rice">Rice</option>
+      <option value="Silog">Silog</option>
+      <option value="Eggs">Eggs</option>
+      <option value="Ulam">Ulam</option>
+      <option value="Soup">Soup</option>
+      <option value="Fish">Fish</option>
+      <option value="Vegetables">Veggies</option>
+      <option value="Canned">Canned</option>
+      <option value="Instant">Instant</option>
+      <option value="Snacks">Snacks</option>
+      <option value="Dessert">Dessert</option>
+      <option value="Bread">Bread</option>
+      <option value="Breakfast">Breakfast</option>
+      <option value="Salad">Salad</option>
+      <option value="Microwave">Microwave</option>
+      <option value="Rice Cooker">Rice Cooker</option>
+    </select>
+  </div>
+
+  <!-- Row 2: ingredient filter toggle -->
+  <button class="sp-filter-btn" id="sp-filter-btn" onclick="toggleIngPanel()">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
+    <span id="ing-toggle-label">Filter by ingredients</span>
+    <span class="sp-filter-badge hidden" id="ing-badge">0</span>
+    <svg class="sp-filter-arrow" id="filter-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+  </button>
+
+  <!-- Ingredient panel -->
+  <div class="ing-panel" id="ing-panel">
+    <div class="ing-panel-body">
+      <input type="text" class="ing-search-input" id="ingredient-search"
+        placeholder="Search ingredient..."
+        oninput="filterIngredients()"/>
+
+      <p class="ing-group-label" data-key="pantry">🛒 Pantry Staples</p>
+      <div class="ing-chips" id="grid-staples"></div>
+      <p class="ing-group-label" data-key="proteins">🥩 Proteins</p>
+      <div class="ing-chips" id="grid-proteins"></div>
+      <p class="ing-group-label" data-key="vegetables">🥬 Vegetables</p>
+      <div class="ing-chips" id="grid-veggies"></div>
+      <p class="ing-group-label" data-key="instant">🥫 Instant & Canned</p>
+      <div class="ing-chips" id="grid-instant"></div>
+      <p class="ing-group-label" data-key="condiments">🧂 Condiments</p>
+      <div class="ing-chips" id="grid-condiments"></div>
+      <p class="ing-group-label" data-key="cookingTools" style="margin-top:16px">🔧 Cooking Tools</p>
+      <div class="ing-chips" id="tools-chip-grid"></div>
+
+      <button class="ing-clear-btn hidden" id="clear-filters-btn" onclick="clearAllFilters()">
+        Clear all filters
+      </button>
     </div>
   </div>
 
-  <div class="results-label" id="results-label"></div>
-  <div id="recipes-container"></div>
+</div>
 
-  <div id="empty-state" class="empty-state hidden">
-    <div class="empty-icon">😔</div>
-    <p>No recipes found.</p>
-    <small>Try a different name or remove some filters.</small>
-    <button class="random-btn" style="margin-top:18px" onclick="randomRecipe()">🎲 Try a Random Recipe</button>
-  </div>
-  <div id="start-hint" class="start-hint">
-    <p>Type a recipe name, choose a category, or select your ingredients to find what you can cook right now!</p>
+<!-- ░░░ RESULTS AREA ░░░ -->
+<div class="results-area" id="results-area">
+
+  <div class="results-bar hidden" id="results-bar">
+    <span id="results-label"></span>
   </div>
 
-</div><!-- /app-wrapper -->
+  <div id="recipes-container" class="recipe-grid"></div>
 
-<!-- ═══ DETAIL OVERLAY ═══ -->
-<div id="detail-overlay" class="detail-overlay hidden">
-  <div class="detail-panel glass-panel">
-    <div class="detail-close-row">
-      <button class="detail-close-btn" onclick="closeDetail()">← Back</button>
-      <button class="fav-btn" id="fav-toggle-btn" onclick="toggleFavorite()">♡ Save</button>
+  <div id="empty-state" class="state-card hidden">
+    <div class="state-icon">🤷</div>
+    <p class="state-title">No recipes found</p>
+    <p class="state-sub">Try different keywords or fewer filters.</p>
+    <button class="dice-btn" onclick="randomRecipe()" style="margin-top:20px">🎲 Try Random</button>
+  </div>
+
+  <div id="start-hint" class="state-card hint-card">
+    <div class="state-icon">👆</div>
+    <p class="state-title">Start searching</p>
+    <p class="state-sub">Type a dish name, pick a category, or filter by ingredients you have right now.</p>
+  </div>
+
+</div>
+
+<!-- ░░░ RECIPE DETAIL SHEET ░░░ -->
+<div id="sheet-overlay" class="sheet-overlay hidden" onclick="closeSheet(event)">
+  <div class="sheet" id="detail-sheet">
+    <div class="sheet-handle-wrap"><div class="sheet-handle"></div></div>
+    <div class="sheet-topbar">
+      <button class="sheet-close-btn" onclick="forceCloseSheet()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <button class="sheet-save-btn" id="fav-toggle-btn" onclick="toggleFavorite()">♡ Save</button>
     </div>
-    <div id="detail-body"></div>
+    <div id="detail-body" class="sheet-body"></div>
   </div>
 </div>
 
-<!-- ═══ FAVORITES OVERLAY ═══ -->
-<div id="fav-overlay" class="detail-overlay hidden">
-  <div class="detail-panel glass-panel">
-    <div class="detail-close-row">
-      <button class="detail-close-btn" onclick="closeFavorites()">← Back</button>
-      <span class="overlay-title">❤️ Saved Recipes</span>
+<!-- ░░░ FAVORITES SHEET ░░░ -->
+<div id="fav-overlay" class="sheet-overlay hidden" onclick="closeFavSheet(event)">
+  <div class="sheet" id="fav-sheet">
+    <div class="sheet-handle-wrap"><div class="sheet-handle"></div></div>
+    <div class="sheet-topbar">
+      <button class="sheet-close-btn" onclick="forceCloseFavSheet()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <span class="sheet-title" id="fav-sheet-title">❤️ Saved Recipes</span>
     </div>
-    <div id="fav-list"></div>
-    <div id="no-fav" class="empty-state hidden">
-      <div class="empty-icon">🍽️</div>
-      <p>No saved recipes yet.</p>
-      <small>Save your favorite recipes to find them here!</small>
+    <div class="sheet-body">
+      <div id="fav-list"></div>
+      <div id="no-fav" class="state-card hidden" style="margin:20px 16px">
+        <div class="state-icon">🍽️</div>
+        <p class="state-title">Nothing saved yet</p>
+        <p class="state-sub">Tap ♡ on any recipe to save it here.</p>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- ═══ PICTURE MANAGER OVERLAY ═══ -->
-<div id="pic-overlay" class="detail-overlay hidden">
-  <div class="detail-panel glass-panel pic-manager-panel">
-
-    <!-- Header -->
-    <div class="detail-close-row">
-      <button class="detail-close-btn" onclick="closePicManager()">← Back</button>
-      <span class="overlay-title">📷 Recipe Photos</span>
+<!-- ░░░ PHOTO MANAGER SHEET ░░░ -->
+<div id="pic-overlay" class="sheet-overlay hidden" onclick="closePicSheet(event)">
+  <div class="sheet sheet--tall" id="pic-sheet">
+    <div class="sheet-handle-wrap"><div class="sheet-handle"></div></div>
+    <div class="sheet-topbar">
+      <button class="sheet-close-btn" onclick="forceClosePicSheet()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <span class="sheet-title">📷 Recipe Photos</span>
     </div>
 
-    <!-- Search -->
-    <div class="pic-search-wrap">
-      <svg class="pic-search-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      <input type="text" id="pic-search" class="pic-search-input"
-        placeholder="Search recipe to add photo..."
-        oninput="renderPicManager()"/>
+    <div class="pic-mgr-search-row">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="pic-search" class="pic-mgr-search" placeholder="Search recipe..." oninput="renderPicManager()"/>
     </div>
 
-    <!-- Tabs -->
     <div class="pic-tabs">
       <button class="pic-tab active" id="pic-tab-all"     onclick="setPicTab('all',this)">All</button>
       <button class="pic-tab"        id="pic-tab-missing" onclick="setPicTab('missing',this)">No Photo</button>
       <button class="pic-tab"        id="pic-tab-done"    onclick="setPicTab('done',this)">Uploaded</button>
     </div>
 
-    <!-- Progress -->
-    <div class="pic-progress-area">
-      <div class="pic-progress-track">
-        <div class="pic-progress-fill" id="pic-progress-fill"></div>
-      </div>
-      <span class="pic-progress-text" id="pic-progress-label">0 / 100 photos uploaded</span>
+    <div class="pic-progress-row">
+      <div class="pic-track"><div class="pic-fill" id="pic-progress-fill"></div></div>
+      <span class="pic-progress-label" id="pic-progress-label">0 / 100</span>
     </div>
 
-    <!-- Tip -->
-    <div class="pic-tip">
-      💡 Tap <strong>📷 Upload</strong> next to any recipe to pick a photo from your phone or computer. Photos are saved locally on your device.
+    <div class="pic-tip-banner">
+      Tap <strong>📷 Upload</strong> to choose a photo from your device. Photos are saved locally.
     </div>
 
-    <!-- Recipe List -->
     <div id="pic-recipe-list" class="pic-list"></div>
-
   </div>
 </div>
 
-<!-- ═══ RANDOM MODAL ═══ -->
-<div id="random-modal" class="modal-bg hidden" onclick="closeModalBg(event)">
-  <div class="modal-card glass-panel">
-    <div class="modal-dice" id="modal-dice">🎲</div>
-    <div class="modal-tag" id="modal-tag">RANDOM RECIPE</div>
-    <img class="modal-img" id="modal-img" src="" alt=""/>
-    <div class="modal-name" id="modal-name"></div>
-    <div class="modal-meta" id="modal-meta"></div>
-    <div class="modal-btns">
-      <button class="random-btn" id="modal-view-btn" onclick="openModalRecipe()">View Recipe</button>
-      <button class="glass-btn" id="modal-roll-btn" onclick="reroll()">🎲 Roll Again!</button>
+<!-- ░░░ RANDOM MODAL ░░░ -->
+<div id="random-modal" class="modal-veil hidden" onclick="closeModalVeil(event)">
+  <div class="modal-box" id="modal-box">
+    <button class="modal-x" onclick="forceCloseModal()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="modal-dice-wrap"><span class="modal-dice" id="modal-dice">🎲</span></div>
+    <p class="modal-eyebrow" id="modal-tag">Random Pick</p>
+    <div class="modal-img-wrap">
+      <img class="modal-img" id="modal-img" src="" alt=""/>
+    </div>
+    <h3 class="modal-name" id="modal-name"></h3>
+    <div class="modal-pills" id="modal-meta"></div>
+    <div class="modal-ctas">
+      <button class="btn-cta-primary" onclick="openModalRecipe()" id="modal-view-btn">View Recipe →</button>
+      <button class="btn-cta-ghost" onclick="reroll()" id="modal-roll-btn">🎲 Another one</button>
     </div>
   </div>
 </div>
