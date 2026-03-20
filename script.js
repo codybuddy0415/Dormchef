@@ -87,22 +87,10 @@ const TOOLS = [
 
 
 const CATEGORY_IMAGES = {
-  'Rice':       'https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=700&q=80',
-  'Eggs':       'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=700&q=80',
-  'Canned':     'https://images.unsplash.com/photo-1518611012118-696072aa579a?w=700&q=80',
-  'Instant':    'https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=700&q=80',
-  'Vegetables': 'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=700&q=80',
-  'Silog':      'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=700&q=80',
-  'Soup':       'https://images.unsplash.com/photo-1547592180-85f173990554?w=700&q=80',
-  'Ulam':       'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=700&q=80',
-  'Fish':       'https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=700&q=80',
-  'Bread':      'https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=700&q=80',
-  'Dessert':    'https://images.unsplash.com/photo-1551024601-bec78aea704b?w=700&q=80',
-  'Salad':      'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=700&q=80',
-  'Snacks':     'https://images.unsplash.com/photo-1585032226651-759b368d7246?w=700&q=80',
-  'Microwave':  'https://images.unsplash.com/photo-1484723091739-30a097e8f929?w=700&q=80',
-  'Rice Cooker':'https://images.unsplash.com/photo-1512058564366-18510be2db19?w=700&q=80',
-  'Breakfast':  'https://images.unsplash.com/photo-1541614101331-1a5a3a194e92?w=700&q=80'
+  'Breakfast': 'https://images.unsplash.com/photo-1541614101331-1a5a3a194e92?w=700&q=80',
+  'Lunch':     'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=700&q=80',
+  'Dinner':    'https://images.unsplash.com/photo-1547592180-85f173990554?w=700&q=80',
+  'Snacks':    'https://images.unsplash.com/photo-1585032226651-759b368d7246?w=700&q=80'
 };
 
 const CATEGORY_EMOJI = {
@@ -238,13 +226,13 @@ function getImg(r){
   const custom=getCustomPhoto(r.id);
   if(custom)return custom;
   if(r.image&&r.image.trim())return r.image.trim();
-  return CATEGORY_IMAGES[r.category]||CATEGORY_IMAGES['Ulam'];
+  return CATEGORY_IMAGES[r.category]||CATEGORY_IMAGES['Lunch'];
 }
 function getEmoji(cat){return CATEGORY_EMOJI[cat]||'&#127869;';}
 function getDesc(name){return RECIPE_DESC[name]||RECIPE_DESC['default'];}
 
 const RECIPES = [
-   // ── 1 ──
+  // ── 1 ──
   {
     id: 1, name: 'Sinangag na Kanin',
     ingredients: ['Rice', 'Garlic', 'Cooking Oil', 'Salt', 'Egg'],
@@ -257,7 +245,7 @@ const RECIPES = [
       'Push rice to side, scramble egg in the space, then mix together.',
       'Serve hot with your protein of choice.'
     ],
-    cookingTime: '10 mins', estimatedCost: '₱15–₱25', category: 'Rice', image: 'fied rice.jpg'
+    cookingTime: '10 mins', estimatedCost: '₱15–₱25', category: 'Breakfast', image: 'fied rice.jpg'
   },
   // ── 2 ──
   {
@@ -271,7 +259,7 @@ const RECIPES = [
       'Drizzle soy sauce around the edges of the pan.',
       'Toss everything together and serve.'
     ],
-    cookingTime: '12 mins', estimatedCost: '₱20–₱35', category: 'Rice', image: 'egg fried rice.jpg'
+    cookingTime: '12 mins', estimatedCost: '₱20–₱35', category: 'Breakfast', image: 'egg fried rice.jpg'
   },
   // ── 3 ──
   {
@@ -286,7 +274,7 @@ const RECIPES = [
       'Flip carefully and cook the other side until golden.',
       'Serve with rice and ketchup.'
     ],
-    cookingTime: '8 mins', estimatedCost: '₱12–₱20', category: 'Eggs', image: 'tortang itlog.jpg'
+    cookingTime: '8 mins', estimatedCost: '₱12–₱20', category: 'Breakfast', image: 'tortang itlog.jpg'
   },
   // ── 4 ──
   {
@@ -300,7 +288,7 @@ const RECIPES = [
       'Mash lightly and cook 3–4 minutes, stirring.',
       'Serve generous spoonful over hot rice.'
     ],
-    cookingTime: '15 mins', estimatedCost: '₱25–₱40', category: 'Canned', image: 'sardines rice bowl.jpg'
+    cookingTime: '15 mins', estimatedCost: '₱25–₱40', category: 'Lunch', image: 'sardines rice bowl.jpg'
   },
   // ── 5 ──
   {
@@ -315,7 +303,7 @@ const RECIPES = [
       'Push to side, scramble an egg in, then combine.',
       'Season with salt and serve.'
     ],
-    cookingTime: '12 mins', estimatedCost: '₱40–₱55', category: 'Rice', image: 'corned beef rice.jpg'
+    cookingTime: '12 mins', estimatedCost: '₱40–₱55', category: 'Breakfast', image: 'corned beef rice.jpg'
   },
   // ── 6 ──
   {
@@ -330,7 +318,7 @@ const RECIPES = [
       'Cook until set, flip gently, cook other side.',
       'Serve hot.'
     ],
-    cookingTime: '10 mins', estimatedCost: '₱30–₱45', category: 'Eggs', image: 'tuna omellete.jpg'
+    cookingTime: '10 mins', estimatedCost: '₱30–₱45', category: 'Breakfast', image: 'tuna omellete.jpg'
   },
   // ── 7 ──
   {
@@ -345,7 +333,7 @@ const RECIPES = [
       'Cook until cabbage is tender but still crisp.',
       'Serve as side dish with rice.'
     ],
-    cookingTime: '10 mins', estimatedCost: '₱20–₱30', category: 'Vegetables', image: 'ginisang repolyo.jpg'
+    cookingTime: '10 mins', estimatedCost: '₱20–₱30', category: 'Lunch', image: 'ginisang repolyo.jpg'
   },
   // ── 8 ──
   {
@@ -360,7 +348,7 @@ const RECIPES = [
       'Drizzle soy sauce and mix well.',
       'Serve hot.'
     ],
-    cookingTime: '10 mins', estimatedCost: '₱30–₱45', category: 'Rice', image: 'hotdog sinangag.jpg'
+    cookingTime: '10 mins', estimatedCost: '₱30–₱45', category: 'Breakfast', image: 'hotdog sinangag.jpg'
   },
   // ── 9 ──
   {
@@ -375,7 +363,7 @@ const RECIPES = [
       'Top with chopped green onion.',
       'Serve immediately.'
     ],
-    cookingTime: '7 mins', estimatedCost: '₱12–₱18', category: 'Instant', image: 'instany mami.jpg'
+    cookingTime: '7 mins', estimatedCost: '₱12–₱18', category: 'Lunch', image: 'instany mami.jpg'
   },
   // ── 10 ──
   {
@@ -391,7 +379,7 @@ const RECIPES = [
       'Push aside, scramble egg, combine.',
       'Serve hot.'
     ],
-    cookingTime: '12 mins', estimatedCost: '₱18–₱30', category: 'Instant', image: 'pancit canton.jpg'
+    cookingTime: '12 mins', estimatedCost: '₱18–₱30', category: 'Lunch', image: 'pancit canton.jpg'
   },
   // ── 11 ──
   {
@@ -405,7 +393,7 @@ const RECIPES = [
       'Pour sauce over and serve.',
       'Best paired with congee or rice.'
     ],
-    cookingTime: '15 mins', estimatedCost: '₱18–₱25', category: 'Eggs', image: 'tokwa baboy.jpg'
+    cookingTime: '15 mins', estimatedCost: '₱18–₱25', category: 'Lunch', image: 'tokwa baboy.jpg'
   },
   // ── 12 ──
   {
@@ -421,7 +409,7 @@ const RECIPES = [
       'Add back Spam, drizzle soy sauce, and toss.',
       'Serve hot.'
     ],
-    cookingTime: '13 mins', estimatedCost: '₱55–₱70', category: 'Rice', image: 'spam rice.webp'
+    cookingTime: '13 mins', estimatedCost: '₱55–₱70', category: 'Breakfast', image: 'spam rice.webp'
   },
   // ── 13 ──
   {
@@ -435,7 +423,7 @@ const RECIPES = [
       'Plate rice, tocino, and egg together.',
       'Serve with garlic vinegar on the side.'
     ],
-    cookingTime: '15 mins', estimatedCost: '₱40–₱60', category: 'Silog', image: 'tocilog.png'
+    cookingTime: '15 mins', estimatedCost: '₱40–₱60', category: 'Breakfast', image: 'tocilog.png'
   },
   // ── 14 ──
   {
@@ -450,7 +438,7 @@ const RECIPES = [
       'Serve with sinangag (garlic rice) and egg.',
       'Dip longganisa in vinegar.'
     ],
-    cookingTime: '18 mins', estimatedCost: '₱35–₱55', category: 'Silog', image: 'longsilog.png'
+    cookingTime: '18 mins', estimatedCost: '₱35–₱55', category: 'Breakfast', image: 'longsilog.png'
   },
   // ── 15 ──
   {
@@ -465,7 +453,7 @@ const RECIPES = [
       'Add noodles and toss to coat.',
       'Season with salt and serve.'
     ],
-    cookingTime: '15 mins', estimatedCost: '₱30–₱45', category: 'Instant', image: 'https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=600&q=80'
+    cookingTime: '15 mins', estimatedCost: '₱30–₱45', category: 'Lunch', image: 'https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=600&q=80'
   },
   // ── 16 ──
   {
@@ -479,7 +467,7 @@ const RECIPES = [
       'Cover and steam 2 minutes.',
       'Serve with rice.'
     ],
-    cookingTime: '8 mins', estimatedCost: '₱15–₱25', category: 'Vegetables', image: 'ginisang pichay.jpg'
+    cookingTime: '8 mins', estimatedCost: '₱15–₱25', category: 'Lunch', image: 'ginisang pichay.jpg'
   },
   // ── 17 ──
   {
@@ -509,7 +497,7 @@ const RECIPES = [
       'Simmer 5 minutes.',
       'Serve over rice.'
     ],
-    cookingTime: '20 mins', estimatedCost: '₱55–₱75', category: 'Rice', image: 'giniling baboy.jpg'
+    cookingTime: '20 mins', estimatedCost: '₱55–₱75', category: 'Lunch', image: 'giniling baboy.jpg'
   },
   // ── 19 ──
   {
@@ -523,7 +511,7 @@ const RECIPES = [
       'Place egg on bread, season with salt and pepper.',
       'Close sandwich and enjoy.'
     ],
-    cookingTime: '8 mins', estimatedCost: '₱15–₱25', category: 'Bread', image: 'egg sandwich.jpg'
+    cookingTime: '8 mins', estimatedCost: '₱15–₱25', category: 'Breakfast', image: 'egg sandwich.jpg'
   },
   // ── 20 ──
   {
@@ -539,7 +527,7 @@ const RECIPES = [
       'Season with patis.',
       'Garnish with green onion.'
     ],
-    cookingTime: '35 mins', estimatedCost: '₱60–₱85', category: 'Soup', image: 'arozcaldo.jpg'
+    cookingTime: '35 mins', estimatedCost: '₱60–₱85', category: 'Breakfast', image: 'arozcaldo.jpg'
   },
   // ── 21 ──
   {
@@ -554,7 +542,7 @@ const RECIPES = [
       'Add oyster sauce and mix.',
       'Serve immediately.'
     ],
-    cookingTime: '7 mins', estimatedCost: '₱15–₱22', category: 'Vegetables', image: 'gisang kanfkong.jpg'
+    cookingTime: '7 mins', estimatedCost: '₱15–₱22', category: 'Lunch', image: 'gisang kanfkong.jpg'
   },
   // ── 22 ──
   {
@@ -569,7 +557,7 @@ const RECIPES = [
       'Cook until set, flip, cook other side.',
       'Repeat and serve with rice and ketchup.'
     ],
-    cookingTime: '18 mins', estimatedCost: '₱45–₱60', category: 'Eggs', image: 'tortang giniling.jpg'
+    cookingTime: '18 mins', estimatedCost: '₱45–₱60', category: 'Lunch', image: 'tortang giniling.jpg'
   },
   // ── 23 ──
   {
@@ -583,7 +571,7 @@ const RECIPES = [
       'Fry bangus until golden brown on both sides.',
       'Serve with tomato, onion salsa and rice.'
     ],
-    cookingTime: '30 mins', estimatedCost: '₱55–₱80', category: 'Fish', image: 'bangus.jpg'
+    cookingTime: '30 mins', estimatedCost: '₱55–₱80', category: 'Dinner', image: 'bangus.jpg'
   },
   // ── 24 ──
   {
@@ -599,7 +587,7 @@ const RECIPES = [
       'Add kangkong, turn off heat.',
       'Serve hot.'
     ],
-    cookingTime: '35 mins', estimatedCost: '₱80–₱110', category: 'Soup', image: 'tinolang manok.jpg'
+    cookingTime: '35 mins', estimatedCost: '₱80–₱110', category: 'Dinner', image: 'tinolang manok.jpg'
   },
   // ── 25 ──
   {
@@ -614,7 +602,7 @@ const RECIPES = [
       'Uncover and cook until sauce reduces.',
       'Serve over rice.'
     ],
-    cookingTime: '35 mins', estimatedCost: '₱75–₱100', category: 'Ulam', image: 'adobo manok.jpg'
+    cookingTime: '35 mins', estimatedCost: '₱75–₱100', category: 'Dinner', image: 'adobo manok.jpg'
   },
   // ── 26 ──
   {
@@ -627,7 +615,7 @@ const RECIPES = [
       'Uncover and fry in own fat until browned.',
       'Serve with rice.'
     ],
-    cookingTime: '35 mins', estimatedCost: '₱80–₱110', category: 'Ulam', image: 'pork Adobo.jpg'
+    cookingTime: '35 mins', estimatedCost: '₱80–₱110', category: 'Dinner', image: 'pork Adobo.jpg'
   },
   // ── 27 ──
   {
@@ -641,7 +629,7 @@ const RECIPES = [
       'Cook 5 minutes, mashing lightly.',
       'Serve hot with rice.'
     ],
-    cookingTime: '12 mins', estimatedCost: '₱25–₱35', category: 'Canned', image: 'sardinas kamatis.jpg'
+    cookingTime: '12 mins', estimatedCost: '₱25–₱35', category: 'Lunch', image: 'sardinas kamatis.jpg'
   },
   // ── 28 ──
   {
@@ -656,7 +644,7 @@ const RECIPES = [
       'Fry tilapia until golden and crispy on both sides.',
       'Serve with spiced vinegar.'
     ],
-    cookingTime: '25 mins', estimatedCost: '₱55–₱75', category: 'Fish', image: 'pritong tilapia.jpg'
+    cookingTime: '25 mins', estimatedCost: '₱55–₱75', category: 'Dinner', image: 'pritong tilapia.jpg'
   },
   // ── 29 ──
   {
@@ -672,7 +660,7 @@ const RECIPES = [
       'Season and simmer 3 mins.',
       'Serve hot.'
     ],
-    cookingTime: '30 mins', estimatedCost: '₱70–₱95', category: 'Soup', image: 'sopas.jpg'
+    cookingTime: '30 mins', estimatedCost: '₱70–₱95', category: 'Dinner', image: 'sopas.jpg'
   },
   // ── 30 ──
   {
@@ -687,7 +675,7 @@ const RECIPES = [
       'Cook 8 minutes until tender.',
       'Season with patis and serve.'
     ],
-    cookingTime: '15 mins', estimatedCost: '₱20–₱35', category: 'Vegetables', image: 'sitaw.jpg'
+    cookingTime: '15 mins', estimatedCost: '₱20–₱35', category: 'Lunch', image: 'sitaw.jpg'
   },
   // ── 31 ──
   {
@@ -702,7 +690,7 @@ const RECIPES = [
       'Season with patis.',
       'Top with poached or fried egg and green onion.'
     ],
-    cookingTime: '30 mins', estimatedCost: '₱15–₱25', category: 'Soup', image: 'lugaw.jpg'
+    cookingTime: '30 mins', estimatedCost: '₱15–₱25', category: 'Breakfast', image: 'lugaw.jpg'
   },
   // ── 32 ──
   {
@@ -714,9 +702,9 @@ const RECIPES = [
       'Add cold rice, press and stir-fry.',
       'Season with salt.',
       'Fry egg separately.',
-      'Serve rice with fried egg (substitute for tuyo with whatever salted fish is available).'
+      'Serve rice with fried egg.'
     ],
-    cookingTime: '10 mins', estimatedCost: '₱10–₱20', category: 'Rice', image: 'tuyo.jpg'
+    cookingTime: '10 mins', estimatedCost: '₱10–₱20', category: 'Breakfast', image: 'tuyo.jpg'
   },
   // ── 33 ──
   {
@@ -732,7 +720,7 @@ const RECIPES = [
       'Heat in additional 15-second intervals until just set.',
       'Serve on bread or rice.'
     ],
-    cookingTime: '3 mins', estimatedCost: '₱10–₱18', category: 'Microwave', image: 'microegg.jpg'
+    cookingTime: '3 mins', estimatedCost: '₱10–₱18', category: 'Breakfast', image: 'microegg.jpg'
   },
   // ── 34 ──
   {
@@ -747,7 +735,7 @@ const RECIPES = [
       'Microwave 2 minutes.',
       'Mix into rice and eat.'
     ],
-    cookingTime: '5 mins', estimatedCost: '₱20–₱30', category: 'Microwave', image: 'microrice.jpg'
+    cookingTime: '5 mins', estimatedCost: '₱20–₱30', category: 'Lunch', image: 'microrice.jpg'
   },
   // ── 35 ──
   {
@@ -763,9 +751,8 @@ const RECIPES = [
       'Fry in oil until golden on both sides.',
       'Serve with banana catsup.'
     ],
-    cookingTime: '20 mins', estimatedCost: '₱20–₱35', category: 'Eggs', image: 'talong omellete.webp'
+    cookingTime: '20 mins', estimatedCost: '₱20–₱35', category: 'Breakfast', image: 'talong omellete.webp'
   },
- 
   // ── 37 ──
   {
     id: 37, name: 'Pork Sinigang (Simple)',
@@ -776,10 +763,10 @@ const RECIPES = [
       'Simmer 25 minutes until pork is tender.',
       'Add sitaw and cook 3 mins.',
       'Add kangkong, season with salt.',
-      'Squeeze calamansi for sourness (substitute for sampaloc).',
+      'Squeeze calamansi for sourness.',
       'Serve hot with rice.'
     ],
-    cookingTime: '35 mins', estimatedCost: '₱90–₱120', category: 'Soup', image: 'pork sinigang.jpg'
+    cookingTime: '35 mins', estimatedCost: '₱90–₱120', category: 'Dinner', image: 'pork sinigang.jpg'
   },
   // ── 38 ──
   {
@@ -792,9 +779,9 @@ const RECIPES = [
       'Pour 3 cups water, bring to boil.',
       'Simmer 5 minutes.',
       'Season with patis.',
-      'Serve over rice (substitute for mung beans when not available).'
+      'Serve over rice.'
     ],
-    cookingTime: '12 mins', estimatedCost: '₱25–₱40', category: 'Soup', image: 'Monggo.jpg'
+    cookingTime: '12 mins', estimatedCost: '₱25–₱40', category: 'Dinner', image: 'Monggo.jpg'
   },
   // ── 39 ──
   {
@@ -808,7 +795,7 @@ const RECIPES = [
       'Plate together, season with salt.',
       'Drizzle ketchup and serve with rice.'
     ],
-    cookingTime: '8 mins', estimatedCost: '₱22–₱35', category: 'Ulam', image: 'hotegg.jpg'
+    cookingTime: '8 mins', estimatedCost: '₱22–₱35', category: 'Breakfast', image: 'hotegg.jpg'
   },
   // ── 40 ──
   {
@@ -823,7 +810,7 @@ const RECIPES = [
       'Toss in noodles and coat well.',
       'Serve hot.'
     ],
-    cookingTime: '15 mins', estimatedCost: '₱28–₱40', category: 'Instant', image: 'https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=600&q=80'
+    cookingTime: '15 mins', estimatedCost: '₱28–₱40', category: 'Lunch', image: 'https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=600&q=80'
   },
   // ── 41 ──
   {
@@ -838,7 +825,7 @@ const RECIPES = [
       'Stir until egg sets.',
       'Serve with rice.'
     ],
-    cookingTime: '12 mins', estimatedCost: '₱20–₱30', category: 'Vegetables', image: 'ampaegg.jpg'
+    cookingTime: '12 mins', estimatedCost: '₱20–₱30', category: 'Lunch', image: 'ampaegg.jpg'
   },
   // ── 42 ──
   {
@@ -853,7 +840,7 @@ const RECIPES = [
       'Cook until set, flip, cook other side.',
       'Serve with rice.'
     ],
-    cookingTime: '12 mins', estimatedCost: '₱35–₱50', category: 'Eggs', image: 'corned omelette.jpg'
+    cookingTime: '12 mins', estimatedCost: '₱35–₱50', category: 'Breakfast', image: 'corned omelette.jpg'
   },
   // ── 43 ──
   {
@@ -867,7 +854,7 @@ const RECIPES = [
       'Add melted butter, salt, and pepper.',
       'Mix gently and serve.'
     ],
-    cookingTime: '20 mins', estimatedCost: '₱30–₱45', category: 'Salad', image: 'potato salad.jpg'
+    cookingTime: '20 mins', estimatedCost: '₱30–₱45', category: 'Snacks', image: 'potato salad.jpg'
   },
   // ── 44 ──
   {
@@ -882,10 +869,8 @@ const RECIPES = [
       'Once done, stir, season with patis.',
       'Serve topped with green onion.'
     ],
-    cookingTime: '25 mins', estimatedCost: '₱10–₱20', category: 'Rice Cooker', image: 'arozcaldo rice cooker.jpg'
+    cookingTime: '25 mins', estimatedCost: '₱10–₱20', category: 'Breakfast', image: 'arozcaldo rice cooker.jpg'
   },
-  // ── 45 ──
-  
   // ── 46 ──
   {
     id: 46, name: 'Pork Adobo Flakes',
@@ -898,7 +883,7 @@ const RECIPES = [
       'Mix with remaining sauce.',
       'Serve as topping over garlic rice.'
     ],
-    cookingTime: '45 mins', estimatedCost: '₱80–₱110', category: 'Ulam', image: 'pork adobo flakes.webp'
+    cookingTime: '45 mins', estimatedCost: '₱80–₱110', category: 'Dinner', image: 'pork adobo flakes.webp'
   },
   // ── 47 ──
   {
@@ -912,7 +897,7 @@ const RECIPES = [
       'Bring to simmer, cook 15 minutes until kamote is tender.',
       'Serve as dessert or snack.'
     ],
-    cookingTime: '20 mins', estimatedCost: '₱30–₱45', category: 'Dessert', image: 'ginataang kamote.jpg'
+    cookingTime: '20 mins', estimatedCost: '₱30–₱45', category: 'Snacks', image: 'ginataang kamote.jpg'
   },
   // ── 48 ──
   {
@@ -941,7 +926,7 @@ const RECIPES = [
       'Microwave 2–3 minutes until egg is set.',
       'Mix and serve over rice.'
     ],
-    cookingTime: '8 mins', estimatedCost: '₱35–₱50', category: 'Microwave', image: 'https://images.unsplash.com/photo-1484723091739-30a097e8f929?w=600&q=80'
+    cookingTime: '8 mins', estimatedCost: '₱35–₱50', category: 'Lunch', image: 'https://images.unsplash.com/photo-1484723091739-30a097e8f929?w=600&q=80'
   },
   // ── 50 ──
   {
@@ -956,7 +941,7 @@ const RECIPES = [
       'Toss gently and serve.',
       'Best eaten with fried fish.'
     ],
-    cookingTime: '5 mins', estimatedCost: '₱12–₱20', category: 'Salad', image: 'ensaladang kamatis at sibuyas.jpg'
+    cookingTime: '5 mins', estimatedCost: '₱12–₱20', category: 'Snacks', image: 'ensaladang kamatis at sibuyas.jpg'
   },
   // ── 51 ──
   {
@@ -971,7 +956,7 @@ const RECIPES = [
       'Top with pork and green onion.',
       'Drizzle patis and serve.'
     ],
-    cookingTime: '35 mins', estimatedCost: '₱50–₱75', category: 'Soup', image: 'batchoy style noodels soup.webp'
+    cookingTime: '35 mins', estimatedCost: '₱50–₱75', category: 'Dinner', image: 'batchoy style noodels soup.webp'
   },
   // ── 52 ──
   {
@@ -986,7 +971,7 @@ const RECIPES = [
       'Pour sauce over rice.',
       'Serve as an affordable and filling meal.'
     ],
-    cookingTime: '15 mins', estimatedCost: '₱18–₱28', category: 'Rice', image: 'peanut butter rice.webp'
+    cookingTime: '15 mins', estimatedCost: '₱18–₱28', category: 'Lunch', image: 'peanut butter rice.webp'
   },
   // ── 53 ──
   {
@@ -1001,7 +986,7 @@ const RECIPES = [
       'Pour egg-milk mixture and toss quickly so egg doesn\'t curdle.',
       'Serve immediately.'
     ],
-    cookingTime: '10 mins', estimatedCost: '₱18–₱28', category: 'Instant', image: 'instant noodle upgrade.jpg'
+    cookingTime: '10 mins', estimatedCost: '₱18–₱28', category: 'Lunch', image: 'instant noodle upgrade.jpg'
   },
   // ── 54 ──
   {
@@ -1016,7 +1001,7 @@ const RECIPES = [
       'Season with patis.',
       'Serve hot over rice.'
     ],
-    cookingTime: '18 mins', estimatedCost: '₱28–₱40', category: 'Soup', image: 'monggo at dilis.webp'
+    cookingTime: '18 mins', estimatedCost: '₱28–₱40', category: 'Dinner', image: 'monggo at dilis.webp'
   },
   // ── 55 ──
   {
@@ -1031,7 +1016,7 @@ const RECIPES = [
       'Let it cycle twice for thorough cooking.',
       'Serve with steamed rice.'
     ],
-    cookingTime: '30 mins', estimatedCost: '₱75–₱100', category: 'Rice Cooker', image: 'chicken adobo rice cooker.webp'
+    cookingTime: '30 mins', estimatedCost: '₱75–₱100', category: 'Dinner', image: 'chicken adobo rice cooker.webp'
   },
   // ── 56 ──
   {
@@ -1046,7 +1031,7 @@ const RECIPES = [
       'Drizzle condensed milk on top.',
       'Eat as breakfast or snack.'
     ],
-    cookingTime: '20 mins', estimatedCost: '₱15–₱25', category: 'Dessert', image: 'champorado.jpg'
+    cookingTime: '20 mins', estimatedCost: '₱15–₱25', category: 'Breakfast', image: 'champorado.jpg'
   },
   // ── 57 ──
   {
@@ -1061,7 +1046,7 @@ const RECIPES = [
       'Squeeze calamansi generously.',
       'Season with salt and serve.'
     ],
-    cookingTime: '15 mins', estimatedCost: '₱25–₱40', category: 'Soup', image: 'Sinigang Sardinas.jpg'
+    cookingTime: '15 mins', estimatedCost: '₱25–₱40', category: 'Dinner', image: 'Sinigang Sardinas.jpg'
   },
   // ── 58 ──
   {
@@ -1076,7 +1061,7 @@ const RECIPES = [
       'Simmer 5 minutes.',
       'Serve with rice.'
     ],
-    cookingTime: '18 mins', estimatedCost: '₱60–₱80', category: 'Ulam', image: 'sautéed pork with tomato.jpg'
+    cookingTime: '18 mins', estimatedCost: '₱60–₱80', category: 'Dinner', image: 'sautéed pork with tomato.jpg'
   },
   // ── 59 ──
   {
@@ -1091,7 +1076,7 @@ const RECIPES = [
       'Drain on paper towel.',
       'Serve with rice and ketchup.'
     ],
-    cookingTime: '20 mins', estimatedCost: '₱60–₱85', category: 'Ulam', image: 'milanesa bread.jpeg'
+    cookingTime: '20 mins', estimatedCost: '₱60–₱85', category: 'Dinner', image: 'milanesa bread.jpeg'
   },
   // ── 60 ──
   {
@@ -1106,7 +1091,7 @@ const RECIPES = [
       'Season with patis.',
       'Serve hot.'
     ],
-    cookingTime: '35 mins', estimatedCost: '₱65–₱90', category: 'Soup', image: 'chicken tinola lugaw.jpg'
+    cookingTime: '35 mins', estimatedCost: '₱65–₱90', category: 'Dinner', image: 'chicken tinola lugaw.jpg'
   },
   // ── 61 ──
   {
@@ -1121,10 +1106,8 @@ const RECIPES = [
       'Cook 2 more minutes.',
       'Serve with rice.'
     ],
-    cookingTime: '10 mins', estimatedCost: '₱15–₱25', category: 'Vegetables', image: 'ginisang togue.jpg'
+    cookingTime: '10 mins', estimatedCost: '₱15–₱25', category: 'Lunch', image: 'ginisang togue.jpg'
   },
-  // ── 62 ──
- 
   // ── 63 ──
   {
     id: 63, name: 'Arroz con Leche',
@@ -1137,7 +1120,7 @@ const RECIPES = [
       'Cook on low heat until thick and creamy.',
       'Serve warm or chilled.'
     ],
-    cookingTime: '25 mins', estimatedCost: '₱30–₱45', category: 'Dessert', image: 'arroz con leche.jpg'
+    cookingTime: '25 mins', estimatedCost: '₱30–₱45', category: 'Snacks', image: 'arroz con leche.jpg'
   },
   // ── 64 ──
   {
@@ -1152,7 +1135,7 @@ const RECIPES = [
       'Bake in oven toaster at 200°C for 20–25 minutes.',
       'Serve with rice and spiced vinegar.'
     ],
-    cookingTime: '30 mins', estimatedCost: '₱60–₱85', category: 'Fish', image: 'inihaw na bangus.jpg'
+    cookingTime: '30 mins', estimatedCost: '₱60–₱85', category: 'Dinner', image: 'inihaw na bangus.jpg'
   },
   // ── 65 ──
   {
@@ -1167,7 +1150,7 @@ const RECIPES = [
       'Add banana catsup and season.',
       'Simmer until sauce thickens.'
     ],
-    cookingTime: '40 mins', estimatedCost: '₱85–₱110', category: 'Ulam', image: 'pork pochero.webp'
+    cookingTime: '40 mins', estimatedCost: '₱85–₱110', category: 'Dinner', image: 'pork pochero.webp'
   },
   // ── 66 ──
   {
@@ -1182,11 +1165,11 @@ const RECIPES = [
       'Pour over rice and mix.',
       'Serve as simple lunch.'
     ],
-    cookingTime: '15 mins', estimatedCost: '₱28–₱40', category: 'Rice', image: 'buttered corn and rice.wepb'
+    cookingTime: '15 mins', estimatedCost: '₱28–₱40', category: 'Lunch', image: 'buttered corn and rice.wepb'
   },
   // ── 67 ──
   {
-    id: 67, name: 'Ginisang Upo (Bottle Gourd) Style with Sayote',
+    id: 67, name: 'Ginisang Sayote with Pork',
     ingredients: ['Sayote', 'Garlic', 'Onion', 'Pork', 'Fish Sauce (Patis)', 'Cooking Oil'],
     tools: ['frying-pan', 'electric-stove'],
     steps: [
@@ -1197,7 +1180,7 @@ const RECIPES = [
       'Season with patis.',
       'Serve with rice.'
     ],
-    cookingTime: '15 mins', estimatedCost: '₱45–₱65', category: 'Ulam', image: 'ginisang upo.jpg'
+    cookingTime: '15 mins', estimatedCost: '₱45–₱65', category: 'Dinner', image: 'ginisang upo.jpg'
   },
   // ── 68 ──
   {
@@ -1212,7 +1195,7 @@ const RECIPES = [
       'Layer Spam, egg, and ketchup.',
       'Close sandwich and serve.'
     ],
-    cookingTime: '10 mins', estimatedCost: '₱45–₱65', category: 'Bread', image: 'spam sandwich.jpg'
+    cookingTime: '10 mins', estimatedCost: '₱45–₱65', category: 'Breakfast', image: 'spam sandwich.jpg'
   },
   // ── 69 ──
   {
@@ -1242,7 +1225,7 @@ const RECIPES = [
       'Toast bread, pile mushrooms on top.',
       'Serve as snack or meal.'
     ],
-    cookingTime: '10 mins', estimatedCost: '₱28–₱40', category: 'Bread', image: 'Sautéed Mushroom on Toast.jpg'
+    cookingTime: '10 mins', estimatedCost: '₱28–₱40', category: 'Snacks', image: 'Sautéed Mushroom on Toast.jpg'
   },
   // ── 71 ──
   {
@@ -1257,7 +1240,7 @@ const RECIPES = [
       'Simmer 20 minutes until vegetables are tender.',
       'Season with salt and serve.'
     ],
-    cookingTime: '35 mins', estimatedCost: '₱90–₱120', category: 'Ulam', image: 'pork menudo.jpg'
+    cookingTime: '35 mins', estimatedCost: '₱90–₱120', category: 'Dinner', image: 'pork menudo.jpg'
   },
   // ── 72 ──
   {
@@ -1271,7 +1254,7 @@ const RECIPES = [
       'Cook until rice is tender and mixture is creamy.',
       'Serve as dessert or merienda.'
     ],
-    cookingTime: '25 mins', estimatedCost: '₱28–₱38', category: 'Dessert', image: 'ginataang mais.jpg'
+    cookingTime: '25 mins', estimatedCost: '₱28–₱38', category: 'Snacks', image: 'ginataang mais.jpg'
   },
   // ── 73 ──
   {
@@ -1286,7 +1269,7 @@ const RECIPES = [
       'Cook 3 more minutes.',
       'Serve hot.'
     ],
-    cookingTime: '40 mins', estimatedCost: '₱80–₱110', category: 'Soup', image: 'bulalo style soup.jpg'
+    cookingTime: '40 mins', estimatedCost: '₱80–₱110', category: 'Dinner', image: 'bulalo style soup.jpg'
   },
   // ── 74 ──
   {
@@ -1301,7 +1284,7 @@ const RECIPES = [
       'Simmer 15 minutes until sauce thickens.',
       'Serve over rice.'
     ],
-    cookingTime: '25 mins', estimatedCost: '₱70–₱95', category: 'Ulam', image: 'pork igado style.jpg'
+    cookingTime: '25 mins', estimatedCost: '₱70–₱95', category: 'Dinner', image: 'pork igado style.jpg'
   },
   // ── 75 ──
   {
@@ -1316,7 +1299,7 @@ const RECIPES = [
       'Drizzle soy sauce.',
       'Serve on rice.'
     ],
-    cookingTime: '6 mins', estimatedCost: '₱10–₱18', category: 'Eggs', image: 'chili garlic fried ggg.jpg'
+    cookingTime: '6 mins', estimatedCost: '₱10–₱18', category: 'Breakfast', image: 'chili garlic fried ggg.jpg'
   },
   // ── 76 ──
   {
@@ -1331,7 +1314,7 @@ const RECIPES = [
       'Add noodles and soy sauce.',
       'Toss everything together and serve dry.'
     ],
-    cookingTime: '10 mins', estimatedCost: '₱15–₱22', category: 'Instant', image: 'instant noodle Stir fry.jpg'
+    cookingTime: '10 mins', estimatedCost: '₱15–₱22', category: 'Lunch', image: 'instant noodle Stir fry.jpg'
   },
   // ── 77 ──
   {
@@ -1346,7 +1329,7 @@ const RECIPES = [
       'Stir-fry on high heat 3 minutes.',
       'Serve over rice.'
     ],
-    cookingTime: '15 mins', estimatedCost: '₱70–₱90', category: 'Ulam', image: 'pork sauté with pyster sauce.jpg'
+    cookingTime: '15 mins', estimatedCost: '₱70–₱90', category: 'Dinner', image: 'pork sauté with pyster sauce.jpg'
   },
   // ── 78 ──
   {
@@ -1361,11 +1344,11 @@ const RECIPES = [
       'Crack eggs, scramble into mushroom mixture.',
       'Serve hot.'
     ],
-    cookingTime: '10 mins', estimatedCost: '₱25–₱38', category: 'Eggs', image: 'canned mushroom with egg.jpg'
+    cookingTime: '10 mins', estimatedCost: '₱25–₱38', category: 'Lunch', image: 'canned mushroom with egg.jpg'
   },
   // ── 79 ──
   {
-    id: 79, name: 'Tomato salad (Chilled Tomato Salad)',
+    id: 79, name: 'Tomato Salad (Chilled Tomato Salad)',
     ingredients: ['Tomato', 'Onion', 'Garlic', 'Fish Sauce (Patis)', 'Calamansi', 'Chili / Siling Labuyo'],
     tools: ['knife'],
     steps: [
@@ -1376,7 +1359,7 @@ const RECIPES = [
       'Toss and chill 5 minutes.',
       'Serve as sawsawan or side dish.'
     ],
-    cookingTime: '5 mins', estimatedCost: '₱12–₱22', category: 'Salad', image: 'tomato salad.jpg'
+    cookingTime: '5 mins', estimatedCost: '₱12–₱22', category: 'Snacks', image: 'tomato salad.jpg'
   },
   // ── 80 ──
   {
@@ -1391,7 +1374,7 @@ const RECIPES = [
       'Bake in oven toaster at 180°C for 20 minutes until set.',
       'Serve warm.'
     ],
-    cookingTime: '30 mins', estimatedCost: '₱30–₱45', category: 'Dessert', image: 'bread pudding.jpg'
+    cookingTime: '30 mins', estimatedCost: '₱30–₱45', category: 'Snacks', image: 'bread pudding.jpg'
   },
   // ── 81 ──
   {
@@ -1406,7 +1389,7 @@ const RECIPES = [
       'Scramble gently, season.',
       'Serve with rice.'
     ],
-    cookingTime: '12 mins', estimatedCost: '₱18–₱28', category: 'Vegetables', image: 'ginisang sayote with egg.jpg'
+    cookingTime: '12 mins', estimatedCost: '₱18–₱28', category: 'Lunch', image: 'ginisang sayote with egg.jpg'
   },
   // ── 82 ──
   {
@@ -1421,7 +1404,7 @@ const RECIPES = [
       'Season with patis and pepper.',
       'Serve hot.'
     ],
-    cookingTime: '35 mins', estimatedCost: '₱80–₱105', category: 'Soup', image: 'Nilagang Manok.jpg'
+    cookingTime: '35 mins', estimatedCost: '₱80–₱105', category: 'Dinner', image: 'Nilagang Manok.jpg'
   },
   // ── 83 ──
   {
@@ -1435,7 +1418,7 @@ const RECIPES = [
       'Fry in oil until golden on both sides.',
       'Serve with ketchup and rice.'
     ],
-    cookingTime: '15 mins', estimatedCost: '₱30–₱45', category: 'Fish', image: 'crispy tuna patties.jpg'
+    cookingTime: '15 mins', estimatedCost: '₱30–₱45', category: 'Lunch', image: 'crispy tuna patties.jpg'
   },
   // ── 84 ──
   {
@@ -1450,26 +1433,24 @@ const RECIPES = [
       'Cook until fully done and slightly charred.',
       'Serve with rice and spiced vinegar.'
     ],
-    cookingTime: '35 mins', estimatedCost: '₱75–₱100', category: 'Ulam', image: 'chicken inasal style.jpg'
+    cookingTime: '35 mins', estimatedCost: '₱75–₱100', category: 'Dinner', image: 'chicken inasal style.jpg'
   },
   // ── 85 ──
   {
     id: 85, name: 'Sinigang na Tuna',
-    ingredients: ['Tuna ', 'Tomato', 'Onion', 'Kangkong', 'Sigang Mix', 'Salt', 'Fish Sauce (Patis)'],
+    ingredients: ['Tuna (canned)', 'Tomato', 'Onion', 'Kangkong', 'Salt', 'Fish Sauce (Patis)', 'Calamansi'],
     tools: ['pot', 'electric-stove'],
     steps: [
       'Pour 3 cups water into pot.',
       'Add tomato and onion, boil.',
       'Add tuna (with oil).',
-      'Put the sigang mix for sourness.',
+      'Squeeze calamansi generously for sourness.',
       'Add kangkong.',
       'Season with patis and salt.',
       'Serve with rice.'
     ],
-    cookingTime: '12 mins', estimatedCost: '₱28–₱42', category: 'Soup', image: 'sinigang na tuna.jpg'
+    cookingTime: '12 mins', estimatedCost: '₱28–₱42', category: 'Dinner', image: 'sinigang na tuna.jpg'
   },
-  // ── 86 ──
-  
   // ── 87 ──
   {
     id: 87, name: 'Chicken Afritada (Simple)',
@@ -1483,7 +1464,7 @@ const RECIPES = [
       'Add potato and carrot, cook 10 more minutes.',
       'Season with salt and serve.'
     ],
-    cookingTime: '35 mins', estimatedCost: '₱85–₱110', category: 'Ulam', image: 'chicken afritada.jpg'
+    cookingTime: '35 mins', estimatedCost: '₱85–₱110', category: 'Dinner', image: 'chicken afritada.jpg'
   },
   // ── 88 ──
   {
@@ -1498,7 +1479,7 @@ const RECIPES = [
       'Turn once halfway.',
       'Serve with rice and sauce from pot.'
     ],
-    cookingTime: '30 mins', estimatedCost: '₱70–₱95', category: 'Rice Cooker', image: 'steamed rice cooker chicken.jpg'
+    cookingTime: '30 mins', estimatedCost: '₱70–₱95', category: 'Dinner', image: 'steamed rice cooker chicken.jpg'
   },
   // ── 89 ──
   {
@@ -1513,7 +1494,7 @@ const RECIPES = [
       'Simmer 5 minutes.',
       'Serve with rice.'
     ],
-    cookingTime: '30 mins', estimatedCost: '₱75–₱100', category: 'Ulam', image: 'pork binagoongan.jpg'
+    cookingTime: '30 mins', estimatedCost: '₱75–₱100', category: 'Dinner', image: 'pork binagoongan.jpg'
   },
   // ── 90 ──
   {
@@ -1528,11 +1509,11 @@ const RECIPES = [
       'Add green onion.',
       'Serve immediately.'
     ],
-    cookingTime: '8 mins', estimatedCost: '₱12–₱20', category: 'Soup', image: 'egg drop soup.jpg'
+    cookingTime: '8 mins', estimatedCost: '₱12–₱20', category: 'Dinner', image: 'egg drop soup.jpg'
   },
   // ── 91 ──
   {
-    id: 91, name: 'Turon Style Banana (Oven Version)',
+    id: 91, name: 'Turon Style Kamote (Oven Version)',
     ingredients: ['Kamote (Sweet Potato)', 'Sugar', 'Flour', 'Cooking Oil'],
     tools: ['frying-pan', 'oven-toaster'],
     steps: [
@@ -1547,7 +1528,7 @@ const RECIPES = [
   },
   // ── 92 ──
   {
-    id: 92, name: 'Coconut Milk Rice (Sinanglaw Style)',
+    id: 92, name: 'Coconut Milk Rice',
     ingredients: ['Rice', 'Coconut Milk (canned)', 'Salt', 'Garlic', 'Onion'],
     tools: ['rice-cooker', 'pot'],
     steps: [
@@ -1558,7 +1539,7 @@ const RECIPES = [
       'Fluff with fork.',
       'Serve as flavored rice.'
     ],
-    cookingTime: '20 mins', estimatedCost: '₱25–₱35', category: 'Rice', image: 'coconut milk rice.webp'
+    cookingTime: '20 mins', estimatedCost: '₱25–₱35', category: 'Lunch', image: 'coconut milk rice.webp'
   },
   // ── 93 ──
   {
@@ -1573,7 +1554,7 @@ const RECIPES = [
       'Season with calamansi, salt, pepper.',
       'Serve sizzling on hot pan or plate.'
     ],
-    cookingTime: '25 mins', estimatedCost: '₱60–₱85', category: 'Fish', image: 'bangus sisig.jpg'
+    cookingTime: '25 mins', estimatedCost: '₱60–₱85', category: 'Dinner', image: 'bangus sisig.jpg'
   },
   // ── 94 ──
   {
@@ -1588,7 +1569,7 @@ const RECIPES = [
       'Season with salt.',
       'Top with green onion and serve.'
     ],
-    cookingTime: '12 mins', estimatedCost: '₱35–₱55', category: 'Microwave', image: 'simple chicken congee.jpg'
+    cookingTime: '12 mins', estimatedCost: '₱35–₱55', category: 'Breakfast', image: 'simple chicken congee.jpg'
   },
   // ── 95 ──
   {
@@ -1602,7 +1583,7 @@ const RECIPES = [
       'Fry in own fat until caramelized.',
       'Serve with garlic rice and egg.'
     ],
-    cookingTime: '20 mins (+ marinating)', estimatedCost: '₱60–₱80', category: 'Ulam', image: 'pork tocino style.webp'
+    cookingTime: '20 mins (+ marinating)', estimatedCost: '₱60–₱80', category: 'Breakfast', image: 'pork tocino style.webp'
   },
   // ── 96 ──
   {
@@ -1618,7 +1599,7 @@ const RECIPES = [
       'Add condensed milk and sugar.',
       'Serve warm or cold.'
     ],
-    cookingTime: '25 mins', estimatedCost: '₱35–₱50', category: 'Dessert', image: 'ginataang bilo bilo.jpg'
+    cookingTime: '25 mins', estimatedCost: '₱35–₱50', category: 'Snacks', image: 'ginataang bilo bilo.jpg'
   },
   // ── 97 ──
   {
@@ -1633,7 +1614,7 @@ const RECIPES = [
       'Simmer 3 minutes.',
       'Season and serve.'
     ],
-    cookingTime: '15 mins', estimatedCost: '₱40–₱55', category: 'Ulam', image: 'nilagang sitaw at corned beef.jpg'
+    cookingTime: '15 mins', estimatedCost: '₱40–₱55', category: 'Lunch', image: 'nilagang sitaw at corned beef.jpg'
   },
   // ── 98 ──
   {
@@ -1649,7 +1630,7 @@ const RECIPES = [
       'Season with soy sauce, salt, pepper.',
       'Serve with fried egg and rice.'
     ],
-    cookingTime: '20 mins', estimatedCost: '₱65–₱85', category: 'Ulam', image: 'pork and potato hash.jpg'
+    cookingTime: '20 mins', estimatedCost: '₱65–₱85', category: 'Dinner', image: 'pork and potato hash.jpg'
   },
   // ── 99 ──
   {
@@ -1664,7 +1645,7 @@ const RECIPES = [
       'Season with salt.',
       'Serve over rice.'
     ],
-    cookingTime: '10 mins', estimatedCost: '₱22–₱35', category: 'Eggs', image: 'egg coconut.jpg'
+    cookingTime: '10 mins', estimatedCost: '₱22–₱35', category: 'Breakfast', image: 'egg coconut.jpg'
   },
   // ── 100 ──
   {
@@ -1679,10 +1660,25 @@ const RECIPES = [
       'Serve with banana catsup or condensed milk.',
       'Enjoy as merienda or breakfast.'
     ],
-    cookingTime: '10 mins', estimatedCost: '₱15–₱25', category: 'Bread', image: 'filipino french toast.jpg'
+    cookingTime: '10 mins', estimatedCost: '₱15–₱25', category: 'Breakfast', image: 'filipino french toast.jpg'
+  },
+  // ── 101 ──
+  {
+    id: 101, name: 'Sinigang na Baboy',
+    ingredients: ['Pork', 'Tamarind', 'Tomato', 'Onion', 'Radish', 'Talong (Eggplant)', 'Kangkong', 'Fish Sauce (Patis)', 'Salt'],
+    tools: ['pot', 'electric-stove'],
+    steps: [
+      'Boil pork ribs or belly in 6 cups water with onion and tomato.',
+      'Simmer 25–30 minutes until pork is tender.',
+      'Add tamarind (fresh boiled and strained, or sinigang mix) for sourness.',
+      'Add radish slices, cook 5 minutes.',
+      'Add eggplant, cook 3 minutes.',
+      'Add kangkong last, season with patis and salt.',
+      'Serve hot with steamed rice.'
+    ],
+    cookingTime: '45 mins', estimatedCost: '₱95–₱130', category: 'Dinner', image: 'pork sinigang.jpg'
   }
 ];
-
 
 
 /* STATE */
