@@ -1791,7 +1791,7 @@ const RECIPES = [
       'Season with patis and salt.',
       'Serve hot with steamed rice.'
     ],
-    cookingTime: '18 mins', estimatedCost: '₱55–₱75', category: 'Dinner', image: 'sinabawang tilapia.webp'
+    cookingTime: '18 mins', estimatedCost: '₱55–₱75', category: 'Dinner', image: 'sinabawang tilapia.jpg'
   },
   // ── 103 ──
   {
