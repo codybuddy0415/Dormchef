@@ -2116,20 +2116,7 @@ const RECIPES = [
     cookingTime: '15 mins', estimatedCost: '₱15–₱25', category: 'Lunch', image: 'tokwa itlog.jpg'
   },
   // ── 127 ──
-  {
-    id: 127, name: 'Tuna Sinangag',
-    ingredients: ['Rice', 'Tuna (canned)', 'Garlic', 'Onion', 'Soy Sauce', 'Cooking Oil', 'Egg'],
-    tools: ['frying-pan'],
-    steps: [
-      'Fry garlic in oil until golden.',
-      'Add onion and sauté.',
-      'Add drained tuna, stir-fry 2 minutes.',
-      'Add cold rice, press and stir-fry on high.',
-      'Drizzle soy sauce, push aside and scramble egg.',
-      'Mix all together and serve.'
-    ],
-    cookingTime: '10 mins', estimatedCost: '₱28–₱40', category: 'Breakfast', image: 'tuna sinangag.jpg'
-  },
+ 
   // ── 128 ──
   {
     id: 128, name: 'Karekare Style Peanut Vegetable',
@@ -2148,14 +2135,14 @@ const RECIPES = [
   // ── 129 ──
   {
     id: 129, name: 'Hotdog Pasta Hack',
-    ingredients: ['Instant Noodles', 'Hotdog', 'Tomato Sauce (canned)', 'Garlic', 'Onion', 'Cooking Oil'],
+    ingredients: ['Instant Noodles', 'Hotdog', 'Tomato Sauce (canned)', 'Garlic', 'Onion', 'Cooking Oil', 'Cheese'],
     tools: ['pot', 'electric-stove'],
     steps: [
       'Cook noodles without seasoning packet, drain.',
       'Slice hotdogs into coins and fry until charred.',
       'Sauté garlic and onion.',
       'Add tomato sauce, simmer 3 minutes.',
-      'Add noodles and hotdog, toss.',
+      'Add noodles and hotdog, and cheese, toss.',
       'Season and serve.'
     ],
     cookingTime: '15 mins', estimatedCost: '₱28–₱40', category: 'Lunch', image: 'hotdog pasta.jpg'
@@ -2206,20 +2193,7 @@ const RECIPES = [
     cookingTime: '20 mins', estimatedCost: '₱25–₱38', category: 'Breakfast', image: 'egg potato frittata.jpg'
   },
   // ── 133 ──
-  {
-    id: 133, name: 'Chicken Arroz Caldo de Leche',
-    ingredients: ['Rice', 'Chicken', 'Condensed Milk', 'Ginger', 'Salt', 'Green Onion'],
-    tools: ['pot', 'electric-stove'],
-    steps: [
-      'Boil chicken and ginger in 5 cups water.',
-      'Add rice, simmer until thick.',
-      'Stir in condensed milk for creamy sweetness.',
-      'Season with salt.',
-      'Top with green onion.',
-      'Serve as comforting meal.'
-    ],
-    cookingTime: '35 mins', estimatedCost: '₱55–₱75', category: 'Breakfast', image: 'arroz caldo de leche.jpg'
-  },
+ 
   // ── 134 ──
   {
     id: 134, name: 'Garlicky Spinach Style Kangkong',
@@ -2233,7 +2207,7 @@ const RECIPES = [
       'Season with salt and serve immediately.',
       'Do not overcook.'
     ],
-    cookingTime: '5 mins', estimatedCost: '₱12–₱20', category: 'Lunch', image: 'garlicky kangkong.jpg'
+    cookingTime: '5 mins', estimatedCost: '₱12–₱20', category: 'Lunch', image: 'garlicky kangkong.webp'
   },
   // ── 135 ──
   {
@@ -2283,11 +2257,11 @@ const RECIPES = [
   // ── 138 ──
   {
     id: 138, name: 'Pork Humba',
-    ingredients: ['Pork', 'Soy Sauce', 'Vinegar', 'Sugar', 'Garlic', 'Cooking Oil', 'Pepper'],
+    ingredients: ['Pork', 'Soy Sauce', 'Vinegar', 'Sugar', 'Garlic', 'Cooking Oil', 'Pepper', 'black beans'],
     tools: ['pot', 'electric-stove'],
     steps: [
       'Brown pork pieces in oil.',
-      'Add soy sauce, vinegar, garlic, and pepper.',
+      'Add soy sauce, vinegar, garlic, pepper, black beans.',
       'Add ½ cup water and sugar.',
       'Simmer 30 minutes until sauce thickens.',
       'The pork should be tender and caramelized.',
@@ -2308,24 +2282,11 @@ const RECIPES = [
       'Scramble gently until set.',
       'Pile onto toast and serve.'
     ],
-    cookingTime: '10 mins', estimatedCost: '₱35–₱50', category: 'Breakfast', image: 'corned beef toast.jpg'
+    cookingTime: '10 mins', estimatedCost: '₱35–₱50', category: 'Breakfast', image: 'corned beef toast.webp'
   },
   // ── 140 ──
-  {
-    id: 140, name: 'Adobong Pusit Style Squid Ball',
-    ingredients: ['Squid Ball', 'Soy Sauce', 'Vinegar', 'Garlic', 'Onion', 'Chili / Siling Labuyo', 'Cooking Oil'],
-    tools: ['frying-pan'],
-    steps: [
-      'Fry squid balls until golden.',
-      'Set aside.',
-      'Sauté garlic, onion, chili in same pan.',
-      'Add soy sauce and vinegar.',
-      'Return squid balls and toss.',
-      'Simmer 3 minutes and serve.'
-    ],
-    cookingTime: '12 mins', estimatedCost: '₱22–₱35', category: 'Snacks', image: 'adobong pusit squid ball.jpg'
-  },
-  // ── 141 ──
+ 
+  // ── 141  ──
   {
     id: 141, name: 'Steamed Egg (Chinese Style)',
     ingredients: ['Egg', 'Soy Sauce', 'Salt', 'Green Onion'],
