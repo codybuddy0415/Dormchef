@@ -1265,7 +1265,7 @@ const RECIPES = [
       'Pour over rice and mix.',
       'Serve as simple lunch.'
     ],
-    cookingTime: '15 mins', estimatedCost: '₱28–₱40', category: 'Lunch', image: 'buttered corn and rice.wepb'
+    cookingTime: '15 mins', estimatedCost: '₱28–₱40', category: 'Lunch', image: 'buttered corn and rice.jpg'
   },
   // ── 67 ──
   {
