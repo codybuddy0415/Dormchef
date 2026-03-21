@@ -1853,20 +1853,7 @@ const RECIPES = [
     cookingTime: '20 mins (+ marinating)', estimatedCost: '₱60–₱85', category: 'Breakfast', image: 'daing na bangus.jpg'
   },
   // ── 107 ──
-  {
-    id: 107, name: 'Menudo sa Corned Beef',
-    ingredients: ['Corned Beef (canned)', 'Potato', 'Carrot', 'Tomato Sauce (canned)', 'Garlic', 'Onion', 'Cooking Oil'],
-    tools: ['frying-pan', 'electric-stove'],
-    steps: [
-      'Sauté garlic and onion in oil.',
-      'Add diced potato and carrot, cook 5 minutes.',
-      'Add corned beef, break apart and mix.',
-      'Pour tomato sauce, simmer 8 minutes.',
-      'Season with salt and pepper.',
-      'Serve with rice.'
-    ],
-    cookingTime: '20 mins', estimatedCost: '₱55–₱75', category: 'Lunch', image: 'menudo sa lata.jpg'
-  },
+  
   // ── 108 ──
   {
     id: 108, name: 'Canned Tuna with Sayote',
@@ -2118,20 +2105,7 @@ const RECIPES = [
   // ── 127 ──
  
   // ── 128 ──
-  {
-    id: 128, name: 'Karekare Style Peanut Vegetable',
-    ingredients: ['Sitaw (String Beans)', 'Cabbage', 'Peanut Butter', 'Garlic', 'Onion', 'Cooking Oil', 'Salt', 'Fish Sauce (Patis)'],
-    tools: ['pot', 'electric-stove'],
-    steps: [
-      'Sauté garlic and onion in oil.',
-      'Add sitaw and cabbage, stir-fry 3 minutes.',
-      'Dissolve peanut butter in 1 cup warm water.',
-      'Pour peanut sauce over vegetables.',
-      'Simmer 5 minutes until thick.',
-      'Season with patis and serve over rice.'
-    ],
-    cookingTime: '18 mins', estimatedCost: '₱35–₱50', category: 'Dinner', image: 'karekare style.jpg'
-  },
+ 
   // ── 129 ──
   {
     id: 129, name: 'Hotdog Pasta Hack',
@@ -2563,20 +2537,7 @@ const RECIPES = [
   // ── 168 ──
   
   // ── 169 ──
-  {
-    id: 169, name: 'Crispy Spam Scramble',
-    ingredients: ['Spam', 'Egg', 'Garlic', 'Onion', 'Tomato', 'Cooking Oil'],
-    tools: ['frying-pan'],
-    steps: [
-      'Dice Spam small and fry until very crispy.',
-      'Remove Spam, sauté garlic, onion, tomato in same oil.',
-      'Beat eggs and add to pan, scramble.',
-      'Stir in crispy Spam.',
-      'Season to taste.',
-      'Serve with garlic rice.'
-    ],
-    cookingTime: '12 mins', estimatedCost: '₱50–₱68', category: 'Breakfast', image: 'spam scramble.jpg'
-  },
+ 
   // ── 170 ──
   {
     id: 170, name: 'Macaroni Soup (Budget Sopas)',
@@ -2695,20 +2656,7 @@ const RECIPES = [
   // ── 182 ──
  
   // ── 183 ──
-  {
-    id: 183, name: 'Kamote with Condensed Milk Snack',
-    ingredients: ['Kamote (Sweet Potato)', 'Condensed Milk', 'Sugar', 'Cooking Oil'],
-    tools: ['frying-pan'],
-    steps: [
-      'Cut kamote into thick slices.',
-      'Fry until soft and golden.',
-      'Drain excess oil.',
-      'Plate and drizzle condensed milk.',
-      'Sprinkle sugar on top.',
-      'Serve as sweet merienda.'
-    ],
-    cookingTime: '15 mins', estimatedCost: '₱18–₱28', category: 'Snacks', image: 'saging saba style.jpg'
-  },
+  
   // ── 184 ──
   {
     id: 184, name: 'Ensaladang Talong',
@@ -2842,37 +2790,11 @@ const RECIPES = [
     cookingTime: '8 mins', estimatedCost: '₱28–₱40', category: 'Lunch', image: 'tuna pechay.jpg'
   },
   // ── 198 ──
-  {
-    id: 198, name: 'Monggo with Kangkong and Sardines',
-    ingredients: ['Sardines (canned)', 'Kangkong', 'Garlic', 'Onion', 'Tomato', 'Cooking Oil', 'Fish Sauce (Patis)'],
-    tools: ['pot', 'electric-stove'],
-    steps: [
-      'Sauté garlic, onion, tomato.',
-      'Add sardines and mash.',
-      'Pour 3 cups water, boil.',
-      'Simmer 8 minutes.',
-      'Add kangkong.',
-      'Season with patis and serve over rice.'
-    ],
-    cookingTime: '15 mins', estimatedCost: '₱25–₱38', category: 'Dinner', image: 'monggo sardines kangkong.jpg'
-  },
+ 
   // ── 199 ──
   
   // ── 200 ──
-  {
-    id: 200, name: 'Squid Ball Soup',
-    ingredients: ['Squid Ball', 'Instant Noodles', 'Garlic', 'Green Onion', 'Soy Sauce', 'Salt'],
-    tools: ['pot', 'electric-stove'],
-    steps: [
-      'Boil 2 cups water.',
-      'Add squid balls, cook 2 minutes.',
-      'Add noodles and cook through.',
-      'Season with soy sauce and salt.',
-      'Add minced garlic.',
-      'Top with green onion and serve.'
-    ],
-    cookingTime: '8 mins', estimatedCost: '₱18–₱28', category: 'Lunch', image: 'squid ball soup.jpg'
-  },
+ 
   // ── 201 ──
  
 
